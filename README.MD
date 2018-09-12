@@ -124,8 +124,9 @@ Date: Tue, 07 Aug 2018 20:32:59 GMT
 
 ### Diferenciais
 - Adaptar a página para dispositivos móveis (torná-la responsiva).
-- Liberação da aplicação utilizando Docker.
+- Implementação de casos não previstos no protótipo.
 - Boa documentação.
+- Liberação da aplicação utilizando Docker.
 - Teste do código.
 
 
