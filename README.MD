@@ -35,7 +35,7 @@ O desafio consiste em implementar uma *SPA* a partir de um layout pré-estabelec
 
 Siga os [protótipos](https://www.figma.com/proto/BTa9Vpz4S1XUscURxANvFH5Z/DESAFIO?node-id=19%3A70&scaling=scale-down&redirected=1) e o [guideline](https://www.figma.com/proto/BTa9Vpz4S1XUscURxANvFH5Z/DESAFIO?node-id=27%3A1&scaling=contain&redirected=1) disponibilizados ao máximo.
 
-Você tem o prazo de uma semana, a partir do recebimento do desafio, para entregá-lo.
+> **Atenção**: Você tem o prazo de **uma semana**, a partir do recebimento do desafio, para entregá-lo.
 
 
 ### Instruções para iniciar o desafio
@@ -48,7 +48,6 @@ Você tem o prazo de uma semana, a partir do recebimento do desafio, para entreg
 - A utilização e a demonstração de conhecimento em todo o ecossistema de aplicações em React.
 - O histórico no `git` também está avaliado.
 - Não esqueça de documentar o processo necessário para rodar a aplicação.
-- Apesar de não ter uma limitação de tempo, recomendamos não investir mais de 16 horas de trabalho nesse desafio.
 - Se necessário explique as decisões técnicas tomadas, as escolhas por bibliotecas e ferrramentas, o uso de patterns etc. 
 
 
