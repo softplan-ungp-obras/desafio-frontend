@@ -29,11 +29,13 @@ Procuramos desenvolvedor versátil para resolver os mais diversos problemas, que
 ## Desafio
 
 O desafio consiste em implementar uma *SPA* a partir de um layout pré-estabelecido, conforme abaixo:
-    - Realizar uma consulta de processos e visualizar o resultado
-    - Visualizar os detalhes de processo
-    - Inserir, editar e excluir um processo
+- Realizar uma consulta de processos e visualizar o resultado.
+- Visualizar os detalhes de processo.
+- Inserir, editar e excluir um processo.
 
-Siga os [protótipos](https://www.figma.com/proto/BTa9Vpz4S1XUscURxANvFH5Z/DESAFIO?node-id=19%3A70&scaling=scale-down&redirected=1) e o [guideline](https://www.figma.com/proto/BTa9Vpz4S1XUscURxANvFH5Z/DESAFIO?node-id=27%3A1&scaling=contain&redirected=1) disponibilizados ao máximo
+Siga os [protótipos](https://www.figma.com/proto/BTa9Vpz4S1XUscURxANvFH5Z/DESAFIO?node-id=19%3A70&scaling=scale-down&redirected=1) e o [guideline](https://www.figma.com/proto/BTa9Vpz4S1XUscURxANvFH5Z/DESAFIO?node-id=27%3A1&scaling=contain&redirected=1) disponibilizados ao máximo.
+
+Você tem o prazo de uma semana, a partir do recebimento do desafio, para entregá-lo.
 
 
 ### Instruções para iniciar o desafio
