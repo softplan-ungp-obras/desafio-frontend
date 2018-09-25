@@ -1,0 +1,24 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["prettier", "prettier/react", "eslint:recommended"],
+  "parserOptions": {
+    "ecmaVersion": 2016,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["prettier", "react", "jsx-a11y", "import"],
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "rules": {
+    "camelcase": "warn",
+    "global-require": "warn",
+    "no-console": "off",
+    "no-multi-assign": "off",
+    "no-param-reassign": "warn",
+    "no-unused-vars": "warn",
+    "react/jsx-uses-vars": "error"
+  }
+}
