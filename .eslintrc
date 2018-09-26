@@ -7,10 +7,11 @@
       "jsx": true
     }
   },
-  "plugins": ["prettier", "react", "jsx-a11y", "import"],
+  "plugins": ["prettier", "react", "jsx-a11y", "import", "jest"],
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "jest/globals": true
   },
   "rules": {
     "camelcase": "warn",

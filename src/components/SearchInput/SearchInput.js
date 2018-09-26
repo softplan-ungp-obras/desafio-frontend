@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Theme from '../../config/Theme';
 import icon from '../../assets/icons/search.svg';
@@ -6,9 +7,10 @@ import icon from '../../assets/icons/search.svg';
 function SearchInput(props) {
   const SearchContainer = styled.div`
     display: flex;
-    padding: 0.7em;
+    padding: 0.87em 0.7em;
     background: ${Theme.colors.background};
     border: 1px solid ${Theme.colors.black_38};
+    min-width: 380px;
     width: 30em;
 
     @media (max-width: 700px) {
@@ -41,10 +43,14 @@ function SearchInput(props) {
 
   return (
     <SearchContainer>
-      <SearchInput type="text" placeholder={inputPlaceholder} value={props.value} onChange={props.onChange} />
+      <SearchInput type="text" placeholder={inputPlaceholder} value={props.value} />
       <SearchIcon src={icon} alt="logo" />
     </SearchContainer>
   );
 }
+
+SearchInput.propTypes = {
+  value: PropTypes.string,
+};
 
 export default SearchInput;
