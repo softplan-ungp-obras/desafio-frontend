@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { withRouter } from 'react-router-dom'
 import ProviderProcesses from 'core/providers/processes'
 import logo from 'core/assets/images/logo.svg'
 import './App.css'
@@ -24,6 +26,11 @@ class App extends Component {
     }
   }
 
+  handleButton = () => {
+    const { history } = this.props
+    history.push('/processos')
+  }
+
   render() {
     const { processes } = this.state
 
@@ -36,6 +43,9 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <button onClick={this.handleButton} type="button">
+          Go
+        </button>
         <ul>
           {processes.map(item => (
             <li key={item.id}>{item.assunto}</li>
@@ -46,4 +56,8 @@ class App extends Component {
   }
 }
 
-export default App
+App.propTypes = {
+  history: PropTypes.object.isRequired,
+}
+
+export default withRouter(App)
