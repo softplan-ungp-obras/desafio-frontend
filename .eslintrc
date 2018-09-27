@@ -22,12 +22,15 @@
         ]
       }
     ],
+    "semi": ["error", "never"],
     "global-require": "off",
     "no-console": "off",
     "import/prefer-default-export": "off",
     "import/no-unresolved": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-no-literals": "off",
+    "react/no-set-state": "off",
+    "react/destructuring-assignment": "off",
     "no-unused-vars": [
       "error",
       {

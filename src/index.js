@@ -1,6 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import 'core/assets/style/index.css';
-import App from 'containers/Main';
+import React from 'react'
+import { render } from 'react-dom'
+import { ThemeProvider } from 'styled-components'
+import 'core/assets/style/globalStyle'
+import theme from 'core/assets/style/theme'
+import App from 'containers/Main'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const renderApp = () => {
+  const app = (
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
+  )
+
+  render(app, document.getElementById('root'))
+}
+
+renderApp()
