@@ -1,21 +1,31 @@
 import React, { Component } from 'react'
+import ProviderProcesses from 'core/providers/processes'
 import logo from 'core/assets/images/logo.svg'
 import './App.css'
 import AppStyled from './styled'
 
 class App extends Component {
   state = {
-    repos: [],
+    processes: [],
   }
 
   componentDidMount() {
-    fetch('https://api.github.com/users/udacity/repos')
-      .then(results => results.json())
-      .then(data => this.setState({ repos: data }))
+    this.loadProcesses()
+  }
+
+  loadProcesses = async () => {
+    try {
+      const { content } = await ProviderProcesses.all()
+      this.setState({ processes: content })
+    } catch (err) {
+      console.log(err)
+    } finally {
+      // this.setState({ loading: false })
+    }
   }
 
   render() {
-    const { repos } = this.state
+    const { processes } = this.state
 
     return (
       <AppStyled className="App">
@@ -27,8 +37,8 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <ul>
-          {repos.map(item => (
-            <li key={item.id}>{item.name}</li>
+          {processes.map(item => (
+            <li key={item.id}>{item.assunto}</li>
           ))}
         </ul>
       </AppStyled>
