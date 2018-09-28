@@ -1,38 +1,21 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { withRouter } from 'react-router-dom'
-import ProviderProcesses from 'core/providers/processes'
+import { withSearchContext } from 'core/utils/searchContext'
 import logo from 'core/assets/images/logo.svg'
 import './App.css'
 import AppStyled from './styled'
 
 class App extends Component {
-  state = {
-    processes: [],
-  }
+  inputRef = React.createRef()
 
-  componentDidMount() {
-    this.loadProcesses()
-  }
-
-  loadProcesses = async () => {
-    try {
-      const { content } = await ProviderProcesses.all()
-      this.setState({ processes: content })
-    } catch (err) {
-      console.log(err)
-    } finally {
-      // this.setState({ loading: false })
-    }
-  }
-
-  handleButton = () => {
+  handleButton = (act) => {
     const { history } = this.props
+    act.login(this.inputRef.current.value)
     history.push('/processos')
   }
 
   render() {
-    const { processes } = this.state
+    const { actions } = this.props
 
     return (
       <AppStyled className="App">
@@ -40,24 +23,17 @@ class App extends Component {
           <img alt="logo" className="App-logo" src={logo} />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <button onClick={this.handleButton} type="button">
+        <input ref={this.inputRef} type="text" />
+        <button onClick={() => this.handleButton(actions)} type="button">
           Go
         </button>
-        <ul>
-          {processes.map(item => (
-            <li key={item.id}>{item.assunto}</li>
-          ))}
-        </ul>
       </AppStyled>
     )
   }
 }
 
 App.propTypes = {
-  history: PropTypes.object.isRequired,
+  history: PropTypes.instanceOf(Object).isRequired,
 }
 
-export default withRouter(App)
+export default withSearchContext(App)
