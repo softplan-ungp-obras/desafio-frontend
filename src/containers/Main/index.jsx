@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withSearchContext } from 'core/utils/searchContext'
-import logo from 'core/assets/images/logo.svg'
-import './App.css'
-import AppStyled from './styled'
+import Container from 'components/Container'
 
 class App extends Component {
   inputRef = React.createRef()
@@ -18,21 +16,20 @@ class App extends Component {
     const { actions } = this.props
 
     return (
-      <AppStyled className="App">
-        <header className="App-header">
-          <img alt="logo" className="App-logo" src={logo} />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
+      <Container alignItems="center" justify="center" minHeight="100vh">
+        <h1>Busca de processos</h1>
         <input ref={this.inputRef} type="text" />
         <button onClick={() => this.handleButton(actions)} type="button">
           Go
         </button>
-      </AppStyled>
+        <p>Você pode criar um novo processo clicando aqui</p>
+      </Container>
     )
   }
 }
 
 App.propTypes = {
+  actions: PropTypes.func.isRequired,
   history: PropTypes.instanceOf(Object).isRequired,
 }
 
