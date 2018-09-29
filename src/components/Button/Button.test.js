@@ -11,9 +11,11 @@ describe('Componente Button', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renderizar com parâmetro', () => {
-    const onclickFunc = () => coonsole.log('renderizaando com parâmetro');
-    const wrap = mount(<Button onclick={onclickFunc} />);
-    expect(wrap).toMatchSnapshot();
+  it('teste de click', () => {
+    const onclickFunc = jest.fn();
+    const tree = mount(<Button onClick={onclickFunc}>Teste</Button>);
+
+    tree.find('button').simulate('click');
+    expect(onclickFunc.mock.calls.length).toEqual(1);
   });
 });

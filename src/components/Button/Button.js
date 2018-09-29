@@ -8,7 +8,7 @@ function Button(props) {
   const ButtonContainer = styled.button`
     font: inherit;
     padding: ${props.small ? '0.5em' : '0.87em'};
-    min-width: 125px;
+    min-width: 135px;
     width: 8em;
     font-size: ${Theme.font.buttonLabel.fontSize};
     font-weight: ${Theme.font.buttonLabel.fontWeight};
