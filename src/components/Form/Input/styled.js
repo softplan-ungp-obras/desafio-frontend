@@ -17,15 +17,19 @@ export const GroupStyled = styled.div`
     background: #fff;
     border: 1px solid #b6b9d0;
     box-sizing: border-box;
-    box-shadow: inset 0px 3px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
     font-size: 1rem;
     color: #696d8c;
     outline: none;
     transition: all .2s linear;
 
-    &:focus {
+    &:focus,
+    &:hover {
       outline: none;
+      box-shadow: 0 15px 30px -15px rgba(164, 164, 164);
     }
+
+
   }
 
   .icon {

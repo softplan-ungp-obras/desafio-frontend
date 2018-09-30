@@ -17,3 +17,14 @@ export const Form = styled.form`
     width: 400px;
   }
 `
+export const ImgDefault = styled.div`
+  width: 90px;
+  height: 90px;
+  background-color: #c4c4c4;
+`
+
+export const Item = styled.div`
+  p:first-child {
+    margin-bottom: 15px;
+  }
+`

@@ -16,6 +16,7 @@ const getStyles = ({
 const ContainerStyled = styled.div`
   display: flex;
   ${getStyles}
+border-top: ${(props) => props.hint ? `4px solid ${props.theme.primary}` : `0` };
 `
 
 ContainerStyled.defaultProps = {

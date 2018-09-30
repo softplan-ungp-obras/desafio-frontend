@@ -17,7 +17,7 @@ class App extends Component {
     const { actions } = this.props
 
     return (
-      <Container alignItems="center" justify="center" minHeight="100vh">
+      <Container alignItems="center" hint justify="center" minHeight="100vh">
         <H1>Busca de processos</H1>
         <Form id="search" onSubmit={() => this.onSubmit(actions)}>
           <Input

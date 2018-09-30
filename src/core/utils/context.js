@@ -6,7 +6,7 @@ export const SearchConsumer = Consumer
 
 export class SearchProvider extends Component {
   state = {
-    search: '',
+    search: undefined,
   }
 
   login = (search) => {

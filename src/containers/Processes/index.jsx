@@ -3,8 +3,13 @@ import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 import ProviderProcesses from 'core/providers/processes'
 import { withSearchContext } from 'core/utils/searchContext'
-import { Container, Input } from 'components'
-import { Content, Form } from './styled'
+import {
+  Box,
+  Container,
+  Input,
+  Text,
+} from 'components'
+import { Content, Form, ImgDefault, Item } from './styled'
 
 class Processes extends PureComponent {
   inputRef = React.createRef()
@@ -16,7 +21,12 @@ class Processes extends PureComponent {
 
   componentDidMount() {
     const { search } = this.props.state
-    this.loadProcesses(search)
+    this.inputRef.current.value = this.props.state.search
+    if (!isEmpty(search)) {
+      return this.loadProcesses(search)
+    }
+
+    return this.handleBack()
   }
 
   onSubmit = (event, act) => {
@@ -45,6 +55,34 @@ class Processes extends PureComponent {
     history.push('/')
   }
 
+  renderProcess = item => (
+    <Box key={item.id}>
+      <Item>
+        {item.image ? (
+          <img alt={item.name} src={item.image} />
+        ) : (
+          <ImgDefault />
+        )}
+      </Item>
+      <Item>
+        <Text.SubTitle>Número</Text.SubTitle>
+        <Text>{item.numero}</Text>
+      </Item>
+      <Item>
+        <Text.SubTitle>Assunto</Text.SubTitle>
+        <Text>{item.assunto}</Text>
+      </Item>
+      <Item>
+        <Text.SubTitle>Interessados</Text.SubTitle>
+        <Text>{item.interessados}</Text>
+      </Item>
+      <Item>
+        <Text.SubTitle>Descrição</Text.SubTitle>
+        <Text>{item.descricao}</Text>
+      </Item>
+    </Box>
+  )
+
   renderProcesses = () => {
     const { processes } = this.state
     const { search } = this.props.state
@@ -54,9 +92,7 @@ class Processes extends PureComponent {
       <Fragment>
         {conditional ? (
           <ul>
-            {processes.map(item => (
-              <li key={item.id}>{item.assunto}</li>
-            ))}
+            {processes.map(this.renderProcess)}
           </ul>
         ) : (
           <p>Nenhum processo encontrado!</p>
@@ -67,27 +103,23 @@ class Processes extends PureComponent {
 
   render() {
     const { loading } = this.state
-    const { search } = this.props.state
     const { actions } = this.props
+    const placeHolder = 'Pesquise por uma informação do processo'
 
     return (
-      <Container alignItems="center">
+      <Container alignItems="center" hint>
         <Content>
           <Form id="search" onSubmit={event => this.onSubmit(event, actions)}>
             <Input
               onSubmit={event => this.onSubmit(event, actions)}
-              placeholder="Pesquise por uma informação do processo"
+              placeholder={placeHolder}
               refInput={this.inputRef}
               required
               search
             />
           </Form>
-          <h2>{search}</h2>
           {loading && <p>LOADING...</p>}
           {!loading && this.renderProcesses()}
-          <button onClick={this.handleBack} type="button">
-            Back
-          </button>
         </Content>
       </Container>
     )
@@ -95,7 +127,7 @@ class Processes extends PureComponent {
 }
 
 Processes.defaultProps = {
-  search: null,
+  search: undefined,
 }
 
 Processes.propTypes = {
