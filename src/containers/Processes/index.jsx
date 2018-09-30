@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 import ProviderProcesses from 'core/providers/processes'
 import { withSearchContext } from 'core/utils/searchContext'
+import { SpinnerContent } from 'components/Spinner'
 import {
   Box,
   Container,
@@ -102,8 +103,9 @@ class Processes extends PureComponent {
   }
 
   render() {
-    const { loading } = this.state
+    const { loading, processes } = this.state
     const { actions } = this.props
+    const conditional = !isEmpty(processes)
     const placeHolder = 'Pesquise por uma informação do processo'
 
     return (
@@ -118,8 +120,8 @@ class Processes extends PureComponent {
               search
             />
           </Form>
-          {loading && <p>LOADING...</p>}
-          {!loading && this.renderProcesses()}
+          {loading && <SpinnerContent />}
+          {conditional && this.renderProcesses()}
         </Content>
       </Container>
     )
