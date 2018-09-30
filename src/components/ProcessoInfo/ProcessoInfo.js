@@ -1,47 +1,50 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Theme from '../../config/Theme';
 
 function ProcessoInfo({ processo, onSelect, compacto = false, ativo = false }) {
   const Container = styled.div`
-    font: inherit;
-    padding: 13px;
-    display: flex;
     flex-flow: wrap;
     flex-direction: row;
     align-content: space-between;
-    border: solid 0.5px ${Theme.colors.black_54};
+
+    height: 6.7em;
+    width: ${!compacto ? '65em' : '29em'};
+    padding: 0.8em;
+    margin-bottom: 1em;
+
+    border: solid 0.5px ${(props) => props.theme.blackSecondaryColor};
     border-width: ${!ativo ? '0.5px' : '2px'};
-    border-color: ${!ativo ? Theme.colors.black_38 : Theme.colors.primary};
-    color: ${!ativo ? 'inherit' : Theme.colors.primary};
-    margin-top: 50px;
+    border-color: ${(props) => (!ativo ? props.theme.blackTertiaryColor : props.theme.primaryColor)};
+    color: ${(props) => (!ativo ? 'inherit' : props.theme.primaryColor)};
 
-    height: 107px;
-    width: ${!compacto ? '1044px' : '463px'};
-
-    -webkit-box-shadow: 0px 3px 8px 0px ${Theme.colors.boxShadow};
-    -moz-box-shadow: 0px 3px 8px 0px ${Theme.colors.boxShadow};
-    box-shadow: 0px 3px 8px 0px ${Theme.colors.boxShadow};
+    -webkit-box-shadow: 0px 3px 8px 0px ${(props) => props.theme.shadowColor};
+    -moz-box-shadow: 0px 3px 8px 0px ${(props) => props.theme.shadowColor};
+    box-shadow: 0px 3px 8px 0px ${(props) => props.theme.shadowColor};
   `;
 
   const ProcessoImagem = styled.div`
-    height: 85px;
-    width: 85px;
-    background-color: ${Theme.colors.black_38};
+    height: 5em;
+    width: 5em;
+    background-color: ${(props) => props.theme.blackTertiaryColor};
   `;
 
   const ProcessoItem = styled.div`
     flex-direction: column;
     align-content: center;
 
-    width: ${!compacto ? '225px' : '215px'};
+    width: ${!compacto ? '14em' : '13em'};
   `;
 
   const ItemLabel = styled.span`
+    font-size: ${(props) => props.theme.subtitleFontSize};
     font-weight: bold;
-    font-size: 14px;
-    margin-top: ${!compacto ? '10px' : '0'};
-    color: ${!ativo ? Theme.colors.black_54 : Theme.colors.primary};
+    margin-top: ${!compacto ? '0.6em' : '0'};
+    color: ${(props) => (!ativo ? props.theme.blackSecondaryColor : props.theme.primaryColor)};
+  `;
+
+  const ItemValue = styled.span`
+    margin-top: ${compacto ? '0' : '1em'};
   `;
 
   const descricaoToShow =
@@ -49,35 +52,40 @@ function ProcessoInfo({ processo, onSelect, compacto = false, ativo = false }) {
 
   return (
     <Container onClick={() => onSelect(processo.id)}>
-      <ProcessoItem style={compacto ? { display: 'none' } : { width: '100px' }}>
-        <ProcessoImagem>Img</ProcessoImagem>
+      <ProcessoItem style={compacto ? { display: 'none' } : { width: '6.25em' }}>
+        <ProcessoImagem />
       </ProcessoItem>
+
       <ProcessoItem>
         <ItemLabel>Número</ItemLabel>
-        <span style={{ display: 'flex', alignItems: 'flex-start', marginTop: compacto ? '0px' : '16px' }}>
-          {processo.numero || ''}
-        </span>
+        <ItemValue>{processo.numero || ''}</ItemValue>
       </ProcessoItem>
+
       <ProcessoItem>
         <ItemLabel>Assunto</ItemLabel>
-        <span style={{ display: 'flex', alignItems: 'flex-start', marginTop: compacto ? '0px' : '16px' }}>
-          {processo.assunto || ''}
-        </span>
+        <ItemValue>{processo.assunto || ''}</ItemValue>
       </ProcessoItem>
+
       <ProcessoItem>
         <ItemLabel>Interessado</ItemLabel>
-        <span style={{ display: 'flex', alignItems: 'flex-start', marginTop: compacto ? '0px' : '16px' }}>
+        <ItemValue>
           {processo.interessados && processo.interessados.length > 0 ? processo.interessados[0] : ''}
-        </span>
+        </ItemValue>
       </ProcessoItem>
+
       <ProcessoItem style={compacto ? { display: 'none' } : null}>
         <ItemLabel>Descrição</ItemLabel>
-        <span style={{ display: 'flex', alignItems: 'flex-start', marginTop: compacto ? '0px' : '16px' }}>
-          {descricaoToShow}
-        </span>
+        <ItemValue>{descricaoToShow}</ItemValue>
       </ProcessoItem>
     </Container>
   );
 }
+
+ProcessoInfo.propTypes = {
+  processo: PropTypes.object,
+  onSelect: PropTypes.func,
+  compacto: PropTypes.bool,
+  ativo: PropTypes.bool,
+};
 
 export default ProcessoInfo;

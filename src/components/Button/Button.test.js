@@ -15,7 +15,7 @@ describe('Componente Button', () => {
     const onclickFunc = jest.fn();
     const tree = mount(<Button onClick={onclickFunc}>Teste</Button>);
 
-    tree.find('button').simulate('click');
+    tree.find('a').simulate('click');
     expect(onclickFunc.mock.calls.length).toEqual(1);
   });
 });

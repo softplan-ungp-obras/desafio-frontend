@@ -39,7 +39,7 @@ const Icon = styled.img`
 
 class BuscaInput extends Component {
   state = {
-    query: this.props.value || '',
+    query: null,
   };
 
   render() {
@@ -50,7 +50,7 @@ class BuscaInput extends Component {
       <InputContainer>
         <InputSearch
           placeholder={placeholder}
-          value={query}
+          value={query === null ? this.props.value : query}
           onChange={(e) => {
             this.setState({ query: e.target.value });
           }}
@@ -68,6 +68,7 @@ class BuscaInput extends Component {
 
 BuscaInput.propTypes = {
   value: PropTypes.string,
+  onSubmit: PropTypes.func,
 };
 
 export default BuscaInput;
