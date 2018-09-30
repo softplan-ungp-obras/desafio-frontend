@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Theme from '../../config/Theme';
 import icon from '../../assets/icons/search.svg';
 
 const InputContainer = styled.div`
-  display: flex;
+  flex-direction: row;
   padding: 0.87em 0.7em;
-  background: ${Theme.colors.background};
-  border: 1px solid ${Theme.colors.black_38};
+  background: ${(props) => props.theme.whiteColor};
+  border: 1px solid ${(props) => props.theme.blackTertiaryColor};
   min-width: 380px;
   width: 30em;
 
@@ -16,9 +15,9 @@ const InputContainer = styled.div`
     width: 20em;
   }
 
-  -webkit-box-shadow: 0px 3px 8px 0px ${Theme.colors.boxShadow};
-  -moz-box-shadow: 0px 3px 8px 0px ${Theme.colors.boxShadow};
-  box-shadow: 0px 3px 8px 0px ${Theme.colors.boxShadow};
+  -webkit-box-shadow: 0px 3px 8px 0px ${(props) => props.theme.shadowColor};
+  -moz-box-shadow: 0px 3px 8px 0px ${(props) => props.theme.shadowColor};
+  box-shadow: 0px 3px 8px 0px ${(props) => props.theme.shadowColor};
 `;
 
 const InputSearch = styled.input`
@@ -33,9 +32,9 @@ const InputSearch = styled.input`
 `;
 
 const Icon = styled.img`
-  height: ${Theme.font.body.fontSize};
-  margin-left: ${Theme.font.body.fontSize};
-  color: ${Theme.colors.black_38};
+  height: 1em;
+  margin-left: 1em;
+  color: ${(props) => props.theme.blackTertiaryColor};
 `;
 
 class BuscaInput extends Component {
