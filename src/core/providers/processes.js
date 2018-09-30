@@ -1,8 +1,8 @@
 import Api from './api'
 
 class ProviderProcesses {
-  static all() {
-    return Api.request('/processo', { method: 'GET' })
+  static all(params) {
+    return Api.request('/processo', { method: 'GET', params })
   }
 }
 

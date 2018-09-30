@@ -29,6 +29,7 @@
     "import/no-unresolved": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-no-literals": "off",
+    "react/jsx-max-depth": "off",
     "react/no-set-state": "off",
     "react/destructuring-assignment": "off",
     "no-unused-vars": [
