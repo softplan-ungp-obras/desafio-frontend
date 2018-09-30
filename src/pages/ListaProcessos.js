@@ -64,7 +64,7 @@ class ListaProcessos extends Component {
 
   editProcesso = (processoId) => {
     const location = {
-      pathname: `/editor/${processoId}`,
+      pathname: `/editor/${processoId || ''}`,
     };
 
     this.props.history.push(location);

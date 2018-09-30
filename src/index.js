@@ -7,6 +7,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { baseTheme } from './config/Theme';
 import HomePage from './pages/HomePage';
 import ListaProcessos from './pages/ListaProcessos';
+import ProcessoEditor from './pages/ProcessoEditor';
 
 const App = styled.main`
   display: flex;
@@ -23,6 +24,7 @@ ReactDOM.render(
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/busca" component={ListaProcessos} />
+          <Route path="/editor/:processoId?" component={ProcessoEditor} />
         </Switch>
       </BrowserRouter>
     </App>

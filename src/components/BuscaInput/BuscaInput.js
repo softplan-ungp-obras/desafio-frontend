@@ -56,11 +56,11 @@ class BuscaInput extends Component {
           }}
           onKeyPress={(event) => {
             if (event.key == 'Enter') {
-              this.props.onSubmit(query);
+              this.props.onSubmit(query || '');
             }
           }}
         />
-        <Icon src={icon} alt="logo" onClick={() => this.props.onSubmit(query)} />
+        <Icon src={icon} alt="logo" onClick={() => this.props.onSubmit(query || '')} />
       </InputContainer>
     );
   }
