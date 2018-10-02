@@ -46,6 +46,7 @@ Siga os [protótipos](https://www.figma.com/proto/BTa9Vpz4S1XUscURxANvFH5Z/DESAF
 ### O que será avaliado
 - O código será avaliado seguindo os seguintes critérios: manutenabilidade, clareza e limpeza de código; resultado funcional; entre outros fatores.
 - A utilização e a demonstração de conhecimento em todo o ecossistema de aplicações em React (dica: as funcionalidades podem ser simples, mas tente demontrar todo seu domínio com o ecossistema).
+- Adaptação das páginas para dispositivos móveis (torná-la responsiva).
 - O histórico no `git` também está avaliado.
 - Não esqueça de documentar o processo necessário para rodar a aplicação.
 - Se necessário explique as decisões técnicas tomadas, as escolhas por bibliotecas e ferrramentas, o uso de patterns etc. 
@@ -122,7 +123,6 @@ Date: Tue, 07 Aug 2018 20:32:59 GMT
 
 
 ### Diferenciais
-- Adaptar a página para dispositivos móveis (torná-la responsiva).
 - Implementação de casos não previstos no protótipo.
 - Boa documentação.
 - Liberação da aplicação utilizando Docker.
