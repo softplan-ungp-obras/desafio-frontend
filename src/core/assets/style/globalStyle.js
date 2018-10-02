@@ -14,4 +14,8 @@ export default injectGlobal`
     font-family: 'Montserrat', sans-serif;
     font-weight: normal;
   }
+
+  a {
+    text-decoration: none;
+  }
 `

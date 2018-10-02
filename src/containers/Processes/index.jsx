@@ -5,12 +5,11 @@ import ProviderProcesses from 'core/providers/processes'
 import { withSearchContext } from 'core/utils/searchContext'
 import { SpinnerContent } from 'components/Spinner'
 import {
-  Box,
   Container,
   Input,
-  Text,
 } from 'components'
-import { Content, Form, ImgDefault, Item } from './styled'
+import List from './List'
+import { Content, Form } from './styled'
 
 class Processes extends PureComponent {
   inputRef = React.createRef()
@@ -56,34 +55,6 @@ class Processes extends PureComponent {
     history.push('/')
   }
 
-  renderProcess = item => (
-    <Box key={item.id}>
-      <Item>
-        {item.image ? (
-          <img alt={item.name} src={item.image} />
-        ) : (
-          <ImgDefault />
-        )}
-      </Item>
-      <Item>
-        <Text.SubTitle>Número</Text.SubTitle>
-        <Text>{item.numero}</Text>
-      </Item>
-      <Item>
-        <Text.SubTitle>Assunto</Text.SubTitle>
-        <Text>{item.assunto}</Text>
-      </Item>
-      <Item>
-        <Text.SubTitle>Interessados</Text.SubTitle>
-        <Text>{item.interessados}</Text>
-      </Item>
-      <Item>
-        <Text.SubTitle>Descrição</Text.SubTitle>
-        <Text>{item.descricao}</Text>
-      </Item>
-    </Box>
-  )
-
   renderProcesses = () => {
     const { processes } = this.state
     const { search } = this.props.state
@@ -92,9 +63,7 @@ class Processes extends PureComponent {
     return (
       <Fragment>
         {conditional ? (
-          <ul>
-            {processes.map(this.renderProcess)}
-          </ul>
+          <List processes={processes} />
         ) : (
           <p>Nenhum processo encontrado!</p>
         )}

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const BoxStyled = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
 
   padding: 10px;
@@ -18,6 +18,10 @@ const BoxStyled = styled.div`
     box-shadow: 0 15px 30px -18px rgba(164, 164, 164);
     z-index: 2;
     transition: all 0.2s ease;
+  }
+
+  @media screen and (min-width: 42.5em) {
+    flex-direction: row;
   }
 `
 
