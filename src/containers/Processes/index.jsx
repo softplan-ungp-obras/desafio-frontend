@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 import ProviderProcesses from 'core/providers/processes'
@@ -9,14 +9,17 @@ import {
   Input,
 } from 'components'
 import List from './List'
-import { Content, Form } from './styled'
+import Process from './Process'
+import { Content, Form, Grid } from './styled'
 
 class Processes extends PureComponent {
   inputRef = React.createRef()
 
   state = {
-    processes: [],
+    processes: {},
+    currentProcess: {},
     loading: false,
+    openProcess: false,
   }
 
   componentDidMount() {
@@ -29,18 +32,27 @@ class Processes extends PureComponent {
     return this.handleBack()
   }
 
-  onSubmit = (event, act) => {
-    event.preventDefault()
-    act.login(this.inputRef.current.value)
-    this.loadProcesses(this.inputRef.current.value)
-  }
-
   loadProcesses = async (params) => {
     this.setLoading(true)
 
     try {
       const { content } = await ProviderProcesses.all({ q: params })
-      this.setState({ processes: content })
+      this.setState({ processes: content, currentProcess: {} })
+    } catch (err) {
+      console.log(err)
+    } finally {
+      this.setPanel(false)
+      this.setLoading(false)
+    }
+  }
+
+  loadProcess = async (id) => {
+    this.setLoading(true)
+    this.setPanel(true)
+
+    try {
+      const content = await ProviderProcesses.process(id)
+      this.setState({ currentProcess: content })
     } catch (err) {
       console.log(err)
     } finally {
@@ -48,7 +60,19 @@ class Processes extends PureComponent {
     }
   }
 
+  handleProcess = (item) => {
+    this.loadProcess(item)
+  }
+
+  onSubmit = (event, act) => {
+    event.preventDefault()
+    act.login(this.inputRef.current.value)
+    this.loadProcesses(this.inputRef.current.value)
+  }
+
   setLoading = loading => this.setState({ loading })
+
+  setPanel = openProcess => this.setState({ openProcess })
 
   handleBack = () => {
     const { history } = this.props
@@ -56,25 +80,26 @@ class Processes extends PureComponent {
   }
 
   renderProcesses = () => {
-    const { processes } = this.state
+    const { processes, openProcess } = this.state
     const { search } = this.props.state
     const conditional = !isEmpty(search) && !isEmpty(processes)
 
     return (
-      <Fragment>
+      <div>
         {conditional ? (
-          <List processes={processes} />
+          <List displayList={openProcess} onClick={this.handleProcess} processes={processes} />
         ) : (
           <p>Nenhum processo encontrado!</p>
         )}
-      </Fragment>
+      </div>
     )
   }
 
   render() {
-    const { loading, processes } = this.state
+    const { loading, processes, openProcess, currentProcess } = this.state
     const { actions } = this.props
-    const conditional = !isEmpty(processes)
+    const hasProcesses = !isEmpty(processes)
+    const hasProcess = !isEmpty(currentProcess)
     const placeHolder = 'Pesquise por uma informação do processo'
 
     return (
@@ -89,8 +114,11 @@ class Processes extends PureComponent {
               search
             />
           </Form>
-          {loading && <SpinnerContent />}
-          {conditional && this.renderProcesses()}
+          <Grid hasProcess={openProcess}>
+            {loading && <SpinnerContent />}
+            {hasProcesses && this.renderProcesses()}
+            {hasProcess && <Process currentProcess={currentProcess} />}
+          </Grid>
         </Content>
       </Container>
     )

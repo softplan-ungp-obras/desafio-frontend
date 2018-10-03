@@ -31,6 +31,7 @@
     "react/jsx-no-literals": "off",
     "react/jsx-max-depth": "off",
     "react/no-set-state": "off",
+    "react/boolean-prop-naming": "off",
     "react/destructuring-assignment": "off",
     "no-unused-vars": [
       "error",

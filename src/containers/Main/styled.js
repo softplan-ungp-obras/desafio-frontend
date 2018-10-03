@@ -10,7 +10,7 @@ export const Form = styled.form`
   padding: 10px;
   width: 100%;
 
-  @media screen and (min-width: 60em) {
+  @media screen and (min-width: 25em) {
     width: 400px;
   }
 `

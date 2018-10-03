@@ -1,9 +1,11 @@
 import styled from 'styled-components'
 
 const BoxStyled = styled.div`
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 
   padding: 10px;
   margin-bottom: 20px;
@@ -14,6 +16,10 @@ const BoxStyled = styled.div`
   transition: all 0.2s ease;
   cursor: pointer;
 
+  & > div {
+    margin-right: 50px;
+  }
+
   &:hover {
     box-shadow: 0 15px 30px -18px rgba(164, 164, 164);
     z-index: 2;
@@ -21,7 +27,8 @@ const BoxStyled = styled.div`
   }
 
   @media screen and (min-width: 42.5em) {
-    flex-direction: row;
+    /* justify-content: space-between;
+    flex-wrap: initial; */
   }
 `
 
