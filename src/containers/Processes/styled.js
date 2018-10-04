@@ -22,7 +22,7 @@ export const Grid = styled.div`
   grid-auto-rows: minmax(100px, auto);
   grid-gap: 20px;
 
-  @media screen and (min-width: 42.5em) {
+  @media screen and (min-width: 50em) {
     grid-template-columns: ${(props) => !props.hasProcess ? '1fr' : '400px 1fr'};
   }
 `
@@ -49,14 +49,9 @@ export const Item = styled.div`
   margin-bottom: 10px;
 
   @media screen and (min-width: 42.5em) {
+    display: ${(props) => props.displayList ? 'none' : 'block'};
     p:first-child {
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
   }
-`
-
-export const ProcessStyled = styled.div`
-  padding: 10px;
-  border: 1px solid #d5d5d5;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
 `

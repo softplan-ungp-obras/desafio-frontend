@@ -30,7 +30,7 @@ class List extends PureComponent {
             <Text.SubTitle>Interessados</Text.SubTitle>
             <Text>{item.interessados}</Text>
           </Item>
-          <Item>
+          <Item displayList={displayList}>
             <Text.SubTitle>Descrição</Text.SubTitle>
             <Text>{item.descricao}</Text>
           </Item>
