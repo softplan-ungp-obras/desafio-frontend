@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Text } from 'components'
+import { Button, Text } from 'components'
 import Head, { Actions, ImgDefault, ProcessStyled } from './styled'
 
 class Process extends PureComponent {
@@ -10,7 +10,7 @@ class Process extends PureComponent {
     return (
       <div>
         <ProcessStyled>
-          <button onClick={onClose} type="button">X</button>
+          <Button close onClick={onClose} type="button">X</Button>
           <Head>
             <div>
               <ImgDefault />
@@ -49,8 +49,8 @@ class Process extends PureComponent {
             </Text>
           </div>
           <Actions>
-            <button onClick={onClose} type="button">REMOVER</button>
-            <button onClick={onClose} type="button">EDITAR</button>
+            <Button margin="0 15px" onClick={onClose} type="button">REMOVER</Button>
+            <Button onClick={onClose} type="button">EDITAR</Button>
           </Actions>
         </ProcessStyled>
       </div>
