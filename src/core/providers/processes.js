@@ -8,6 +8,10 @@ class ProviderProcesses {
   static process(id) {
     return Api.request(`/processo/${id}`, { method: 'GET' })
   }
+
+  static delete(id) {
+    return Api.request(`/processo/${id}`, { method: 'DELETE' })
+  }
 }
 
 export default ProviderProcesses

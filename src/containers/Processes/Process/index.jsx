@@ -5,7 +5,7 @@ import Head, { Actions, ImgDefault, ProcessStyled } from './styled'
 
 class Process extends PureComponent {
   render() {
-    const { currentProcess, onClose } = this.props
+    const { currentProcess, onClose, onDelete } = this.props
 
     return (
       <div>
@@ -49,7 +49,7 @@ class Process extends PureComponent {
             </Text>
           </div>
           <Actions>
-            <Button margin="0 15px" onClick={onClose} type="button">REMOVER</Button>
+            <Button margin="0 15px" onClick={() => onDelete(currentProcess.id)} type="button">REMOVER</Button>
             <Button onClick={onClose} type="button">EDITAR</Button>
           </Actions>
         </ProcessStyled>
@@ -60,11 +60,13 @@ class Process extends PureComponent {
 
 Process.defaultProps = {
   onClose: () => null,
+  onDelete: () => null,
 }
 
 Process.propTypes = {
   currentProcess: PropTypes.instanceOf(Object).isRequired,
   onClose: PropTypes.func,
+  onDelete: PropTypes.func,
 }
 
 export default Process

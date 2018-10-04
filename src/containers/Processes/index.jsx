@@ -60,6 +60,21 @@ class Processes extends PureComponent {
     }
   }
 
+  handleDeleteProcess = async (id) => {
+    console.log('ID ', id);
+    this.setLoading(true)
+    const { search } = this.props.state
+
+    try {
+      await ProviderProcesses.delete(id)
+    } catch (err) {
+      console.log(err)
+    } finally {
+      this.setPanel(false)
+      this.loadProcesses(search)
+    }
+  }
+
   handleProcess = (item) => {
     this.loadProcess(item)
   }
@@ -118,7 +133,11 @@ class Processes extends PureComponent {
             {loading && <SpinnerContent />}
             {hasProcesses && this.renderProcesses()}
             {hasProcess && (
-              <Process currentProcess={currentProcess} onClose={() => this.setPanel(false)} />
+              <Process
+                currentProcess={currentProcess}
+                onClose={() => this.setPanel(false)}
+                onDelete={this.handleDeleteProcess}
+              />
             )}
           </Grid>
         </Content>
