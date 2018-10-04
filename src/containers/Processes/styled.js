@@ -17,6 +17,7 @@ export const Content = styled.div`
 `
 
 export const Grid = styled.div`
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: minmax(100px, auto);

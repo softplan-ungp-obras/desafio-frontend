@@ -6,7 +6,9 @@ export const ProcessStyled = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
 
   & > div {
-    margin-bottom: 20px;
+    :not(:last-child) {
+      margin-bottom: 20px;
+    }
   }
 `
 
@@ -32,6 +34,12 @@ Head.Subject = styled.div`
 `
 
 export default Head
+
+export const Actions = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0;
+`
 
 export const ImgDefault = styled.div`
   display: block;

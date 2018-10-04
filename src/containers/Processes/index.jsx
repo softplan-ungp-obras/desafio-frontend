@@ -72,7 +72,7 @@ class Processes extends PureComponent {
 
   setLoading = loading => this.setState({ loading })
 
-  setPanel = openProcess => this.setState({ openProcess })
+  setPanel = openProcess => this.setState({ openProcess, currentProcess: {} })
 
   handleBack = () => {
     const { history } = this.props
@@ -117,7 +117,9 @@ class Processes extends PureComponent {
           <Grid hasProcess={openProcess}>
             {loading && <SpinnerContent />}
             {hasProcesses && this.renderProcesses()}
-            {hasProcess && <Process currentProcess={currentProcess} />}
+            {hasProcess && (
+              <Process currentProcess={currentProcess} onClose={() => this.setPanel(false)} />
+            )}
           </Grid>
         </Content>
       </Container>

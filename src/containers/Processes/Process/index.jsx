@@ -1,15 +1,16 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Text } from 'components'
-import Head, { ImgDefault, ProcessStyled } from './styled'
+import Head, { Actions, ImgDefault, ProcessStyled } from './styled'
 
 class Process extends PureComponent {
   render() {
-    const { currentProcess } = this.props
+    const { currentProcess, onClose } = this.props
 
     return (
       <div>
         <ProcessStyled>
+          <button onClick={onClose} type="button">X</button>
           <Head>
             <div>
               <ImgDefault />
@@ -47,14 +48,23 @@ class Process extends PureComponent {
               {currentProcess.descricao}
             </Text>
           </div>
+          <Actions>
+            <button onClick={onClose} type="button">REMOVER</button>
+            <button onClick={onClose} type="button">EDITAR</button>
+          </Actions>
         </ProcessStyled>
       </div>
     )
   }
 }
 
+Process.defaultProps = {
+  onClose: () => null,
+}
+
 Process.propTypes = {
   currentProcess: PropTypes.instanceOf(Object).isRequired,
+  onClose: PropTypes.func,
 }
 
 export default Process
