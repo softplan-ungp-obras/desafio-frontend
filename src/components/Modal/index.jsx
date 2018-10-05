@@ -36,7 +36,7 @@ SimpleModal.defaultProps = {
 SimpleModal.propTypes = {
   children: PropTypes.node.isRequired,
   onSave: PropTypes.func,
-  submitText: PropTypes.func,
+  submitText: PropTypes.string,
   title: PropTypes.string.isRequired,
 }
 

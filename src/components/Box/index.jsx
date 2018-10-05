@@ -1,17 +1,15 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import BoxStyled from './styled'
 
-class Box extends PureComponent {
-  render() {
-    const { children } = this.props
+const Box = (props) => {
+  const { children } = props
 
-    return (
-      <BoxStyled>
-        {children}
-      </BoxStyled>
-    )
-  }
+  return (
+    <BoxStyled>
+      {children}
+    </BoxStyled>
+  )
 }
 
 Box.defaultProps = {

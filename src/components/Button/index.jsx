@@ -1,27 +1,27 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import ButtonStyled from './styled'
 
-class Button extends PureComponent {
-  render() {
-    const { onClick, children, close, margin } = this.props
+const Button = (props) => {
+  const {
+    onClick, children, closeButton, margin,
+  } = props
 
-    return (
-      <ButtonStyled close={close} margin={margin} onClick={onClick}>
-        {children}
-      </ButtonStyled>
-    )
-  }
+  return (
+    <ButtonStyled closeButton={closeButton} margin={margin} onClick={onClick}>
+      {children}
+    </ButtonStyled>
+  )
 }
 
 Button.defaultProps = {
-  close: false,
+  closeButton: false,
   margin: '0',
 }
 
 Button.propTypes = {
   children: PropTypes.string.isRequired,
-  close: PropTypes.bool,
+  closeButton: PropTypes.bool,
   margin: PropTypes.string,
   onClick: PropTypes.func.isRequired,
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withSearchContext } from 'core/utils/searchContext'
-import { Container, Input } from 'components'
+import { Container, Input, Modal } from 'components'
 import { H1, Form } from './styled'
 
 class App extends Component {
@@ -18,6 +18,13 @@ class App extends Component {
 
     return (
       <Container alignItems="center" hint justify="center" minHeight="100vh">
+        <Modal
+          onSave={() => console.log('save')}
+          title="Cadastro de processo"
+        >
+          Simple Modal
+        </Modal>
+
         <H1>Busca de processos</H1>
         <Form id="search" onSubmit={() => this.onSubmit(actions)}>
           <Input
