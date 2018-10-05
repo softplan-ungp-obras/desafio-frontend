@@ -15,14 +15,16 @@ Modal.Box = styled.div`
   background-color: #fff;
   min-width: auto;
   padding: 10px;
+  position: relative;
   width: 90%;
 
-  @media screen and (min-width: 23.75em) {
-    width: 500px;
+  @media screen and (min-width: 50em) {
+    width: 800px;
   }
 `
 
 Modal.Head = styled.div`
+  position: relative;
 `
 
 Modal.Body = styled.div`

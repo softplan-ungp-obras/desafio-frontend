@@ -4,23 +4,31 @@ import ButtonStyled from './styled'
 
 const Button = (props) => {
   const {
-    onClick, children, closeButton, margin,
+    bgColor, onClick, children, closeButton, margin,
   } = props
 
   return (
-    <ButtonStyled closeButton={closeButton} margin={margin} onClick={onClick}>
+    <ButtonStyled
+      {...props}
+      bgColor={bgColor}
+      closeButton={closeButton}
+      margin={margin}
+      onClick={onClick}
+    >
       {children}
     </ButtonStyled>
   )
 }
 
 Button.defaultProps = {
+  bgColor: '#fff',
   closeButton: false,
   margin: '0',
 }
 
 Button.propTypes = {
-  children: PropTypes.string.isRequired,
+  bgColor: PropTypes.string,
+  children: PropTypes.node.isRequired,
   closeButton: PropTypes.bool,
   margin: PropTypes.string,
   onClick: PropTypes.func.isRequired,

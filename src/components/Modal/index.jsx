@@ -1,18 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { ReactComponent as CloseIcon } from 'core/assets/svg/delete.svg'
 import Button from '../Button'
 import Text from '../Text'
 import Modal from './styled'
 
 const SimpleModal = (props) => {
   const {
-    children, onSave, submitText, title,
+    children, onClose, onSave, submitText, title,
   } = props
 
   return (
     <Modal>
       <Modal.Box>
         <Modal.Head>
+          <Button closeButton onClick={onClose} type="button"><CloseIcon /></Button>
           <Text>{title}</Text>
         </Modal.Head>
 
@@ -21,7 +23,7 @@ const SimpleModal = (props) => {
         </Modal.Body>
 
         <Modal.Footer>
-          {onSave && <Button onClick={onSave} type="button">{submitText}</Button>}
+          {onSave && <Button onClick={onSave} primary type="button">{submitText}</Button>}
         </Modal.Footer>
       </Modal.Box>
     </Modal>
@@ -35,6 +37,7 @@ SimpleModal.defaultProps = {
 
 SimpleModal.propTypes = {
   children: PropTypes.node.isRequired,
+  onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func,
   submitText: PropTypes.string,
   title: PropTypes.string.isRequired,

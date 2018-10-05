@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const ProcessStyled = styled.div`
+  position: relative;
   padding: 10px;
   border: 1px solid #d5d5d5;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
@@ -13,6 +14,7 @@ export const ProcessStyled = styled.div`
 `
 
 const Head = styled.div`
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 15px;

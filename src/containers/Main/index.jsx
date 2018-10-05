@@ -7,23 +7,34 @@ import { H1, Form } from './styled'
 class App extends Component {
   inputRef = React.createRef()
 
+  state = {
+    showModal: true,
+  }
+
   onSubmit = (act) => {
     const { history } = this.props
     act.login(this.inputRef.current.value)
     history.push('/processos')
   }
 
+  handleCloseButton = () => this.setState({ showModal: !this.state.showModal })
+
   render() {
+    const { showModal } = this.state
     const { actions } = this.props
 
     return (
       <Container alignItems="center" hint justify="center" minHeight="100vh">
-        <Modal
-          onSave={() => console.log('save')}
-          title="Cadastro de processo"
-        >
-          Simple Modal
-        </Modal>
+        {showModal && (
+          <Modal
+            onClose={this.handleCloseButton}
+            onSave={() => console.log('save')}
+            submitText="SALVAR"
+            title="Cadastro de processo"
+          >
+            Simple Modal
+          </Modal>
+        )}
 
         <H1>Busca de processos</H1>
         <Form id="search" onSubmit={() => this.onSubmit(actions)}>

@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import SearchIcon from './search.svg'
+import { ReactComponent as SearchIcon } from './search.svg'
 import { GroupStyled } from './styled'
+
 
 const Input = (props) => {
   const {
@@ -29,7 +30,7 @@ const Input = (props) => {
       />
       {search && (
         <button className="icon" onClick={event => onSubmit(event)} type="button">
-          <img alt="search" src={SearchIcon} />
+          <SearchIcon />
         </button>
       )}
     </GroupStyled>

@@ -3,7 +3,7 @@ import Button from './Button'
 import Container from './Container'
 import Input from './Form/Input'
 import Modal from './Modal'
-import Spinner from './Spinner'
+import { Spinner } from './Spinner/styled'
 import Text from './Text'
 
 export {
