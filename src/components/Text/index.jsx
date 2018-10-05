@@ -1,11 +1,20 @@
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const Text = styled.p`
   color: ${({ theme }) => theme.black};
   padding: ${props => props.padding};
-  font-size: 1.6em;
+  font-size: ${props => props.fontSize};
   font-weight: normal;
 `
+
+Text.defaultProps = {
+  fontSize: '1.6em',
+}
+
+Text.propTypes = {
+  fontSize: PropTypes.string,
+}
 
 Text.Title = styled.p`
   color: ${({ theme }) => theme.black};

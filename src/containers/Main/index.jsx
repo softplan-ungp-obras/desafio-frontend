@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withSearchContext } from 'core/utils/searchContext'
-import { Container, Input, Modal } from 'components'
+import {
+  Container, Input, Link, Modal, Text,
+} from 'components'
 import { H1, Form } from './styled'
 
 class App extends Component {
   inputRef = React.createRef()
 
   state = {
-    showModal: true,
+    showModal: false,
   }
 
   onSubmit = (act) => {
@@ -46,7 +48,10 @@ class App extends Component {
             search
           />
         </Form>
-        <p>Você pode criar um novo processo clicando aqui</p>
+        <Text fontSize="1.2em">
+          Você pode criar um novo processo&nbsp;
+          <Link fontSize="1.1em" href="#" onClick={this.handleCloseButton}>clicando aqui</Link>
+        </Text>
       </Container>
     )
   }
