@@ -61,7 +61,6 @@ class Processes extends PureComponent {
   }
 
   handleDeleteProcess = async (id) => {
-    console.log('ID ', id);
     this.setLoading(true)
     const { search } = this.props.state
 
