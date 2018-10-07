@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withSearchContext } from 'core/utils/searchContext'
 import {
-  Container, Input, Link, Modal, Text,
+  Container, Input, Link, Text,
 } from 'components'
+import CreateProcess from 'containers/CreateEditProcess'
 import { H1, Form } from './styled'
 
 class App extends Component {
@@ -25,18 +26,13 @@ class App extends Component {
     const { showModal } = this.state
     const { actions } = this.props
 
+    const foo = {
+      assunto: 'procesoooo', interessados: ['Everton', 'Denis'], descricao: 'descrição legal',
+    }
+
     return (
       <Container alignItems="center" hint justify="center" minHeight="100vh">
-        {showModal && (
-          <Modal
-            onClose={this.handleCloseButton}
-            onSave={() => console.log('save')}
-            submitText="SALVAR"
-            title="Cadastro de processo"
-          >
-            Simple Modal
-          </Modal>
-        )}
+        {showModal && <CreateProcess foo={foo} onClose={this.handleCloseButton} />}
 
         <H1>Busca de processos</H1>
         <Form id="search" onSubmit={() => this.onSubmit(actions)}>
