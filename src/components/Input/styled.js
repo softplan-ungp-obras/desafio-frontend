@@ -1,14 +1,16 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const GroupStyled = styled.div`
   position: relative;
   margin: 10px 0 25px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
 
-  label {
-    color: #696d8c;
-  }
+  ${props => props.search && css`
+    flex-direction: row;
+    align-items: center;
+  `}
 
   input {
     padding: 10px;
@@ -43,6 +45,11 @@ export const GroupStyled = styled.div`
     margin: 0;
     cursor: pointer;
   }
+`
+
+export const Label = styled.label`
+  color: #696d8c;
+  margin-bottom: 10px;
 `
 
 export const StyledInput = styled.input`

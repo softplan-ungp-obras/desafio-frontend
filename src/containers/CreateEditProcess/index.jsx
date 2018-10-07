@@ -1,7 +1,9 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
-import { Input, Link, Modal, Text } from 'components'
+import {
+  Input, Link, Modal, Text,
+} from 'components'
 import { Content } from './styled'
 
 class CreateProcessModal extends PureComponent {

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { ReactComponent as SearchIcon } from './search.svg'
-import { GroupStyled } from './styled'
+import { GroupStyled, Label } from './styled'
 
 
 const Input = (props) => {
@@ -18,8 +18,8 @@ const Input = (props) => {
   } = props
 
   return (
-    <GroupStyled>
-      {label && <label>{label}</label>}
+    <GroupStyled search={search}>
+      {label && <Label>{label}</Label>}
       <input
         ref={refInput}
         autoFocus={focus}
