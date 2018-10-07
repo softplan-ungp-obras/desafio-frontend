@@ -17,7 +17,7 @@ Box.defaultProps = {
 }
 
 Box.propTypes = {
-  children: PropTypes.instanceOf(Object),
+  children: PropTypes.node,
 }
 
 export default Box

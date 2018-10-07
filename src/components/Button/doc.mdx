@@ -1,18 +1,17 @@
 ---
-name: Input
+name: Button
 menu: Components
 ---
 
 import { Playground, PropsTable } from 'docz'
-import Input from './'
+import Button from './'
 
-# Input
+# Button
 
-<PropsTable of={Input} />
+<PropsTable of={Button} />
 
 ## Basic usage
 
 <Playground>
-  <Input label="Input text" onChange={() => null} />
-  <Input label="Input password" type="password" onChange={() => null} />
+  <Button type="button">Simple Button</Button>
 </Playground>

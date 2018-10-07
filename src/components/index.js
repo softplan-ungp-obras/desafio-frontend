@@ -1,7 +1,7 @@
 import Box from './Box'
 import Button from './Button'
 import Container from './Container'
-import Input from './Form/Input'
+import Input from './Input'
 import Link from './Link'
 import Modal from './Modal'
 import { Spinner } from './Spinner/styled'

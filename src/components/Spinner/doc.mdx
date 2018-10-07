@@ -1,18 +1,20 @@
 ---
-name: Input
+name: Spinner
 menu: Components
 ---
 
 import { Playground, PropsTable } from 'docz'
-import Input from './'
+// import Spinner from './'
+import { Spinner } from './styled'
+import SpinnerContent from './SpinnerContent'
 
-# Input
+# Spinner
 
-<PropsTable of={Input} />
+<PropsTable of={Spinner} />
 
 ## Basic usage
 
 <Playground>
-  <Input label="Input text" onChange={() => null} />
-  <Input label="Input password" type="password" onChange={() => null} />
+  <Spinner />
+  <SpinnerContent />
 </Playground>

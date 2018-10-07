@@ -1,18 +1,20 @@
 ---
-name: Input
+name: Container
 menu: Components
 ---
 
 import { Playground, PropsTable } from 'docz'
-import Input from './'
+import Container from './'
+import Button from '../Button'
 
-# Input
+# Container
 
-<PropsTable of={Input} />
+<PropsTable of={Container} />
 
 ## Basic usage
 
 <Playground>
-  <Input label="Input text" onChange={() => null} />
-  <Input label="Input password" type="password" onChange={() => null} />
+  <Container alignItems="center" hint justify="center" minHeight="200px">
+    <Button type="button">Simple Button</Button>
+  </Container>
 </Playground>

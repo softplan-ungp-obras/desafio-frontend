@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import CloseIcon from 'src/core/assets/svg/delete.svg'
+import { ReactComponent as CloseIcon } from './delete.svg'
 import Button from '../Button'
 import Text from '../Text'
 import Modal from './styled'
@@ -15,7 +15,7 @@ const SimpleModal = (props) => {
       <Modal.Box>
         <Modal.Head>
           <Button closeButton onClick={onClose} type="button">
-            <img alt="close modal" src={CloseIcon} />
+            <CloseIcon />
           </Button>
           <Text>{title}</Text>
         </Modal.Head>

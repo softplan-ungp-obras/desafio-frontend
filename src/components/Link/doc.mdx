@@ -1,18 +1,17 @@
 ---
-name: Input
+name: Link
 menu: Components
 ---
 
 import { Playground, PropsTable } from 'docz'
-import Input from './'
+import Link from './'
 
-# Input
+# Link
 
-<PropsTable of={Input} />
+<PropsTable of={Link} />
 
 ## Basic usage
 
 <Playground>
-  <Input label="Input text" onChange={() => null} />
-  <Input label="Input password" type="password" onChange={() => null} />
+  <Link fontSize="1.1em" href="#" onClick={() => null}>Click here</Link>
 </Playground>

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import CloseIcon from 'src/core/assets/svg/delete.svg'
 import { Button, Text } from 'components'
+import { ReactComponent as CloseIcon } from 'core/assets/svg/delete.svg'
 import Head, { Actions, ImgDefault, ProcessStyled } from './styled'
 
 class Process extends PureComponent {
@@ -12,7 +12,7 @@ class Process extends PureComponent {
       <div>
         <ProcessStyled>
           <Button closeButton onClick={onClose} type="button">
-            <img alt="close modal" src={CloseIcon} />
+            <CloseIcon />
           </Button>
           <Head>
             <div>
