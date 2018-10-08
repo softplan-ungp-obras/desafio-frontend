@@ -1,3 +1,48 @@
+## Installing dependencies
+Download or clone this repository;
+
+Yarn: `$ yarn`
+
+Npm: `$ npm i`
+
+## Runing project
+
+Yarn: `$ yarn start`
+
+Npm: `$ npm start`
+
+Runs the app in the development mode.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+## Run tests
+
+Yarn: `$ yarn test`
+
+Npm: `$ npm test`
+
+## Coverage reporting
+
+Yarn: `$ yarn test --coverage`
+
+Npm: `$ npm test --coverage`
+
+## Components Doc
+I'm using the great [Docz](https://github.com/pedronauck/docz)
+
+Yarn: `$ yarn doc`
+
+Npm: `$ npm doc`
+
+Open [http://localhost:3030](http://localhost:3030) to view **components doc** in the browser.
+
+<br>
+------------
+
+*This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).*
+
+<br>
+------------
+
 # Desafio implementador front end
 Vaga para desenvolvedor front end com foco em React, HTML, CSS & JS.
 

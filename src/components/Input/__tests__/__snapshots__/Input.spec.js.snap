@@ -7,11 +7,20 @@ ShallowWrapper {
     className="class"
     focus={false}
     label="E-mail"
-    onChange={[Function]}
+    onChange={[MockFunction]}
+    onSubmit={null}
+    padding="10px"
     placeholder=""
+    refInput={
+      Object {
+        "current": null,
+      }
+    }
     required={true}
+    search={false}
     type="text"
-/>,
+    width="100%"
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -26,31 +35,47 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        <label>
+        <styled.label>
           E-mail
-</label>,
+        </styled.label>,
         <input
           autoFocus={false}
           className="class"
-          onChange={[Function]}
+          padding="10px"
           placeholder=""
           required={true}
           type="text"
-/>,
+          width="100%"
+        />,
+        false,
       ],
+      "className": "class",
+      "focus": false,
+      "label": "E-mail",
+      "onChange": [MockFunction],
+      "onSubmit": null,
+      "padding": "10px",
+      "placeholder": "",
+      "refInput": Object {
+        "current": null,
+      },
+      "required": true,
+      "search": false,
+      "type": "text",
+      "width": "100%",
     },
     "ref": null,
     "rendered": Array [
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
+        "nodeType": "class",
         "props": Object {
           "children": "E-mail",
         },
         "ref": null,
         "rendered": "E-mail",
-        "type": "label",
+        "type": [Function],
       },
       Object {
         "instance": null,
@@ -59,15 +84,19 @@ ShallowWrapper {
         "props": Object {
           "autoFocus": false,
           "className": "class",
-          "onChange": [Function],
+          "padding": "10px",
           "placeholder": "",
           "required": true,
           "type": "text",
+          "width": "100%",
         },
-        "ref": "inputRef",
+        "ref": Object {
+          "current": null,
+        },
         "rendered": null,
         "type": "input",
       },
+      false,
     ],
     "type": [Function],
   },
@@ -78,31 +107,47 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <label>
+          <styled.label>
             E-mail
-</label>,
+          </styled.label>,
           <input
             autoFocus={false}
             className="class"
-            onChange={[Function]}
+            padding="10px"
             placeholder=""
             required={true}
             type="text"
-/>,
+            width="100%"
+          />,
+          false,
         ],
+        "className": "class",
+        "focus": false,
+        "label": "E-mail",
+        "onChange": [MockFunction],
+        "onSubmit": null,
+        "padding": "10px",
+        "placeholder": "",
+        "refInput": Object {
+          "current": null,
+        },
+        "required": true,
+        "search": false,
+        "type": "text",
+        "width": "100%",
       },
       "ref": null,
       "rendered": Array [
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
+          "nodeType": "class",
           "props": Object {
             "children": "E-mail",
           },
           "ref": null,
           "rendered": "E-mail",
-          "type": "label",
+          "type": [Function],
         },
         Object {
           "instance": null,
@@ -111,15 +156,19 @@ ShallowWrapper {
           "props": Object {
             "autoFocus": false,
             "className": "class",
-            "onChange": [Function],
+            "padding": "10px",
             "placeholder": "",
             "required": true,
             "type": "text",
+            "width": "100%",
           },
-          "ref": "inputRef",
+          "ref": Object {
+            "current": null,
+          },
           "rendered": null,
           "type": "input",
         },
+        false,
       ],
       "type": [Function],
     },
@@ -140,8 +189,6 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;

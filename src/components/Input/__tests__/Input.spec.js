@@ -6,10 +6,11 @@ import 'setupTest'
 
 describe('Input.', () => {
   it('Should be render <Input />.', () => {
+    const inputRef = React.createRef()
     const onChange = jest.fn()
     const component = shallow(
       <Input
-        ref="inputRefEmail"
+        refInput={inputRef}
         className="class"
         label="E-mail"
         onChange={onChange}
@@ -17,20 +18,5 @@ describe('Input.', () => {
       />
     )
     expect(component).toMatchSnapshot()
-  })
-
-  it('should be onChange', () => {
-    const onChange = jest.fn()
-    const component = mount(
-      <Input
-        className="class"
-        label="E-mail"
-        onChange={onChange}
-        required
-      />
-    )
-
-    component.find('input').simulate('change')
-    expect(onChange).toHaveBeenCalled()
   })
 })
