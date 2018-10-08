@@ -1,3 +1,11 @@
+## Stack
+- [Create React App](https://github.com/facebook/create-react-app)
+- [Styled-componets](https://www.styled-components.com/)
+- [Lodash](https://www.npmjs.com/package/lodash)
+- [Docz](https://www.docz.site/)
+- Enzyme
+- Jest
+
 ## Installing dependencies
 Download or clone this repository;
 
