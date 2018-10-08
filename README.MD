@@ -1,3 +1,48 @@
+## Installing dependencies
+Download or clone this repository;
+
+Yarn: `$ yarn`
+
+Npm: `$ npm i`
+
+## Runing project
+
+Yarn: `$ yarn start`
+
+Npm: `$ npm start`
+
+Runs the app in the development mode.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+## Run tests
+
+Yarn: `$ yarn test`
+
+Npm: `$ npm test`
+
+## Coverage reporting
+
+Yarn: `$ yarn test --coverage`
+
+Npm: `$ npm test --coverage`
+
+## Components Doc
+I'm using the great [Docz](https://github.com/pedronauck/docz)
+
+Yarn: `$ yarn doc`
+
+Npm: `$ npm doc`
+
+Open [http://localhost:3030](http://localhost:3030) to view **components doc** in the browser.
+
+<br>
+------------
+
+*This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).*
+
+<br>
+------------
+
 # Desafio implementador front end
 Vaga para desenvolvedor front end com foco em React, HTML, CSS & JS.
 
@@ -48,10 +93,10 @@ Siga os [protótipos](https://www.figma.com/proto/BTa9Vpz4S1XUscURxANvFH5Z/DESAF
 - A utilização e a demonstração de conhecimento em todo o ecossistema de aplicações em React.
 - O histórico no `git` também está avaliado.
 - Não esqueça de documentar o processo necessário para rodar a aplicação.
-- Se necessário explique as decisões técnicas tomadas, as escolhas por bibliotecas e ferrramentas, o uso de patterns etc. 
+- Se necessário explique as decisões técnicas tomadas, as escolhas por bibliotecas e ferrramentas, o uso de patterns etc.
 
 
-### Considerações 
+### Considerações
 - Considerar que os seguintes endpoints estão disponíveis (`docker run -p 3002:3002 gcpasquadproduto/softplan-desafio-frontend`)
 ```
 $ curl -i -X POST http://localhost:3002/processo \
@@ -59,7 +104,7 @@ $ curl -i -X POST http://localhost:3002/processo \
         -H 'content-type: application/json' \
         -d '{"descricao" : "Solicitação de licença-prêmio", "assunto" : "Licença", "interessados" : ["Edmilson Cherem"]}'
 
-HTTP/1.1 201 
+HTTP/1.1 201
 Location: http://localhost:3002/processo/04c7197f-c0fe-4dab-b27c-d69611eca40f
 Content-Length: 0
 Date: Tue, 07 Aug 2018 20:26:22 GMT
@@ -68,7 +113,7 @@ Date: Tue, 07 Aug 2018 20:26:22 GMT
 ```
 $ curl -i -X GET http://localhost:3002/processo/04c7197f-c0fe-4dab-b27c-d69611eca40f
 
-HTTP/1.1 200 
+HTTP/1.1 200
 Content-Type: application/json;charset=UTF-8
 Transfer-Encoding: chunked
 Date: Tue, 07 Aug 2018 20:32:59 GMT
@@ -87,7 +132,7 @@ curl -i -X GET http://localhost:3002/processo?q=licenca \
   -H 'accept: application/json' \
   -H 'content-type: application/json'
 
-HTTP/1.1 200 
+HTTP/1.1 200
 Content-Type: application/json;charset=UTF-8
 Transfer-Encoding: chunked
 Date: Tue, 07 Aug 2018 20:29:43 GMT
@@ -106,7 +151,7 @@ Date: Tue, 07 Aug 2018 20:29:43 GMT
 ```
 $ curl -i -X DELETE http://localhost:3002/processo/04c7197f-c0fe-4dab-b27c-d69611eca40f
 
-HTTP/1.1 200 
+HTTP/1.1 200
 Content-Type: application/json;charset=UTF-8
 Transfer-Encoding: chunked
 Date: Tue, 07 Aug 2018 20:32:59 GMT
