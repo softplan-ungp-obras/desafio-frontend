@@ -168,6 +168,28 @@
           "value": "Basic usage"
         }
       ]
+    },
+    "src/components/Textarea/doc.mdx": {
+      "name": "Textarea",
+      "menu": "Components",
+      "id": "05a85f8812a1ff299ae47fb906263acc",
+      "filepath": "src/components/Textarea/doc.mdx",
+      "link": null,
+      "slug": "src-components-textarea-doc",
+      "route": "/src-components-textarea-doc",
+      "order": 0,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "textarea",
+          "value": "Textarea"
+        },
+        {
+          "depth": 2,
+          "slug": "basic-usage",
+          "value": "Basic usage"
+        }
+      ]
     }
   }
 }

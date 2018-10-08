@@ -14,9 +14,20 @@ import Textarea from './'
 
 <Playground>
   <Textarea
+    label="Label"
     onSubmit={() => null}
     placeholder="textarea"
     refInput="this.inputRef"
     required
+    rows={4}
+  />
+  <Textarea
+    clean
+    label="Textarea with label"
+    onSubmit={() => null}
+    placeholder="textarea"
+    refInput="this.inputRef"
+    required
+    rows={3}
   />
 </Playground>

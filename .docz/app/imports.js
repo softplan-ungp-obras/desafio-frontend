@@ -13,4 +13,6 @@ export const imports = {
     import(/* webpackPrefetch: true, webpackChunkName: "src-components-spinner-doc" */ 'src/components/Spinner/doc.mdx'),
   'src/components/Text/doc.mdx': () =>
     import(/* webpackPrefetch: true, webpackChunkName: "src-components-text-doc" */ 'src/components/Text/doc.mdx'),
+  'src/components/Textarea/doc.mdx': () =>
+    import(/* webpackPrefetch: true, webpackChunkName: "src-components-textarea-doc" */ 'src/components/Textarea/doc.mdx'),
 }
