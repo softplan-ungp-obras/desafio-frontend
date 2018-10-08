@@ -15,6 +15,23 @@
     "port": "3030"
   },
   "entries": {
+    "src/components/index.mdx": {
+      "name": "Home",
+      "route": "/",
+      "id": "8f6609a989594e49bce5582173f1be02",
+      "filepath": "src/components/index.mdx",
+      "link": null,
+      "slug": "src-components-index",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "home",
+          "value": "Home"
+        }
+      ]
+    },
     "src/components/Box/doc.mdx": {
       "name": "Box",
       "menu": "Components",
