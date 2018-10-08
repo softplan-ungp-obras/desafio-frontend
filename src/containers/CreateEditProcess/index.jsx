@@ -29,7 +29,7 @@ class CreateProcessModal extends PureComponent {
     const { currentProcess } = this.props
     const { newProcess } = this.state
 
-    if (currentProcess) {
+    if (!isEmpty(currentProcess)) {
       const { id, interessados } = currentProcess
       this.subjectRef.current.value = currentProcess.assunto
       this.descriptionRef.current.value = currentProcess.descricao
@@ -39,26 +39,16 @@ class CreateProcessModal extends PureComponent {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    // console.log('prevState: ', prevState)
-    // console.log('nextState: ', this.state)
-    // Typical usage (don't forget to compare props):
-    // if (this.props.userID !== prevProps.userID) {
-    //   this.fetchData(this.props.userID);
-    // }
-  }
-
-  createProcess = async () => {
+  handleCreateProcess = async () => {
     this.setLoading(true)
-    // const { newProcess } = this.state
-    // console.log(newProcess)
+    const { onClose } = this.props
+    const { newProcess } = this.state
     const { interessados } = this.state.newProcess
     const assunto = this.subjectRef.current.value
     const descricao = this.descriptionRef.current.value
-
-    console.log(this.state.newProcess)
-
-    const data = { assunto, interessados, descricao }
+    const data = {
+      ...newProcess, assunto, interessados, descricao,
+    }
 
     try {
       await ProviderProcesses.create(data)
@@ -67,6 +57,7 @@ class CreateProcessModal extends PureComponent {
     } finally {
       this.clearForm()
       this.setLoading(false)
+      onClose()
     }
   }
 
@@ -84,16 +75,6 @@ class CreateProcessModal extends PureComponent {
     if (assunto && descricao) {
       this.setState({ validate: true })
     }
-  }
-
-  handleSubmit = () => {
-    const { interessados } = this.state.newProcess
-    const assunto = this.subjectRef.current.value
-    const descricao = this.descriptionRef.current.value
-    console.log(assunto);
-
-    this.setState({ newProcess: { assunto, interessados, descricao } })
-    // this.createProcess()
   }
 
   handleAddInterested = (event) => {
@@ -120,13 +101,11 @@ class CreateProcessModal extends PureComponent {
     const { onClose } = this.props
     const hasInterested = !isEmpty(interessados)
 
-    // console.log(this.state.newProcess)
-
     return (
       <Fragment>
         <Modal
           onClose={onClose}
-          onSave={this.handleSubmit}
+          onSave={this.handleCreateProcess}
           submitText="SALVAR"
           title="Cadastro de processo"
           validate={validate}

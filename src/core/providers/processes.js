@@ -10,7 +10,6 @@ class ProviderProcesses {
   }
 
   static create(data) {
-    console.log('provider ', data)
     return Api.request('/processo', { method: 'POST', data })
   }
 

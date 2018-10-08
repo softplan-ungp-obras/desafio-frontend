@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 export const ProcessActive = styled.div`
-  width: 550px;
-  height: 550px;
   background-color: ${({ theme }) => theme.primary};
+  height: 550px;
+  width: 550px;
 `
 
 export const Content = styled.div`
@@ -17,11 +17,11 @@ export const Content = styled.div`
 `
 
 export const Grid = styled.div`
-  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: minmax(100px, auto);
   grid-gap: 20px;
+  position: relative;
 
   @media screen and (min-width: 50em) {
     grid-template-columns: ${(props) => !props.hasProcess ? '1fr' : '400px 1fr'};
@@ -29,20 +29,29 @@ export const Grid = styled.div`
 `
 
 export const Form = styled.form`
+  align-items: baseline;
+  display: flex;
+  position: relative;
   width: 100%;
 
   @media screen and (min-width: 60em) {
-    width: 400px;
+    width: 490px;
   }
 `
+
+export const Group = styled.div`
+  width: 400px;
+  margin-right: 20px;
+`
+
 export const ImgDefault = styled.div`
   display: none;
 
   @media screen and (min-width: 60em) {
-    display: ${(props) => props.displayList ? 'none' : 'block'};
-    width: 90px;
-    height: 90px;
     background-color: #c4c4c4;
+    display: ${(props) => props.displayList ? 'none' : 'block'};
+    height: 90px;
+    width: 90px;
   }
 `
 

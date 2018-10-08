@@ -3,14 +3,26 @@ import styled from 'styled-components'
 export const Content = styled.div`
   width: 100%;
 
-  @media screen and (min-width: 60em) {
-    width: ${({ theme }) => theme.wrapperWidth};
+  /* input {
+    width: 100%;
+  } */
+
+  @media screen and (max-width: 31.25em) {
+    input {
+      width: 100%;
+    }
   }
 `
 
 export const ContainerAction = styled.div`
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @media screen and (min-width: 23.75em) {
+    align-items: flex-end;
+    flex-direction: row;
+  }
 `
 
 export const Label = styled.label`

@@ -5,12 +5,16 @@ import ProviderProcesses from 'core/providers/processes'
 import { withSearchContext } from 'core/utils/searchContext'
 import { SpinnerContent } from 'components/Spinner'
 import {
+  Button,
   Container,
   Input,
 } from 'components'
+import CreateProcess from 'containers/CreateEditProcess'
 import List from './List'
 import Process from './Process'
-import { Content, Form, Grid } from './styled'
+import {
+  Content, Form, Grid, Group,
+} from './styled'
 
 class Processes extends PureComponent {
   inputRef = React.createRef()
@@ -20,6 +24,7 @@ class Processes extends PureComponent {
     currentProcess: {},
     loading: false,
     openProcess: false,
+    showModal: false,
   }
 
   componentDidMount() {
@@ -84,6 +89,12 @@ class Processes extends PureComponent {
     this.loadProcesses(this.inputRef.current.value)
   }
 
+  handleShowModal = () => {
+    const { search } = this.props.state
+    this.loadProcesses(search)
+    this.setState({ showModal: !this.state.showModal })
+  }
+
   setLoading = loading => this.setState({ loading })
 
   setPanel = openProcess => this.setState({ openProcess, currentProcess: {} })
@@ -110,6 +121,7 @@ class Processes extends PureComponent {
   }
 
   render() {
+    const { showModal } = this.state
     const {
       loading, processes, openProcess, currentProcess,
     } = this.state
@@ -120,15 +132,21 @@ class Processes extends PureComponent {
 
     return (
       <Container alignItems="center" hint>
+        {showModal && (
+          <CreateProcess currentProcess={currentProcess} onClose={this.handleShowModal} />
+        )}
         <Content>
           <Form id="search" onSubmit={event => this.onSubmit(event, actions)}>
-            <Input
-              onSubmit={event => this.onSubmit(event, actions)}
-              placeholder={placeHolder}
-              refInput={this.inputRef}
-              required
-              search
-            />
+            <Group>
+              <Input
+                onSubmit={event => this.onSubmit(event, actions)}
+                placeholder={placeHolder}
+                refInput={this.inputRef}
+                required
+                search
+              />
+            </Group>
+            <Button height="40px" onClick={this.handleShowModal} type="button">NOVO</Button>
           </Form>
           <Grid hasProcess={openProcess}>
             {loading && <SpinnerContent />}
@@ -138,6 +156,7 @@ class Processes extends PureComponent {
                 currentProcess={currentProcess}
                 onClose={() => this.setPanel(false)}
                 onDelete={this.handleDeleteProcess}
+                onEdit={this.handleShowModal}
               />
             )}
           </Grid>

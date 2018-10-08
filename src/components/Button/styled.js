@@ -7,6 +7,7 @@ const Button = styled.button`
   color: ${({ theme }) => theme.mediumBlack};
   cursor: pointer;
   font-weight: bold;
+  height: ${props => props.height};
   left: 0;
   margin: ${props => props.margin};
   padding: 5px 15px;
