@@ -6,6 +6,7 @@ import Link from './Link'
 import Modal from './Modal'
 import { Spinner } from './Spinner/styled'
 import Text from './Text'
+import Textarea from './Textarea'
 
 export {
   Box,
@@ -16,4 +17,5 @@ export {
   Modal,
   Spinner,
   Text,
+  Textarea,
 }

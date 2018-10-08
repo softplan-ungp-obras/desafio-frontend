@@ -1,0 +1,22 @@
+---
+name: Textarea
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import Textarea from './'
+
+# Textarea
+
+<PropsTable of={Textarea} />
+
+## Basic usage
+
+<Playground>
+  <Textarea
+    onSubmit={() => null}
+    placeholder="textarea"
+    refInput="this.inputRef"
+    required
+  />
+</Playground>

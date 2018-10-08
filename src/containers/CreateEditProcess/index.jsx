@@ -4,7 +4,7 @@ import { isEmpty } from 'lodash'
 import ProviderProcesses from 'core/providers/processes'
 import { SpinnerContent } from 'components/Spinner'
 import {
-  Button, Input, Modal, Text,
+  Button, Input, Modal, Text, Textarea,
 } from 'components'
 import { Content, ContainerAction, Label } from './styled'
 
@@ -151,13 +151,15 @@ class CreateProcessModal extends PureComponent {
                 </Button>
               </ContainerAction>
 
-              <Input
+              <Textarea
                 clean
                 label="Descrição"
                 onChange={this.handleChange}
                 padding="0 10px 10px 0"
+                placeholder="descrição"
                 refInput={this.descriptionRef}
                 required
+                rows={4}
                 type="textarea"
               />
 
