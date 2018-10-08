@@ -7,7 +7,7 @@ import Modal from './styled'
 
 const SimpleModal = (props) => {
   const {
-    children, onClose, onSave, submitText, title,
+    children, onClose, onSave, submitText, title, validate,
   } = props
 
   return (
@@ -25,7 +25,16 @@ const SimpleModal = (props) => {
         </Modal.Body>
 
         <Modal.Footer>
-          {onSave && <Button onClick={onSave} primary type="button">{submitText}</Button>}
+          {onSave && (
+            <Button
+              disabled={!validate}
+              onClick={onSave}
+              primary
+              type="submit"
+            >
+              {submitText}
+            </Button>
+          )}
         </Modal.Footer>
       </Modal.Box>
     </Modal>
@@ -35,6 +44,7 @@ const SimpleModal = (props) => {
 SimpleModal.defaultProps = {
   onSave: undefined,
   submitText: 'Salvar',
+  validate: true,
 }
 
 SimpleModal.propTypes = {
@@ -43,6 +53,7 @@ SimpleModal.propTypes = {
   onSave: PropTypes.func,
   submitText: PropTypes.string,
   title: PropTypes.string.isRequired,
+  validate: PropTypes.bool,
 }
 
 export default SimpleModal

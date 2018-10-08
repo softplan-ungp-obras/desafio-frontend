@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 const Link = styled.a`
   color: ${props => props.theme.primary};
   font-size: ${props => props.fontSize};
+  font-weight: bold;
   text-decoration: underline;
   transition: all 0.2s ease;
 

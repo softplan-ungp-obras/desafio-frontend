@@ -27,12 +27,15 @@ class App extends Component {
     const { actions } = this.props
 
     const foo = {
-      assunto: 'procesoooo', interessados: ['Everton', 'Denis'], descricao: 'descrição legal',
+      id: 'dhuad7y-jjc73m-ko222mi7-m76fF7',
+      assunto: 'teste',
+      interessados: ['everton', 'gabriel', 'cherly'],
+      descricao: 'descriptions teste...;)',
     }
 
     return (
       <Container alignItems="center" hint justify="center" minHeight="100vh">
-        {showModal && <CreateProcess foo={foo} onClose={this.handleCloseButton} />}
+        {showModal && <CreateProcess currentProcess={foo} onClose={this.handleCloseButton} />}
 
         <H1>Busca de processos</H1>
         <Form id="search" onSubmit={() => this.onSubmit(actions)}>
@@ -46,7 +49,7 @@ class App extends Component {
         </Form>
         <Text fontSize="1.2em">
           Você pode criar um novo processo&nbsp;
-          <Link fontSize="1.1em" href="#" onClick={this.handleCloseButton}>clicando aqui</Link>
+          <Link fontSize="1.1em" href="#" onClick={this.handleCloseButton}>clicando aqui</Link>.
         </Text>
       </Container>
     )

@@ -14,6 +14,12 @@ const process = {
   handler: (req, reply) => reply(mock.process),
 }
 
+const create = {
+  method: 'POST',
+  path: `${basePath}`,
+  handler: (req, reply) => reply(mock.processes),
+}
+
 const deleteProcess = {
   method: 'DELETE',
   path: `${basePath}/{id}`,
@@ -22,6 +28,7 @@ const deleteProcess = {
 
 module.exports = {
   all,
+  create,
   process,
   deleteProcess,
 }

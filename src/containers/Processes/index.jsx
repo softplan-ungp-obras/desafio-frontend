@@ -110,7 +110,9 @@ class Processes extends PureComponent {
   }
 
   render() {
-    const { loading, processes, openProcess, currentProcess } = this.state
+    const {
+      loading, processes, openProcess, currentProcess,
+    } = this.state
     const { actions } = this.props
     const hasProcesses = !isEmpty(processes)
     const hasProcess = !isEmpty(currentProcess)

@@ -13,20 +13,24 @@ const Input = (props) => {
     className,
     label,
     onSubmit,
+    padding,
     placeholder,
     required,
+    width,
   } = props
 
   return (
-    <GroupStyled search={search}>
+    <GroupStyled {...props}>
       {label && <Label>{label}</Label>}
       <input
         ref={refInput}
         autoFocus={focus}
         className={className}
+        padding={padding}
         placeholder={placeholder}
         required={required}
         type={type}
+        width={width}
       />
       {search && (
         <button className="icon" onClick={event => onSubmit(event)} type="button">
@@ -42,10 +46,12 @@ Input.defaultProps = {
   focus: false,
   label: '',
   onSubmit: null,
+  padding: '10px',
   placeholder: '',
   required: false,
   search: false,
   type: 'text',
+  width: '100%',
 }
 
 Input.propTypes = {
@@ -53,11 +59,13 @@ Input.propTypes = {
   focus: PropTypes.bool,
   label: PropTypes.string,
   onSubmit: PropTypes.func,
+  padding: PropTypes.string,
   placeholder: PropTypes.string,
   refInput: PropTypes.instanceOf(Object).isRequired,
   required: PropTypes.bool,
   search: PropTypes.bool,
   type: PropTypes.string,
+  width: PropTypes.string,
 }
 
 export default Input
