@@ -1,0 +1,38 @@
+---
+name: Input
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import Input from './'
+
+# Input
+
+<PropsTable of={Input} />
+
+## Basic usage
+
+<Playground>
+  <Input
+    label="Input text"
+    onSubmit={() => null}
+    placeholder="simple imput"
+    refInput="this.inputRef"
+    required
+  />
+  <Input
+    onSubmit={() => null}
+    placeholder="search"
+    refInput="this.inputRef"
+    required
+    search
+  />
+  <Input
+    clean
+    label="Clean Input text"
+    onSubmit={() => null}
+    placeholder="simple imput"
+    refInput="this.inputRef"
+    required
+  />
+</Playground>
