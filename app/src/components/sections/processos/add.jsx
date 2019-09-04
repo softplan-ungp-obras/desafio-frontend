@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FirebaseService from '../../../services/FirebaseService';
 
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 export default class Add extends Component {
 
@@ -10,7 +10,7 @@ export default class Add extends Component {
 
   submit = (event) => {
     event.preventDefault();
-
+    
     console.log('go');
     
     console.log(this.state);
@@ -40,19 +40,29 @@ export default class Add extends Component {
         
         <Container>
           <Form onSubmit={(e) => this.submit(e)}>
-            <Form.Group controlId="myForm.subject">
+            <Form.Group>
               <Form.Label>Assunto</Form.Label>
               <Form.Control type="text" name="subject" onChange={(event) => this.handleChange(event)} />
             </Form.Group>
 
-            <Form.Group controlId="myForm.description">
+            <Form.Group>
+              <Form.Label>Interessados</Form.Label>
+              <Row>
+                <Col xs={12} sm={6}>
+                  <Form.Control type="text" name="subject" onChange={(event) => this.handleChange(event)} />
+                </Col>
+                <Col xs={12} sm={6}>
+                  <Button variant="default">Adicionar</Button>
+                </Col>
+              </Row>
+            </Form.Group>
+
+            <Form.Group>
               <Form.Label>Descrição</Form.Label>
               <Form.Control type="text" name="description" onChange={(event) => this.handleChange(event)} />
             </Form.Group>
 
-            <Button variant="primary" type="submit">
-              Salvar
-            </Button>
+            <Button variant="primary" type="submit">Salvar</Button>
           </Form>
         </Container>
 
