@@ -1,8 +1,16 @@
 import React from 'react';
 
+// Sections
+import ProcessosList from './components/sections/processos/list';
+import ProcessosAdd from './components/sections/processos/add';
+
 function App() {
   return (
     <div className="App">
+
+      <ProcessosList />
+      
+      {/*
       <header className="App-header">
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -16,6 +24,7 @@ function App() {
           Learn React
         </a>
       </header>
+      */}
     </div>
   );
 }
