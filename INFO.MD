@@ -34,6 +34,12 @@ npm install
 yarn start
 ```
 
+### Build
+```
+cd app
+yarn build
+```
+
 
 ## Packages
 
@@ -79,6 +85,34 @@ npm install firebase --save
 3. Em seguida clique em 'Save'
 
 
+#### Deploy
+
+```
+npm install -g firebase-tools
+```
+
+Faça login no Google: 
+```
+firebase login
+```
+
+Abra o diretório do projeto e inicialize o Firebase:
+```
+cd app
+firebase init
+```
+- Selecione Database, Hosting e Storage.
+- Selecione 'Use an existing project'
+- What do you want to use as your public directory? - build
+- Configure as a single-page app? - N
+- File *** already exists. Overwrite? - N
+
+Tudo certo? Vamos fazer o deploy.
+```
+firebase deploy
+```
+
+
 #### Notes
 
 No ambiente local de desenvolvimento:
@@ -96,17 +130,4 @@ Adicionar no index.html do projeto, imediatamente antes do </body>
 <!-- Initialize Firebase -->
 <script src="/__/firebase/init.js"></script>
 ```
-
-5. CLI
-```
-npm install -g firebase-tools
-```
-
-6. Deploying to Firebase
-```
-firebase login
-firebase init
-firebase deploy
-```
-
 
