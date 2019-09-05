@@ -10,6 +10,10 @@ export default class List extends Component {
   componentDidMount() {
     FirebaseService.getDataList('processos', (dataReceived) => this.setState({data: dataReceived}))
   }
+
+  remove = (id) => {
+    FirebaseService.remove(id, 'processos');
+  };
   
   look = () => {
     console.log(this.state.data);
@@ -20,13 +24,17 @@ export default class List extends Component {
     const items = [];
 
     data.map((item, index) => {
-      items.push(
-        <div key={index}>
-          <label>{item.subject}</label>
-          <p>{item.description}</p>
-        </div>
+      return(
+        items.push(
+          <div key={index}>
+            <label>{item.subject}</label>
+            <p>{item.description}</p>
+            <b onClick={() => this.remove(item.key)}>Remove {item.key}</b>
+            <hr />
+          </div>
+        )
       )
-    })
+    });
 
     return items;
   }
@@ -34,6 +42,8 @@ export default class List extends Component {
   render() {
     return (
       <main onClick={() => this.look()}>
+        <h3>List</h3>
+
         {this.items(this.state.data)}
       </main>
     )

@@ -8,6 +8,10 @@ export default class FirebaseService {
     ref.set(objToSubmit);
     return id;
   };
+  
+  static remove = (id, node) => {
+    return firebaseDatabase.ref(node + '/' + id).remove();
+  };
 
   static getDataList = (nodePath, callback, size = 10) => {
     

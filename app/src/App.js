@@ -9,6 +9,10 @@ function App() {
     <div className="App">
 
       <ProcessosList />
+
+      <hr />
+
+      <ProcessosAdd />
       
       {/*
       <header className="App-header">

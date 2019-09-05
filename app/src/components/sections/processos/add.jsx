@@ -18,7 +18,7 @@ export default class Add extends Component {
     const {subject} = this.state;
     const {description} = this.state;
 
-    const id = FirebaseService.pushData('processos', {
+    FirebaseService.pushData('processos', {
       subject,
       description
     });
@@ -39,6 +39,9 @@ export default class Add extends Component {
       <main>
         
         <Container>
+
+          <h3>Add</h3>
+
           <Form onSubmit={(e) => this.submit(e)}>
             <Form.Group>
               <Form.Label>Assunto</Form.Label>
