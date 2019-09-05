@@ -30,6 +30,7 @@ Remover os arquivos listado abaixo, bem como suas referências:
 ### Running
 ```
 cd app
+npm install
 yarn start
 ```
 
