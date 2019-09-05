@@ -84,6 +84,7 @@ npm install firebase --save
 2. Clique em 'Auto id' para criar o primeiro documento do banco
 3. Em seguida clique em 'Save'
 
+Observação: É altamente recomendado definir regras de segurança para acesso aos dados. No entanto, para esse exemplo simples vamos ignorar esse passo.
 
 #### Deploy
 
