@@ -35,7 +35,7 @@ yarn start
 ```
 
 
-## Packacges
+## Packages
 
 ### Bootstrap
 
