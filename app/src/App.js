@@ -24,11 +24,6 @@ function App() {
         path={routes.edit.path}
         render={(props) => <ProcessosAdd {...props}/>}
       />
-
-      <Route exact
-        path={routes.edit.path}
-        render={(props) => <ProcessosAdd {...props}/>}
-      />
       
     </div>
   );
