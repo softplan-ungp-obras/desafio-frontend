@@ -3,10 +3,26 @@ import {firebaseDatabase} from '../utils/FirebaseUtil'
 export default class FirebaseService {
 
   static pushData = (node, objToSubmit) => {
+
+    firebaseDatabase.ref(node).push()
+    .set(objToSubmit)
+    .then(() => {
+      console.log('Save to Firebase was successful');
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+    /*
     const ref = firebaseDatabase.ref(node).push();
     const id = firebaseDatabase.ref(node).push().key;
     ref.set(objToSubmit);
     return id;
+    */
+  };
+
+  static updateData = (id, node, obj) => {
+    return firebaseDatabase.ref(node + '/' + id).set({...obj});
   };
   
   static remove = (id, node) => {
@@ -29,4 +45,31 @@ export default class FirebaseService {
 
     return query;
   };
+
+  static getUniqueDataBy = (node, id, callback) => {
+    const ref = firebaseDatabase.ref(node + '/' + id);
+    let newData = {};
+    ref.once('value', (dataSnapshot) => {
+
+      if (!dataSnapshot || dataSnapshot === undefined || !dataSnapshot.val() || dataSnapshot.val() === undefined) {
+        callback(null);
+        return;
+      }
+
+      const snap = dataSnapshot.val();
+      const keys = Object.keys(snap);
+
+      keys.forEach((key) => {
+        newData[key] = snap[key]
+      });
+
+    }).then(() => {
+      callback(newData);
+    });
+  };
+
+  static disconnect = (nodePath, size = 10) => {
+    let query = firebaseDatabase.ref(nodePath).limitToLast(size);
+    query.off();
+  }
 }
