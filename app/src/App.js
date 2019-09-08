@@ -1,4 +1,6 @@
 import React from 'react';
+import {Route} from 'react-router-dom';
+import {routes} from "./utils/RouterUtil";
 
 // Sections
 import ProcessosList from './components/sections/processos/list';
@@ -7,28 +9,27 @@ import ProcessosAdd from './components/sections/processos/add';
 function App() {
   return (
     <div className="App">
-
-      <ProcessosList />
-
-      <hr />
-
-      <ProcessosAdd />
       
-      {/*
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      */}
+      <Route exact
+        path={routes.home.path}
+        render={(props) => <ProcessosList {...props}/>}
+      />
+
+      <Route exact
+        path={routes.add.path}
+        render={(props) => <ProcessosAdd {...props}/>}
+      />
+
+      <Route exact
+        path={routes.edit.path}
+        render={(props) => <ProcessosAdd {...props}/>}
+      />
+
+      <Route exact
+        path={routes.edit.path}
+        render={(props) => <ProcessosAdd {...props}/>}
+      />
+      
     </div>
   );
 }
