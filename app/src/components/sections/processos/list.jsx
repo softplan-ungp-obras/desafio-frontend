@@ -39,8 +39,8 @@ export default class List extends Component {
         items.push(
           <Row key={index}>
             <Col xs={12} sm={6}>
-              <label>{item.subject}</label>
-              <p>{item.description}</p>
+              <label>{item.assunto}</label>
+              <p>{item.descricao}</p>
               <Button variant="danger" onClick={() => this.remove(item.key)}>Remove</Button>
               
               <Link to={routes.edit.pathWithouParam + item.key}>

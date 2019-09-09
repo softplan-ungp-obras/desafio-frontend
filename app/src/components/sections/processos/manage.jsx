@@ -10,8 +10,8 @@ class Add extends Component {
 
   state = {
     id: null,
-    subject: '',
-    description: '',
+    assunto: '',
+    descricao: '',
     novoInteressado: '',
     interessados: []
   }
@@ -41,8 +41,8 @@ class Add extends Component {
   submit = (event) => {
     event.preventDefault();
 
-    const { subject } = this.state;
-    const { description } = this.state;
+    const { assunto } = this.state;
+    const { descricao } = this.state;
     const { interessados } = this.state;
 
     /**
@@ -51,8 +51,8 @@ class Add extends Component {
     if (this.state.id) {
 
       FirebaseService.updateData(this.state.id, 'processos', {
-        subject,
-        description,
+        assunto,
+        descricao,
         interessados
       })
       
@@ -62,8 +62,8 @@ class Add extends Component {
     } else {
 
       this.firebaseMount = FirebaseService.pushData('processos', {
-        subject,
-        description,
+        assunto,
+        descricao,
         interessados
       });
 
@@ -135,8 +135,8 @@ class Add extends Component {
               <Form.Label>Assunto</Form.Label>
               <Form.Control 
                 type="text" 
-                name="subject" 
-                value={this.state.subject}
+                name="assunto" 
+                value={this.state.assunto}
                 onChange={(event) => this.handleChange(event)} 
               />
             </Form.Group>
@@ -165,8 +165,8 @@ class Add extends Component {
               <Form.Label>Descrição</Form.Label>
               <Form.Control 
                 type="text" 
-                name="description" 
-                value={this.state.description}
+                name="descricao" 
+                value={this.state.descricao}
                 onChange={(event) => this.handleChange(event)} 
               />
             </Form.Group>
