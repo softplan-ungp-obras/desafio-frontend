@@ -11,7 +11,9 @@ class Add extends Component {
   state = {
     id: null,
     subject: '',
-    description: ''
+    description: '',
+    novoInteressado: '',
+    interessados: []
   }
 
   componentDidMount() {
@@ -26,9 +28,8 @@ class Add extends Component {
 
       this.setState({...data}, () => {
         console.log(this.state)
-      }
-      
-    )
+      })
+
     );
     
   }
@@ -42,6 +43,7 @@ class Add extends Component {
 
     const { subject } = this.state;
     const { description } = this.state;
+    const { interessados } = this.state;
 
     /**
      * Editar
@@ -50,7 +52,8 @@ class Add extends Component {
 
       FirebaseService.updateData(this.state.id, 'processos', {
         subject,
-        description
+        description,
+        interessados
       })
       
     /**
@@ -60,7 +63,8 @@ class Add extends Component {
 
       this.firebaseMount = FirebaseService.pushData('processos', {
         subject,
-        description
+        description,
+        interessados
       });
 
     }
@@ -76,6 +80,46 @@ class Add extends Component {
     this.setState({
       [name]: value
     });
+  }
+  
+  interessadosList = () => {
+
+    const interessados = this.state.interessados;
+
+    if (interessados.length) {
+
+      const interessadosList = [];
+      
+      interessados.map((item, index) => {
+        return(
+          interessadosList.push(
+            <li key={index}>{item}</li>
+          )
+        )
+      })
+      
+      return interessadosList;
+    }
+  }
+
+  adicionarInteressado = () => {
+    console.log('adicionarInteressado');
+
+    console.log(this.state.novoInteressado);
+
+    const novoInteressadoDigitado = this.state.novoInteressado;
+
+    const { interessados } = this.state;
+
+    interessados.push(novoInteressadoDigitado);
+
+    this.setState(interessados);
+
+    // Limpa Novo Interessado
+    this.setState({
+      novoInteressado: ''
+    });
+
   }
 
   render() {
@@ -97,20 +141,26 @@ class Add extends Component {
               />
             </Form.Group>
 
-            {/*
+            <label>Interessados</label>
+            {this.interessadosList()}
+            
             <Form.Group>
-              <Form.Label>Interessados</Form.Label>
+              <Form.Label>Novo Interessado</Form.Label>
               <Row>
                 <Col xs={12} sm={6}>
-                  <Form.Control type="text" name="subject" onChange={(event) => this.handleChange(event)} />
+                  <Form.Control 
+                    type="text" 
+                    name="novoInteressado" 
+                    value={this.state.novoInteressado}
+                    onChange={(event) => this.handleChange(event)} 
+                  />
                 </Col>
                 <Col xs={12} sm={6}>
-                  <Button variant="default">Adicionar</Button>
+                  <Button variant="default" onClick={() => this.adicionarInteressado()}>Adicionar</Button>
                 </Col>
               </Row>
             </Form.Group>
-            */}
-
+            
             <Form.Group>
               <Form.Label>Descrição</Form.Label>
               <Form.Control 
