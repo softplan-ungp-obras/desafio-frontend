@@ -4,7 +4,7 @@ import {routes} from "./utils/RouterUtil";
 
 // Sections
 import ProcessosList from './components/sections/processos/list';
-import ProcessosAdd from './components/sections/processos/add';
+import ProcessosManage from './components/sections/processos/manage';
 
 function App() {
   return (
@@ -17,12 +17,12 @@ function App() {
 
       <Route exact
         path={routes.add.path}
-        render={(props) => <ProcessosAdd {...props}/>}
+        render={(props) => <ProcessosManage {...props}/>}
       />
 
       <Route exact
         path={routes.edit.path}
-        render={(props) => <ProcessosAdd {...props}/>}
+        render={(props) => <ProcessosManage {...props}/>}
       />
       
     </div>
