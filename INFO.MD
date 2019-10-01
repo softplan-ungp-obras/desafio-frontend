@@ -43,9 +43,9 @@ yarn build
 
 ## Packages
 
-### Material Design
+### Material UI
 
-Para deixar nossa aplicação mais atraente, vamos utilizar o React Bootstrap como Framework de CSS.
+Para deixar nossa aplicação mais atraente, vamos utilizar o Material UI como Framework de CSS.
 
 ```
 npm install @material-ui/core
