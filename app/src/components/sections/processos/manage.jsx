@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import FirebaseService from '../../../services/FirebaseService';
 
 import { routes } from "../../../utils/RouterUtil";
@@ -13,29 +14,54 @@ class Add extends Component {
     assunto: '',
     descricao: '',
     novoInteressado: '',
-    interessados: []
+    interessados: [],
+    terms: []
   }
 
   componentDidMount() {
+    this.getDataFromId();
+  }
+
+  getDataFromId = () => {
 
     const { id } = this.props.match.params;
 
-    console.log('id', id);
+    if (id) {
 
-    this.setState({ id });
+      this.setState({ id });
 
-    FirebaseService.getUniqueDataBy('processos', id, (data) => 
+      FirebaseService.getProcesso(id).then((result) => {
 
-      this.setState({...data}, () => {
-        console.log(this.state)
+        let data = result.data();
+
+        this.setState({ ...data }, () => {
+          //console.log(this.state)
+        })
+
       })
-
-    );
-    
+    }
   }
 
-  componentWillUnmount() {
-    this.firebaseMount = undefined;
+  /**
+   * Utils
+   */
+  stringToLowerCase = (string) => {
+    return string.toLowerCase();
+  }
+
+  replaceWhiteSpaces = (string) => {
+    return string.trim().replace(/^\s+|\s+$/g, ',');
+  }
+
+  breakWordsIntoArray = (string) => {
+    return string.split(/[ ,]+/);
+  }
+
+  arrayOfTerms = (string) => {
+    let stringLowerCase = this.stringToLowerCase(string);
+    let cleanString = this.replaceWhiteSpaces(stringLowerCase);
+    let arrayOfTerms = this.breakWordsIntoArray(cleanString);
+    return arrayOfTerms;
   }
 
   submit = (event) => {
@@ -46,30 +72,47 @@ class Add extends Component {
     const { interessados } = this.state;
 
     /**
+     * Array of Terms (to search)
+     */
+    let terms = [...new Set([
+      ...this.arrayOfTerms(assunto),
+      ...this.arrayOfTerms(descricao),
+      ...this.arrayOfTerms(interessados.toString())
+    ])];
+
+    /**
      * Editar
      */
     if (this.state.id) {
 
-      FirebaseService.updateData(this.state.id, 'processos', {
+      FirebaseService.editProcesso(this.state.id, {
         assunto,
         descricao,
-        interessados
+        interessados,
+        terms
+      }).then(() => {
+
+        this.props.history.push(routes.home.path);
+
       })
-      
+
     /**
      * Adicionar
      */
     } else {
 
-      this.firebaseMount = FirebaseService.pushData('processos', {
+      FirebaseService.addProcesso({
         assunto,
         descricao,
-        interessados
-      });
+        interessados,
+        terms
+      }).then(() => {
+
+        this.props.history.push(routes.home.path);
+
+      })
 
     }
-
-    this.props.history.push(routes.home.path);
 
   };
 
@@ -81,7 +124,7 @@ class Add extends Component {
       [name]: value
     });
   }
-  
+
   interessadosList = () => {
 
     const interessados = this.state.interessados;
@@ -89,15 +132,15 @@ class Add extends Component {
     if (interessados.length) {
 
       const interessadosList = [];
-      
+
       interessados.map((item, index) => {
-        return(
+        return (
           interessadosList.push(
             <li key={index}>{item}</li>
           )
         )
       })
-      
+
       return interessadosList;
     }
   }
@@ -133,26 +176,26 @@ class Add extends Component {
           <Form onSubmit={(e) => this.submit(e)}>
             <Form.Group>
               <Form.Label>Assunto</Form.Label>
-              <Form.Control 
-                type="text" 
-                name="assunto" 
+              <Form.Control
+                type="text"
+                name="assunto"
                 value={this.state.assunto}
-                onChange={(event) => this.handleChange(event)} 
+                onChange={(event) => this.handleChange(event)}
               />
             </Form.Group>
 
             <label>Interessados</label>
             {this.interessadosList()}
-            
+
             <Form.Group>
               <Form.Label>Novo Interessado</Form.Label>
               <Row>
                 <Col xs={12} sm={6}>
-                  <Form.Control 
-                    type="text" 
-                    name="novoInteressado" 
+                  <Form.Control
+                    type="text"
+                    name="novoInteressado"
                     value={this.state.novoInteressado}
-                    onChange={(event) => this.handleChange(event)} 
+                    onChange={(event) => this.handleChange(event)}
                   />
                 </Col>
                 <Col xs={12} sm={6}>
@@ -160,14 +203,14 @@ class Add extends Component {
                 </Col>
               </Row>
             </Form.Group>
-            
+
             <Form.Group>
               <Form.Label>Descrição</Form.Label>
-              <Form.Control 
-                type="text" 
-                name="descricao" 
+              <Form.Control
+                type="text"
+                name="descricao"
                 value={this.state.descricao}
-                onChange={(event) => this.handleChange(event)} 
+                onChange={(event) => this.handleChange(event)}
               />
             </Form.Group>
 

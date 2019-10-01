@@ -1,75 +1,44 @@
-import {firebaseDatabase} from '../utils/FirebaseUtil'
+import app from 'firebase/app';
+import 'firebase/firestore';
+
+const config = {
+  apiKey: "AIzaSyD7WKC79ZJFvpFz4s5ki7v97QvpFeCtmpA",
+  authDomain: "processos-3c583.firebaseapp.com",
+  databaseURL: "https://processos-3c583.firebaseio.com",
+  projectId: "processos-3c583",
+  storageBucket: "processos-3c583.appspot.com",
+  messagingSenderId: "**************************"
+};
+
+app.initializeApp(config);
+const db = app.firestore();
 
 export default class FirebaseService {
 
-  static pushData = (node, objToSubmit) => {
-
-    firebaseDatabase.ref(node).push()
-    .set(objToSubmit)
-    .then(() => {
-      console.log('Save to Firebase was successful');
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-
-    /*
-    const ref = firebaseDatabase.ref(node).push();
-    const id = firebaseDatabase.ref(node).push().key;
-    ref.set(objToSubmit);
-    return id;
-    */
-  };
-
-  static updateData = (id, node, obj) => {
-    return firebaseDatabase.ref(node + '/' + id).set({...obj});
-  };
-  
-  static remove = (id, node) => {
-    return firebaseDatabase.ref(node + '/' + id).remove();
-  };
-
-  static getDataList = (nodePath, callback, size = 10) => {
-    
-    let query = firebaseDatabase.ref(nodePath).limitToLast(size);
-    
-    query.on('value', dataSnapshot => {
-      let items = [];
-      dataSnapshot.forEach(childSnapshot => {
-        let item = childSnapshot.val();
-        item['key'] = childSnapshot.key;
-        items.push(item);
-      });
-      callback(items);
-    });
-
-    return query;
-  };
-
-  static getUniqueDataBy = (node, id, callback) => {
-    const ref = firebaseDatabase.ref(node + '/' + id);
-    let newData = {};
-    ref.once('value', (dataSnapshot) => {
-
-      if (!dataSnapshot || dataSnapshot === undefined || !dataSnapshot.val() || dataSnapshot.val() === undefined) {
-        callback(null);
-        return;
-      }
-
-      const snap = dataSnapshot.val();
-      const keys = Object.keys(snap);
-
-      keys.forEach((key) => {
-        newData[key] = snap[key]
-      });
-
-    }).then(() => {
-      callback(newData);
-    });
-  };
-
-  static disconnect = (nodePath, size = 10) => {
-    let query = firebaseDatabase.ref(nodePath).limitToLast(size);
-    query.off();
+  static searchProcessos = (search) => {
+    return db.collection("processos")
+      .where("terms", "array-contains", search)
+      .get();
   }
+
+  static getProcessos = () => {
+    return db.collection("processos");
+  }
+
+  static getProcesso = (id) => {
+    return db.collection("processos").doc(id).get();
+  }
+
+  static addProcesso = (data) => {
+    return db.collection("processos").add(data);
+  }
+
+  static editProcesso = (id, data) => {
+    return db.collection("processos").doc(id).update(data);
+  }
+
+  static deleteProcesso = (id) => {
+    return db.collection("processos").doc(id).delete();
+  }
+  
 }
