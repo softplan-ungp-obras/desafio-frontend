@@ -1,0 +1,160 @@
+# Documentation
+
+## Sobre
+
+O app está disponível em [Processos App](https://processos-3c583.web.app/) 
+
+Para este projeto foi utilizado React, Firebase e Material UI. 
+
+Inicialmente o projeto foi criado com React Bootstrap e React Routes. Haviam três rotas: uma para visualizar a lista de processos, uma para adição de novos processos e outra para edição de processos existentes. Essa é uma boa abordagem, pois permite que o usuário acesse diretamente o que precisa através de um link, por exemplo. 
+
+O mockup do desafio sugere o uso de uma Modal Dialog para adição e edição de processos e o conceito do design remete ao uso do Material Design, por isso, durante o desafio, foi substituído o Bootstrap pelo Material UI.
+
+### Desafios
+
+1. Resolvi utilizar o Firebase para acelerar o processo de desenvolvimento. Com esse serviço não foi necessário se preocupar com a infraestrutura de Back End. No entanto, ele não oferece um boa API de Full-Text Search, e com isso foi utilizada uma abordagem para indexar todas as palavras contidas em 'assunto', 'interessados' e 'descrição' dentro de um array denominado 'terms'. A usabilidade do campo de pesquisa espera que o usuário termine de digitar para então automaticamente fazer a pesquisa. 
+
+2. Não tive tempo hábil para implementar o design sugerido nas guidelines, por isso utilizei o máximo possível de componentes do Material UI, para deixar a aplicação com um aspecto agradável e de fácil uso. 
+
+3. Ao adicionar um 'interessado' o mockup não exibia uma forma de excluí-lo. Ainda sim, resolvi desenvolver essa funcionalidade como sugestão. 
+
+### Considerações
+
+Alguns pontos neste projeto poderiam ser melhorados: 
+- Exibir o campo de busca centralizado ao iniciar a aplicação. 
+- Feedback ao usuário quando ações são realizadas, como exibir um 'toast'. 
+- Confirmação na exclusão de um processo. 
+- Seguir as Guidelines de UI. 
+
+Como forma de exibir as habilidades técnicas, acredito que ao avaliar o código-fonte ficará perceptível cuidados com Clean Code, Componentização, Abstração e um apelo de modo geral a boa manutenibilidade e usabilidade da aplicação. 
+
+
+## GIT
+```
+git clone [url]
+git checkout -b brynner-ferreira
+```
+
+
+## React
+
+Vamos criar uma aplicação em React, utilizando o Boilerplate oficial.
+
+```
+npm install -g create-react-app
+npx create-react-app app
+```
+
+### Removendo arquivos desnecessários
+Remover os arquivos listado abaixo, bem como suas referências: 
+- src/App.css
+- src/index.css
+- src/logo.svg
+
+
+### Running
+```
+cd app
+npm install
+yarn start
+```
+
+### Build
+```
+cd app
+yarn build
+```
+
+
+## Packages
+
+### Material UI
+
+Para deixar nossa aplicação mais atraente, vamos utilizar o Material UI como Framework de CSS.
+
+```
+npm install @material-ui/core
+```
+
+
+### React Router
+
+Controle de rotas da aplicação.
+
+```
+npm install react-router-dom --save
+```
+
+
+## Firebase
+
+No console do Firebase:
+
+1. Cria-se um projeto
+2. Criar database
+3. Cria-se um web app
+
+### Implementado Firebase no projeto
+
+No diretório /app
+
+```
+npm install firebase --save
+```
+
+### Configurando o Firebase
+
+#### Database
+
+1. Start collection 'processos'
+2. Clique em 'Auto id' para criar o primeiro documento do banco
+3. Em seguida clique em 'Save'
+
+Observação: É altamente recomendado definir regras de segurança para acesso aos dados. No entanto, para esse exemplo simples vamos ignorar esse passo.
+
+#### Deploy
+
+```
+npm install -g firebase-tools
+```
+
+Faça login no Google: 
+```
+firebase login
+```
+
+Abra o diretório do projeto e inicialize o Firebase:
+```
+cd app
+firebase init
+```
+- Selecione Database, Hosting e Storage.
+- Selecione 'Use an existing project'
+- What do you want to use as your public directory? - build
+- Configure as a single-page app? - N
+- File *** already exists. Overwrite? - N
+
+Tudo certo? Vamos fazer o deploy.
+```
+firebase deploy
+```
+
+
+#### Notes
+
+No ambiente local de desenvolvimento:
+
+1. Implementar SDK
+
+Adicionar no index.html do projeto, imediatamente antes do </body>
+```
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/6.5.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#reserved-urls -->
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+```
+
