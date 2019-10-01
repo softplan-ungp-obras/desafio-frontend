@@ -1,8 +1,33 @@
 # Documentation
 
-Para este projeto vamos utilizar React e Firebase.
+## Sobre
 
-O app está disponível em [Processos App](https://processos-3c583.web.app/)
+O app está disponível em [Processos App](https://processos-3c583.web.app/) 
+
+Para este projeto foi utilizado React, Firebase e Material UI. 
+
+Inicialmente o projeto foi criado com React Bootstrap e React Routes. Haviam três rotas: uma para visualizar a lista de processos, uma para adição de novos processos e outra para edição de processos existentes. Essa é uma boa abordagem, pois permite que o usuário acesse diretamente o que precisa através de um link, por exemplo. 
+
+O mockup do desafio sugere o uso de uma Modal Dialog para adição e edição de processos e o conceito do design remete ao uso do Material Design, por isso, durante o desafio, foi substituído o Bootstrap pelo Material UI.
+
+### Desafios
+
+1. Resolvi utilizar o Firebase para acelerar o processo de desenvolvimento. Com esse serviço não foi necessário se preocupar com a infraestrutura de Back End. No entanto, ele não oferece um boa API de Full-Text Search, e com isso foi utilizada uma abordagem para indexar todas as palavras contidas em 'assunto', 'interessados' e 'descrição' dentro de um array denominado 'terms'. A usabilidade do campo de pesquisa espera que o usuário termine de digitar para então automaticamente fazer a pesquisa. 
+
+2. Não tive tempo hábil para implementar o design sugerido nas guidelines, por isso utilizei o máximo possível de componentes do Material UI, para deixar a aplicação com um aspecto agradável e de fácil uso. 
+
+3. Ao adicionar um 'interessado' o mockup não exibia uma forma de excluí-lo. Ainda sim, resolvi desenvolver essa funcionalidade como sugestão. 
+
+### Considerações
+
+Alguns pontos neste projeto poderiam ser melhorados: 
+- Exibir o campo de busca centralizado ao iniciar a aplicação. 
+- Feedback ao usuário quando ações são realizadas, como exibir um 'toast'. 
+- Confirmação na exclusão de um processo. 
+- Seguir as Guidelines de UI. 
+
+Como forma de exibir as habilidades técnicas, acredito que ao avaliar o código-fonte ficará perceptível cuidados com Clean Code, Componentização, Abstração e um apelo de modo geral a boa manutenibilidade e usabilidade da aplicação. 
+
 
 ## GIT
 ```
