@@ -230,7 +230,7 @@ export default function ModalGerenciarProcessos(props) {
     <div>
       <Button 
         variant="contained" 
-        color="default" 
+        color={props.id ? `primary` : `default`} 
         size="small"
         onClick={handleClickOpen} 
       >

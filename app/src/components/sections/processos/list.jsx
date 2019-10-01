@@ -9,7 +9,7 @@ import styled from 'styled-components';
 
 import AppBar from '../../ui/AppBar';
 
-import { Container, Button, Card, CardContent, Grid } from '@material-ui/core';
+import { Container, Button, Card, CardContent, CardActions, Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
@@ -85,13 +85,15 @@ export default class List extends Component {
                     <Typography component="label">Descrição</Typography>
                     <Typography noWrap component="p">{item.descricao}</Typography>
                   </Grid>
-                  <Grid item xs={12} sm={6} md={3}>
-                    <Button color="secondary" variant="contained" size="small" onClick={() => this.deleteProcesso(item.key)}>Remover</Button>
-                    <ModalGerenciarProcessos id={item.key} />
-                  </Grid>
                 </Grid>
 
               </CardContent>
+
+              <CardActions disableSpacing className="card-processo-actions">
+                <ModalGerenciarProcessos id={item.key} /> 
+                <Button color="secondary" variant="contained" size="small" onClick={() => this.deleteProcesso(item.key)}>Remover</Button>
+              </CardActions>
+
             </Card>
           </div>
         )
@@ -158,6 +160,12 @@ const Style = styled.div`
 
     .card-processo {
       margin-bottom: 20px;
+
+      .card-processo-actions {
+        button {
+          margin-right: 10px;
+        }
+      }
     }
   }
 `
