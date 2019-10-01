@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { FormControl } from 'react-bootstrap';
+
+import { Input } from '@material-ui/core';
+
+import Paper from '@material-ui/core/Paper';
+import InputBase from '@material-ui/core/InputBase';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import SearchIcon from '@material-ui/icons/Search';
 
 export default class WhileTyping extends Component {
 
@@ -38,6 +45,30 @@ export default class WhileTyping extends Component {
   render() {
 
     return (
+
+      <Input
+        placeholder={this.props.formControl.placeholder}
+        inputProps={{
+          'aria-label': 'description',
+        }}
+        onChange={(e) => this.whileTyping(e)}
+      />
+
+      
+    )
+
+    /*
+
+    <Input
+        placeholder={this.props.formControl.placeholder}
+        inputProps={{
+          'aria-label': 'description',
+        }}
+        onChange={(e) => this.whileTyping(e)}
+      />
+
+
+    return (
       <FormControl
         className={this.props.formControl.className}
         type={this.props.formControl.type}
@@ -47,5 +78,6 @@ export default class WhileTyping extends Component {
         onChange={(e) => this.whileTyping(e)}
       />
     )
+    */
   }
 }

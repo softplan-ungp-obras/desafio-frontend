@@ -43,13 +43,14 @@ yarn build
 
 ## Packages
 
-### Bootstrap
+### Material Design
 
 Para deixar nossa aplicação mais atraente, vamos utilizar o React Bootstrap como Framework de CSS.
 
 ```
-npm install react-bootstrap bootstrap
+npm install @material-ui/core
 ```
+
 
 ### React Router
 
