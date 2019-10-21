@@ -1,7 +1,16 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import Main from './pages/Main';
 
 function App() {
-  return <div className="App">softplan</div>;
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Main}></Route>
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;
