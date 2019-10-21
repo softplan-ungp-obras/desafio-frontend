@@ -1,12 +1,16 @@
 import { GET_PROCESS_LIST } from '../actions/getProcessList';
 
-export default function categories (state = {}, action) {
+const initialState = {
+  data: []
+};
+
+export default function processList(state = initialState, action) {
   switch (action.type) {
     case GET_PROCESS_LIST:
       return {
         ...state,
-        ...action.processList
-      }
+        data: action.data
+      };
     default:
       return state;
   }
