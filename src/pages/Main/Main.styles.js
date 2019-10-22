@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import colors from '../../helpers/colors';
 
 export const MainPageWrapper = styled.div`
