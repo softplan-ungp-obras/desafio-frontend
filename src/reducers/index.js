@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import processList from './processList';
+import processList from './processList/processList';
 
 export default combineReducers({
   processList

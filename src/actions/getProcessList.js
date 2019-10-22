@@ -1,8 +1,17 @@
+import processSearchList from '../api/processSearchList';
+
 export const GET_PROCESS_LIST = 'GET_PROCESS_LIST';
 
-export function getAllCategoriesPosts(processList) {
+const getProcessList = data => {
   return {
     type: GET_PROCESS_LIST,
-    processList
+    data
   };
-}
+};
+
+export const handleGetProcessList = searchTerm => {
+  return async dispatch => {
+    const response = await processSearchList(searchTerm);
+    return dispatch(getProcessList(response));
+  };
+};
