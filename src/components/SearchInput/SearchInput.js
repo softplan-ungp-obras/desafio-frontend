@@ -19,6 +19,7 @@ const SearchInput = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    if (searchTerm.length === 0) return;
     getProcessList(searchTerm);
   };
 

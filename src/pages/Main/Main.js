@@ -1,6 +1,7 @@
 import React from 'react';
 
 import SearchInput from '../../components/SearchInput/SearchInput';
+import NewProcessLink from '../../components/NewProcessLink/NewProcessLink';
 import { MainPageTitle, MainPageWrapper } from './Main.styles';
 
 const Main = () => {
@@ -8,6 +9,7 @@ const Main = () => {
     <MainPageWrapper>
       <MainPageTitle>Busca de processos</MainPageTitle>
       <SearchInput />
+      <NewProcessLink />
     </MainPageWrapper>
   );
 };
