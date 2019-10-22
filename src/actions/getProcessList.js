@@ -1,4 +1,4 @@
-import processSearchList from '../api/processSearchList';
+import processSearchList from '../api/processSearchList/processSearchList';
 
 export const GET_PROCESS_LIST = 'GET_PROCESS_LIST';
 

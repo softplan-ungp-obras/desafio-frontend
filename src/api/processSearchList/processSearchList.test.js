@@ -1,6 +1,8 @@
 import mockAxios from 'axios';
 import processSearchList from './processSearchList';
 
+import BASE_URL from '../config';
+
 const mockResult = [
   {
     id: '21a200b4-0812-4343-8d60-5941407a32b4',
@@ -36,5 +38,11 @@ describe('Get search list from api', () => {
 
     // then
     expect(response).toEqual(mockResult);
+    expect(mockAxios.get).toHaveBeenCalledTimes(1);
+    expect(mockAxios.get).toHaveBeenCalledWith(BASE_URL, {
+      params: {
+        q: searchTerm
+      }
+    });
   });
 });
