@@ -1,4 +1,4 @@
-import { GET_PROCESS_LIST } from '../actions/getProcessList';
+import { GET_PROCESS_LIST } from '../../actions/getProcessList';
 
 const initialState = {
   data: []
