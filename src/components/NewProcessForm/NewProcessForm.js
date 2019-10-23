@@ -4,7 +4,23 @@ import { isEqual } from 'lodash';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { Label } from './NewProcessForm.styles';
+import CloseIcon from '../NewProcessModal/CloseIcon';
+
+import {
+  Label,
+  Title,
+  FormInput,
+  FormTextArea,
+  FieldWrapper,
+  FormWrapper,
+  AddInterestedButton,
+  SaveButton,
+  DecrementInterestedButton,
+  InterestedList,
+  InterestedItem
+} from './NewProcessForm.styles';
+
+import colors from '../../helpers/colors';
 
 import { handleAddProcessList } from '../../actions/getProcessList';
 
@@ -54,38 +70,39 @@ const NewProcessForm = props => {
   };
 
   return (
-    <div>
-      <h2>Cadastro de processo</h2>
+    <FormWrapper>
+      <Title>Cadastro de processo</Title>
       <form onSubmit={onSubmit}>
-        <div>
-          <Label htmlFor="subject">assunto</Label>
-          <input
+        <FieldWrapper>
+          <Label htmlFor="subject">Assunto</Label>
+          <FormInput
             id="subject"
             type="text"
             name="subject"
             onChange={e => debouncedCallback(e.target.value, 'assunto')}
           />
-        </div>
-        <div>
-          <Label htmlFor="interested">Interessados</Label>
-          <ul>
+        </FieldWrapper>
+        <FieldWrapper>
+          <Label>Interessados</Label>
+          <InterestedList>
             {formData.interessados.map(interested => {
               return (
-                <li key={interested}>
+                <InterestedItem key={interested}>
                   {interested}{' '}
-                  <button
+                  <DecrementInterestedButton
                     onClick={() =>
                       handleInterestedDecrement('interessados', interested)
                     }
                     type="button"
                   >
-                    X
-                  </button>
-                </li>
+                    <CloseIcon size="10px" color={colors.black200} />
+                  </DecrementInterestedButton>
+                </InterestedItem>
               );
             })}
-          </ul>
-          <input
+          </InterestedList>
+          <Label>Novo Interessado</Label>
+          <FormInput
             ref={input => {
               interestedInput = input;
             }}
@@ -93,24 +110,26 @@ const NewProcessForm = props => {
             type="text"
             name="interested"
           />
-          <button
+          <AddInterestedButton
             type="button"
             onClick={() => handleInterestedIncrement('interessados')}
           >
             adicionar
-          </button>
-        </div>
-        <div>
+          </AddInterestedButton>
+        </FieldWrapper>
+        <FieldWrapper width="80%">
           <Label htmlFor="description">Descrição</Label>
-          <textarea
+          <FormTextArea
             id="description"
             name="description"
             onChange={e => debouncedCallback(e.target.value, 'descricao')}
           />
-        </div>
-        <button type="submit">salvar</button>
+        </FieldWrapper>
+        <FieldWrapper alignToRight width="100%" margin="0">
+          <SaveButton type="submit">salvar</SaveButton>
+        </FieldWrapper>
       </form>
-    </div>
+    </FormWrapper>
   );
 };
 

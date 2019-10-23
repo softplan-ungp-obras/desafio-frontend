@@ -25,7 +25,7 @@ const NewProcessModal = props => {
       <ContentContainer>
         <NewProcessForm />
         <CloseModalButton onClick={handleModal}>
-          <CloseIcon size="20px" color={colors.black300} />
+          <CloseIcon size="20px" color={colors.black200} />
         </CloseModalButton>
       </ContentContainer>
     </Modal>

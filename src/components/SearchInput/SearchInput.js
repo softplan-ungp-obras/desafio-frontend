@@ -34,7 +34,7 @@ const SearchInput = props => {
             onChange={e => setSearchTerm(e.target.value)}
           />
           <InputIcon type="sumit">
-            <SearchIcon size="20px" color={colors.black300} />
+            <SearchIcon size="20px" color={colors.black200} />
           </InputIcon>
         </SearchWrapper>
       </form>
