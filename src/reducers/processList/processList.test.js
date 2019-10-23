@@ -23,7 +23,8 @@ describe('Process list reducer', () => {
           assunto: '',
           interessados: ['']
         }
-      ]
+      ],
+      isProcessQueryLoading: null
     };
 
     // then
