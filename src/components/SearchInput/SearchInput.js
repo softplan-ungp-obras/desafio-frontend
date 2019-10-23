@@ -17,7 +17,7 @@ const SearchInput = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (searchTerm.length === 0) return;
+    if (!searchTerm || searchTerm.length === 0) return;
     history.push({
       pathname: '/process-list',
       state: { searchTerm }

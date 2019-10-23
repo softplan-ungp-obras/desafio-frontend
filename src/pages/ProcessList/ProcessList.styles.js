@@ -7,7 +7,7 @@ export const ProcessListHeaderWrapper = styled.div`
   flex-direction: row;
   height: 100%;
   margin: 30px 0 0 0;
-  padding: 0 5%;
+  padding: 0 2%;
 `;
 
 export const NewProcessButton = styled.button`
@@ -35,4 +35,11 @@ export const HeaderTitle = styled.h2`
   margin: 0 30px 0 0;
 `;
 
-export const ProcessListWrapper = styled.div``;
+export const ProcessListWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 30px 0 0 0;
+  min-height: 250px;
+  padding: 0 2%;
+`;
