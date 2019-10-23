@@ -53,7 +53,7 @@ export const AddInterestedButton = styled.button`
   border: none;
   box-shadow: 0 4px 3px ${colors.black100};
   color: ${colors.white};
-  font: 700 12px 'Montserrat';
+  font: 700 14px 'Montserrat';
   padding: 5px 10px;
   text-transform: uppercase;
   transition: all 0.2s ease-in-out;
@@ -71,7 +71,7 @@ export const SaveButton = styled.button`
   border: none;
   box-shadow: 0 5px 3px ${colors.black100};
   color: ${colors.white};
-  font: 700 12px 'Montserrat';
+  font: 700 14px 'Montserrat';
   padding: 8px 25px;
   text-transform: uppercase;
   transition: all 0.2s ease-in-out;

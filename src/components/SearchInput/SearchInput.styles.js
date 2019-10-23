@@ -10,7 +10,7 @@ export const SearchWrapper = styled.div`
 export const Input = styled.input`
   border: solid 1px ${colors.black100};
   box-shadow: 0px 5px 3px ${colors.black100};
-  color: ${colors.black200};
+  color: ${colors.black300};
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   padding: 10px 30px 10px 10px;
