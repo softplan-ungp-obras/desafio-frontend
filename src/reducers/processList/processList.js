@@ -1,7 +1,16 @@
-import { GET_PROCESS_LIST } from '../../actions/getProcessList';
+/* eslint-disable no-case-declarations */
+import { isEqual } from 'lodash';
+
+import { GET_PROCESS_LIST, ADD_PROCESS } from '../../actions/getProcessList';
 
 const initialState = {
-  data: []
+  data: [
+    {
+      descricao: '',
+      assunto: '',
+      interessados: ['']
+    }
+  ]
 };
 
 export default function processList(state = initialState, action) {
@@ -10,6 +19,13 @@ export default function processList(state = initialState, action) {
       return {
         ...state,
         data: action.data
+      };
+    case ADD_PROCESS:
+      const currentState = isEqual(state, initialState)
+        ? [].concat(action.process)
+        : [...state.data, action.process];
+      return {
+        data: currentState
       };
     default:
       return state;

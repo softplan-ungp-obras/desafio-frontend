@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3002/processo';
+import BASE_URL from '../config';
 
 const processSearchList = async searchTerm => {
   const response = await axios.get(BASE_URL, {
