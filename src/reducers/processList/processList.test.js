@@ -10,14 +10,6 @@ const mockProcessList = [
     descricao:
       'Solicitação de licença-prêmio referente ao período 02/06/2015 - 01/06/2018',
     assunto: 'Licença'
-  },
-  {
-    id: '70f6cfcb-099b-474f-8025-914a113d4ec7',
-    numero: 'SOFT 2019/00004',
-    entrada: '21/10/2019',
-    interessados: ['Edmilson Cherem'],
-    descricao: 'Solicitação de licença-prêmio',
-    assunto: 'Licença'
   }
 ];
 

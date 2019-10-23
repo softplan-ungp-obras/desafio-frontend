@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import colors from '../../helpers/colors';
 
 import CloseIcon from './CloseIcon';
+import NewProcessForm from '../NewProcessForm/NewProcessForm';
 
 import {
   ModalStyles,
@@ -22,7 +23,7 @@ const NewProcessModal = props => {
       ariaHideApp={false}
     >
       <ContentContainer>
-        <div>create process form</div>
+        <NewProcessForm />
         <CloseModalButton onClick={handleModal}>
           <CloseIcon size="20px" color={colors.black300} />
         </CloseModalButton>

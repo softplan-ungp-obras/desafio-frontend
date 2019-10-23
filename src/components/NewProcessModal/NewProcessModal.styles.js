@@ -11,7 +11,8 @@ export const ModalStyles = {
     transform: 'translate(-50%, -50%)',
     borderRadius: '0',
     border: 'none',
-    boxShadow: '0px 5px 3px rgba(0, 0, 0, 0.3)'
+    boxShadow: '0px 5px 3px rgba(0, 0, 0, 0.3)',
+    width: '60%'
   },
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.6)'

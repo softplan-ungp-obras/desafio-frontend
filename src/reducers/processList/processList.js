@@ -1,3 +1,6 @@
+/* eslint-disable no-case-declarations */
+import { isEqual } from 'lodash';
+
 import { GET_PROCESS_LIST, ADD_PROCESS } from '../../actions/getProcessList';
 
 const initialState = {
@@ -18,9 +21,11 @@ export default function processList(state = initialState, action) {
         data: action.data
       };
     case ADD_PROCESS:
+      const currentState = isEqual(state, initialState)
+        ? [].concat(action.process)
+        : [...state.data, action.process];
       return {
-        ...state,
-        data: [...state.data, action.process]
+        data: currentState
       };
     default:
       return state;
