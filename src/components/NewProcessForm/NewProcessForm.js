@@ -28,11 +28,21 @@ const NewProcessForm = props => {
     });
   }, 500);
 
-  const handleInterestedIncrement = filename => {
+  const handleInterestedIncrement = fieldName => {
     const { value } = interestedInput;
     SetFormData({
       ...formData,
-      [filename]: [...formData.interessados, value]
+      [fieldName]: [...formData.interessados, value]
+    });
+  };
+
+  const handleInterestedDecrement = (fieldName, interestedToDel) => {
+    const updatedList = formData.interessados.filter(
+      interested => interested !== interestedToDel
+    );
+    SetFormData({
+      ...formData,
+      [fieldName]: updatedList
     });
   };
 
@@ -42,8 +52,6 @@ const NewProcessForm = props => {
     if (formIsEmpty) return;
     createProcess(formData);
   };
-
-  console.log(formData);
 
   return (
     <div>
@@ -61,8 +69,21 @@ const NewProcessForm = props => {
         <div>
           <Label htmlFor="interested">Interessados</Label>
           <ul>
-            <li>Marcio</li>
-            <li>Julia</li>
+            {formData.interessados.map(interested => {
+              return (
+                <li key={interested}>
+                  {interested}{' '}
+                  <button
+                    onClick={() =>
+                      handleInterestedDecrement('interessados', interested)
+                    }
+                    type="button"
+                  >
+                    X
+                  </button>
+                </li>
+              );
+            })}
           </ul>
           <input
             ref={input => {
