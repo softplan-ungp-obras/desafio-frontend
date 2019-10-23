@@ -12,7 +12,7 @@ const SearchInput = props => {
   const { history } = props;
 
   useEffect(() => {
-    setSearchTerm('');
+    setSearchTerm(props.searchValue);
   }, [props]);
 
   const handleSubmit = e => {
@@ -31,7 +31,7 @@ const SearchInput = props => {
           <Input
             placeholder="Pesquise por uma informação do processo"
             type="text"
-            value={searchTerm}
+            defaultValue={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
           />
           <InputIcon type="sumit">
