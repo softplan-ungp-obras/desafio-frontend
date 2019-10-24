@@ -36,10 +36,12 @@ export const HeaderTitle = styled.h2`
 `;
 
 export const ProcessListWrapper = styled.div`
-  align-items: center;
   display: flex;
-  justify-content: center;
   margin: 30px 0 0 0;
   min-height: 250px;
   padding: 0 2%;
+`;
+
+export const LoaderWrapper = styled.div`
+  margin: 10% 0 0 10%;
 `;

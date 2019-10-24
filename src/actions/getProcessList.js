@@ -38,8 +38,9 @@ export const handleAddProcessList = process => {
 export const handleGetProcessList = searchTerm => {
   return async dispatch => {
     dispatch(isProcessQueryLoading(true));
-    const response = await processSearchList(searchTerm);
-    dispatch(isProcessQueryLoading(false));
-    return dispatch(getProcessList(response));
+    return processSearchList(searchTerm).then(result => {
+      dispatch(getProcessList(result));
+      dispatch(isProcessQueryLoading(false));
+    });
   };
 };

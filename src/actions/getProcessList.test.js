@@ -29,8 +29,8 @@ describe('Test if the actions are called', () => {
 
     const expectedValue = [
       isProcessQueryLoading(true),
-      isProcessQueryLoading(false),
-      getProcessList({})
+      getProcessList({}),
+      isProcessQueryLoading(false)
     ];
 
     // when

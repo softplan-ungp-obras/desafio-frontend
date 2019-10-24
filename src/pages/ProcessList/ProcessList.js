@@ -9,13 +9,15 @@ import { handleGetProcessList } from '../../actions/getProcessList';
 
 import NewProcessModal from '../../components/NewProcessModal/NewProcessModal';
 import SearchInput from '../../components/SearchInput/SearchInput';
+import ProcessRoster from '../../components/ProcessRoster/ProcessRoster';
 
 import LoadingIcon from './LoadingIcon';
 import {
   ProcessListHeaderWrapper,
   NewProcessButton,
   HeaderTitle,
-  ProcessListWrapper
+  ProcessListWrapper,
+  LoaderWrapper
 } from './ProcessList.styles';
 
 const ProcessList = props => {
@@ -43,14 +45,18 @@ const ProcessList = props => {
         <NewProcessModal modalIsOpen={modalIsOpen} handleModal={handleModal} />
       </ProcessListHeaderWrapper>
       <ProcessListWrapper>
-        {isLoading && <LoadingIcon size="80px" color={colors.black200} />}
+        {isLoading && (
+          <LoaderWrapper>
+            <LoadingIcon size="80px" color={colors.black200} />
+          </LoaderWrapper>
+        )}
+        {isLoading === false && <ProcessRoster />}
       </ProcessListWrapper>
     </Fragment>
   );
 };
 
-const mapStateToProps = state => {
-  const { processList } = state;
+const mapStateToProps = ({ processList }) => {
   return {
     isLoading: processList.isProcessQueryLoading
   };
