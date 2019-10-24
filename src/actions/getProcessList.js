@@ -3,6 +3,7 @@ import createProcess from '../api/createProcess/createProcess';
 
 export const GET_PROCESS_LIST = 'GET_PROCESS_LIST';
 export const ADD_PROCESS = 'ADD_PROCESS';
+export const LOADING_PROCESS = 'LOADING_PROCESS';
 
 const getProcessList = data => {
   return {
@@ -18,6 +19,13 @@ const addProcessOnList = process => {
   };
 };
 
+const isProcessQueryLoading = (isLoading = false) => {
+  return {
+    type: LOADING_PROCESS,
+    isLoading
+  };
+};
+
 export const handleAddProcessList = process => {
   return async dispatch => {
     const response = await createProcess(process);
@@ -29,7 +37,10 @@ export const handleAddProcessList = process => {
 
 export const handleGetProcessList = searchTerm => {
   return async dispatch => {
-    const response = await processSearchList(searchTerm);
-    return dispatch(getProcessList(response));
+    dispatch(isProcessQueryLoading(true));
+    return processSearchList(searchTerm).then(result => {
+      dispatch(getProcessList(result));
+      dispatch(isProcessQueryLoading(false));
+    });
   };
 };

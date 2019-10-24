@@ -8,6 +8,7 @@ import reducer from './reducers';
 import middlewares from './middlewares';
 
 import Main from './pages/Main/Main';
+import ProcessList from './pages/ProcessList/ProcessList';
 
 const store = createStore(reducer, middlewares);
 
@@ -16,7 +17,8 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Switch>
-          <Route exact path="/" component={Main}></Route>
+          <Route exact path="/" component={Main} />
+          <Route path="/process-list" component={ProcessList} />
         </Switch>
       </Router>
     </Provider>

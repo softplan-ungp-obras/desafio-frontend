@@ -21,9 +21,7 @@ const NewProcessLink = () => {
           clicando aqui
         </NewProcessLinkModal>
       </NewProcessMessage>
-      <NewProcessModal modalIsOpen={modalIsOpen} handleModal={handleModal}>
-        <div>create process form</div>
-      </NewProcessModal>
+      <NewProcessModal modalIsOpen={modalIsOpen} handleModal={handleModal} />
     </Fragment>
   );
 };
