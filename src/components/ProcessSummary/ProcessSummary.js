@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import {
   ProcessRow,
@@ -11,14 +11,15 @@ import {
 } from './ProcessSummary.styles';
 
 const ProcessSummary = props => {
-  const { process } = props;
+  const { process, location } = props;
+
   return (
     <ProcessRow>
       <Link
         style={{ ...LinkStyles }}
         to={{
           pathname: `/process-detail/process=${process.id}`,
-          state: { processId: process.id }
+          state: { ...location.state, processId: process.id }
         }}
       >
         <ProcessColumn>
@@ -46,7 +47,8 @@ const ProcessSummary = props => {
 };
 
 ProcessSummary.propTypes = {
-  process: PropTypes.object
+  process: PropTypes.object,
+  location: PropTypes.object
 };
 
-export default ProcessSummary;
+export default withRouter(ProcessSummary);
