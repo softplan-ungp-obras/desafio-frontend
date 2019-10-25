@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 import { isEqual } from 'lodash';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import CloseIcon from '../NewProcessModal/CloseIcon';
@@ -22,7 +23,10 @@ import {
 
 import colors from '../../helpers/colors';
 
-import { handleAddProcessList } from '../../actions/getProcessList/getProcessList';
+import {
+  handleAddProcessList,
+  handleGetProcessList
+} from '../../actions/getProcessList/getProcessList';
 
 const NewProcessForm = props => {
   let interestedInput = null;
@@ -33,7 +37,7 @@ const NewProcessForm = props => {
     interessados: []
   };
 
-  const { createProcess } = props;
+  const { createProcess, location, getProcessList } = props;
 
   const [formData, SetFormData] = useState(initialState);
 
@@ -62,11 +66,20 @@ const NewProcessForm = props => {
     });
   };
 
+  const refreshProcessList = () => {
+    const searchTerm = location.state ? location.state.searchTerm : '';
+    getProcessList(searchTerm);
+  };
+
   const onSubmit = e => {
     e.preventDefault();
     const formIsEmpty = isEqual(formData, initialState);
     if (formIsEmpty) return;
-    createProcess(formData);
+    createProcess(formData).then(() => {
+      if (location.pathname !== '/') {
+        refreshProcessList();
+      }
+    });
   };
 
   return (
@@ -134,14 +147,18 @@ const NewProcessForm = props => {
 };
 
 const mapDispatchToProps = {
-  createProcess: handleAddProcessList
+  createProcess: handleAddProcessList,
+  getProcessList: handleGetProcessList
 };
 
 NewProcessForm.propTypes = {
-  createProcess: PropTypes.func
+  createProcess: PropTypes.func,
+  location: PropTypes.object
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(NewProcessForm);
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(NewProcessForm)
+);
