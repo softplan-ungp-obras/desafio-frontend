@@ -3,14 +3,17 @@ import colors from '../../helpers/colors';
 
 export const ProcessRow = styled.div`
   align-items: center;
-  border: solid 1px ${colors.black100};
+  border: ${props =>
+    props.isProcessActive
+      ? `solid 1px ${colors.primary}`
+      : `solid 1px ${colors.black100}`};
   box-shadow: 0px 5px 3px ${colors.black100};
   display: flex;
   padding: 10px;
-  width: 100%;
 `;
 
 export const ProcessColumn = styled.div`
+  display: ${props => (props.isListReduced ? 'none' : 'block')};
   margin: ${props => (props.margin ? props.margin : '0 20px 0 0')};
 
   p {
@@ -23,6 +26,7 @@ export const ProcessColumn = styled.div`
 
 export const ColumnHeader = styled.p`
   font: 700 14px 'Montserrat';
+  margin-top: ${props => (props.isListReduced ? '0' : 'inherit')};
   margin-bottom: 5px;
 `;
 
@@ -30,11 +34,13 @@ export const ColumnText = styled.p`
   color: ${colors.black300};
   font: 400 14px 'Montserrat';
   margin-top: 0;
+  margin-bottom: ${props => (props.isListReduced ? '5px' : 'inherit')};
 `;
 
 export const LinkStyles = {
   color: 'inherit',
   display: 'flex',
+  flexWrap: 'wrap',
   textDecoration: 'none',
   width: '100%'
 };

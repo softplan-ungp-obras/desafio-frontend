@@ -6,13 +6,13 @@ import ProcessSummary from '../ProcessSummary/ProcessSummary';
 
 import { List, ListItem } from './ProcessRoster.styles';
 
-const ProcessRoster = ({ processList }) => {
+const ProcessRoster = ({ processList, reduced }) => {
   return (
-    <List>
+    <List isListReduced={reduced}>
       {processList.map(process => {
         return (
           <ListItem key={process.id}>
-            <ProcessSummary process={process} />
+            <ProcessSummary isListReduced={reduced} process={process} />
           </ListItem>
         );
       })}
@@ -27,7 +27,8 @@ const mapStateToProps = ({ processList }) => {
 };
 
 ProcessRoster.propTypes = {
-  processList: PropTypes.array
+  processList: PropTypes.array,
+  reduced: PropTypes.bool
 };
 
 export default connect(mapStateToProps)(ProcessRoster);

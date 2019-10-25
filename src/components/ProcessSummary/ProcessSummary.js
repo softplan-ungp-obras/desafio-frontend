@@ -11,10 +11,15 @@ import {
 } from './ProcessSummary.styles';
 
 const ProcessSummary = props => {
-  const { process, location } = props;
+  const { process, location, isListReduced } = props;
+
+  const isProcessActive =
+    location.pathname === `/process-detail/process=${process.id}`;
+
+  console.log(process.interessados[0]);
 
   return (
-    <ProcessRow>
+    <ProcessRow isProcessActive={isProcessActive}>
       <Link
         style={{ ...LinkStyles }}
         to={{
@@ -22,22 +27,30 @@ const ProcessSummary = props => {
           state: { ...location.state, processId: process.id }
         }}
       >
-        <ProcessColumn>
+        <ProcessColumn isListReduced={isListReduced}>
           <img src="https://via.placeholder.com/80" alt="" />
         </ProcessColumn>
         <ProcessColumn margin="0 20% 0 0">
-          <ColumnHeader>Número</ColumnHeader>
-          <ColumnText>{process.numero}</ColumnText>
+          <ColumnHeader isListReduced={isListReduced}>Número</ColumnHeader>
+          <ColumnText isListReduced={isListReduced}>
+            {process.numero}
+          </ColumnText>
         </ProcessColumn>
         <ProcessColumn>
-          <ColumnHeader>Assunto</ColumnHeader>
-          <ColumnText>{process.assunto}</ColumnText>
+          <ColumnHeader isListReduced={isListReduced}>Assunto</ColumnHeader>
+          <ColumnText isListReduced={isListReduced}>
+            {process.assunto}
+          </ColumnText>
         </ProcessColumn>
         <ProcessColumn margin="0 10% 0 0">
           <ColumnHeader>Interessado</ColumnHeader>
-          <ColumnText>{process.interessados[0]}</ColumnText>
+          <ColumnText>
+            {process.interessados[0] === undefined
+              ? 'n/a'
+              : process.interessados[0]}
+          </ColumnText>
         </ProcessColumn>
-        <ProcessColumn>
+        <ProcessColumn isListReduced={isListReduced}>
           <ColumnHeader>Descrição</ColumnHeader>
           <ColumnText>{process.descricao}</ColumnText>
         </ProcessColumn>
@@ -48,7 +61,8 @@ const ProcessSummary = props => {
 
 ProcessSummary.propTypes = {
   process: PropTypes.object,
-  location: PropTypes.object
+  location: PropTypes.object,
+  isListReduced: PropTypes.bool
 };
 
 export default withRouter(ProcessSummary);
