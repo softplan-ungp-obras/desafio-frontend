@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import colors from '../../helpers/colors';
@@ -7,9 +8,11 @@ import SearchIcon from './SearchIcon';
 
 import { SearchWrapper, Input, InputIcon } from './SearchInput.styles';
 
+import { handleGetProcessList } from '../../actions/getProcessList';
+
 const SearchInput = props => {
   const [searchTerm, setSearchTerm] = useState('');
-  const { history } = props;
+  const { history, location, getProcessList } = props;
 
   useEffect(() => {
     setSearchTerm(props.searchValue);
@@ -18,6 +21,10 @@ const SearchInput = props => {
   const handleSubmit = e => {
     e.preventDefault();
     if (!searchTerm || searchTerm.length === 0) return;
+    if (location.pathname !== '/') {
+      getProcessList(searchTerm);
+      return;
+    }
     history.push({
       pathname: '/process-list',
       state: { searchTerm }
@@ -45,7 +52,18 @@ const SearchInput = props => {
 
 SearchInput.propTypes = {
   history: PropTypes.object,
-  searchValue: PropTypes.string
+  location: PropTypes.object,
+  searchValue: PropTypes.string,
+  getProcessList: PropTypes.func
 };
 
-export default withRouter(SearchInput);
+const mapDispatchToProps = {
+  getProcessList: handleGetProcessList
+};
+
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(SearchInput)
+);
