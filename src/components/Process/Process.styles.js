@@ -31,3 +31,10 @@ export const ColumnText = styled.p`
   font: 400 14px 'Montserrat';
   margin-top: 0;
 `;
+
+export const LinkStyles = {
+  color: 'inherit',
+  display: 'flex',
+  textDecoration: 'none',
+  width: '100%'
+};
