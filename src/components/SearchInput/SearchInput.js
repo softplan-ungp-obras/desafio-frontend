@@ -11,8 +11,9 @@ import { SearchWrapper, Input, InputIcon } from './SearchInput.styles';
 import { handleGetProcessList } from '../../actions/getProcessList/getProcessList';
 
 const SearchInput = props => {
-  const [searchTerm, setSearchTerm] = useState('');
   const { history, location, getProcessList } = props;
+  const initialState = location.state ? location.state.searchTerm : '';
+  const [searchTerm, setSearchTerm] = useState(initialState);
 
   useEffect(() => {
     setSearchTerm(props.searchValue);
@@ -22,6 +23,7 @@ const SearchInput = props => {
     e.preventDefault();
     if (!searchTerm || searchTerm.length === 0) return;
     if (location.pathname !== '/') {
+      history.replace({ state: { searchTerm } });
       getProcessList(searchTerm);
       return;
     }
