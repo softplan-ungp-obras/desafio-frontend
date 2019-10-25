@@ -8,9 +8,9 @@ import {
   ColumnHeader,
   ColumnText,
   LinkStyles
-} from './Process.styles';
+} from './ProcessSummary.styles';
 
-const Process = props => {
+const ProcessSummary = props => {
   const { process } = props;
   return (
     <ProcessRow>
@@ -45,8 +45,8 @@ const Process = props => {
   );
 };
 
-Process.propTypes = {
+ProcessSummary.propTypes = {
   process: PropTypes.object
 };
 
-export default Process;
+export default ProcessSummary;
