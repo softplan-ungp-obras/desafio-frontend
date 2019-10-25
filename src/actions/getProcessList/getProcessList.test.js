@@ -3,6 +3,8 @@ import thunk from 'redux-thunk';
 
 import {
   handleGetProcessList,
+  handleAddProcessList,
+  ADD_PROCESS,
   GET_PROCESS_LIST,
   LOADING_PROCESS
 } from './getProcessList';
@@ -37,6 +39,30 @@ describe('Test if the actions are called', () => {
     const store = mockStore({});
     const searchTerm = 'licenca';
     await store.dispatch(handleGetProcessList(searchTerm));
+
+    // then
+    expect(store.getActions()).toEqual(expectedValue);
+  });
+
+  it('should dispatch handleAddProcessList', async () => {
+    // given
+    const addProcessOnList = process => {
+      return {
+        type: ADD_PROCESS,
+        process
+      };
+    };
+    const process = {
+      descricao: 'Processo teste',
+      assunto: 'Licença',
+      interessados: ['marcio costa', 'Maria da silva']
+    };
+
+    const expectedValue = [addProcessOnList(process)];
+
+    // when
+    const store = mockStore({});
+    await store.dispatch(handleAddProcessList(process));
 
     // then
     expect(store.getActions()).toEqual(expectedValue);

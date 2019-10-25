@@ -28,10 +28,11 @@ const isProcessQueryLoading = (isLoading = false) => {
 
 export const handleAddProcessList = process => {
   return async dispatch => {
-    const response = await createProcess(process);
-    // eslint-disable-next-line no-console
-    if (response !== 201) return console.log('there is an error on api');
-    return dispatch(addProcessOnList(process));
+    return createProcess(process)
+      .then(() => {
+        dispatch(addProcessOnList(process));
+      })
+      .catch(err => console.log(`there is an error on api: ${err}`));
   };
 };
 
