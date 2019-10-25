@@ -22,7 +22,7 @@ import {
 
 import colors from '../../helpers/colors';
 
-import { handleAddProcessList } from '../../actions/getProcessList';
+import { handleAddProcessList } from '../../actions/getProcessList/getProcessList';
 
 const NewProcessForm = props => {
   let interestedInput = null;

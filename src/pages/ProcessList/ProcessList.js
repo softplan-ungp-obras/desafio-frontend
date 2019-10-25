@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import colors from '../../helpers/colors';
 
-import { handleGetProcessList } from '../../actions/getProcessList';
+import { handleGetProcessList } from '../../actions/getProcessList/getProcessList';
 
 import NewProcessModal from '../../components/NewProcessModal/NewProcessModal';
 import SearchInput from '../../components/SearchInput/SearchInput';

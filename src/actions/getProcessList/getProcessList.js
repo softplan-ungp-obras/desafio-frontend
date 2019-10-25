@@ -1,5 +1,5 @@
-import processSearchList from '../api/processSearchList/processSearchList';
-import createProcess from '../api/createProcess/createProcess';
+import processSearchList from '../../api/processSearchList/processSearchList';
+import createProcess from '../../api/createProcess/createProcess';
 
 export const GET_PROCESS_LIST = 'GET_PROCESS_LIST';
 export const ADD_PROCESS = 'ADD_PROCESS';

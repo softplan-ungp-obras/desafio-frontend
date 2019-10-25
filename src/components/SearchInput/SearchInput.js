@@ -8,7 +8,7 @@ import SearchIcon from './SearchIcon';
 
 import { SearchWrapper, Input, InputIcon } from './SearchInput.styles';
 
-import { handleGetProcessList } from '../../actions/getProcessList';
+import { handleGetProcessList } from '../../actions/getProcessList/getProcessList';
 
 const SearchInput = props => {
   const [searchTerm, setSearchTerm] = useState('');

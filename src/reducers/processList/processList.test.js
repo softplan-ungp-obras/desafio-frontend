@@ -1,5 +1,8 @@
 import processList from './processList';
-import { GET_PROCESS_LIST, ADD_PROCESS } from '../../actions/getProcessList';
+import {
+  GET_PROCESS_LIST,
+  ADD_PROCESS
+} from '../../actions/getProcessList/getProcessList';
 
 const mockProcessList = [
   {
