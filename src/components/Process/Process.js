@@ -16,7 +16,10 @@ const Process = props => {
     <ProcessRow>
       <Link
         style={{ ...LinkStyles }}
-        to={`/process-detail/process=${process.id}`}
+        to={{
+          pathname: `/process-detail/process=${process.id}`,
+          state: { processId: process.id }
+        }}
       >
         <ProcessColumn>
           <img src="https://via.placeholder.com/80" alt="" />
