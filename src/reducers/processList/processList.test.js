@@ -1,7 +1,8 @@
 import processList from './processList';
 import {
   GET_PROCESS_LIST,
-  ADD_PROCESS
+  ADD_PROCESS,
+  DELETE_PROCESS
 } from '../../actions/getProcessList/getProcessList';
 
 const mockProcessList = [
@@ -73,6 +74,38 @@ describe('Process list reducer', () => {
     // then
     expect(
       processList({ data: mockProcessList }, addProcessOnList(newProcess))
+    ).toEqual(expectedResult);
+  });
+
+  it('should delete an item of process list', () => {
+    // given
+    const deleteProcessAction = process => {
+      return {
+        type: DELETE_PROCESS,
+        process
+      };
+    };
+    const processToDelete = {
+      id: '8c44c62f-927a-42e3-976b-8685be15ac74',
+      numero: 'SOFT 2019/00005',
+      entrada: '22/10/2019',
+      interessados: ['marcio costa'],
+      descricao: 'teste',
+      assunto: 'Licença'
+    };
+    const mockState = {
+      data: [...mockProcessList, processToDelete],
+      isProcessQueryLoading: null
+    };
+
+    const expectedResult = {
+      data: [...mockProcessList],
+      isProcessQueryLoading: null
+    };
+
+    // then
+    expect(
+      processList(mockState, deleteProcessAction(processToDelete))
     ).toEqual(expectedResult);
   });
 });
