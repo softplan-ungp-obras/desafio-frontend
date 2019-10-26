@@ -13,8 +13,7 @@ import {
 const ProcessSummary = props => {
   const { process, location, isListReduced } = props;
 
-  const isProcessActive =
-    location.pathname === `/process-detail/process=${process.id}`;
+  const isProcessActive = location.state.processId === process.id;
 
   return (
     <ProcessRow isProcessActive={isProcessActive}>

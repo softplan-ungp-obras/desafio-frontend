@@ -12,7 +12,7 @@ import { handleGetProcessList } from '../../actions/getProcessList/getProcessLis
 import { handleGetProcessDetail } from '../../actions/getProcessDetail/getProcessDetail';
 
 const SearchInput = props => {
-  const { history, location, getProcessList, processDetail } = props;
+  const { history, location, getProcessList, processList } = props;
   const initialState = location.state ? location.state.searchTerm : '';
   const [searchTerm, setSearchTerm] = useState(initialState);
 
@@ -24,7 +24,8 @@ const SearchInput = props => {
     e.preventDefault();
     if (!searchTerm || searchTerm.length === 0) return;
     if (location.pathname.indexOf('/process-detail/') >= 0) {
-      const processId = processDetail.id;
+      getProcessList(searchTerm);
+      const processId = processList[0].id;
 
       history.push({
         pathname: `/process-detail/process=${processId}`,
@@ -32,7 +33,10 @@ const SearchInput = props => {
       });
       return;
     }
-    if (location.pathname !== '/') {
+    if (
+      location.pathname !== '/' &&
+      !location.pathname.indexOf('/process-detail/') >= 0
+    ) {
       history.replace({ state: { searchTerm } });
       getProcessList(searchTerm);
       return;
@@ -72,10 +76,9 @@ SearchInput.propTypes = {
   processDetail: PropTypes.object
 };
 
-const mapStateToProps = ({ processList, processDetail }) => {
+const mapStateToProps = ({ processList }) => {
   return {
-    processList: processList.data,
-    processDetail: processDetail.data
+    processList: processList.data
   };
 };
 
