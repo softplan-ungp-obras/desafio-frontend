@@ -5,15 +5,16 @@ import { Creators as SearchActions } from '~/store/ducks/search';
 
 export function* getSearch(action) {
   try {
-    const response = yield call(
+    const { data } = yield call(
       api.get,
-      `processo${!!action && action.payload ? `?q=${action.payload.data}` : ''}`
+      `processo${
+        !!action && action.payload.data ? `?q=${action.payload.data}` : ''
+      }`
     );
 
-    yield put(SearchActions.getSearchSuccess(response.data));
-    if (action.payload.redirect) {
-      history.push(`/dashboard`);
-    }
+    yield put(SearchActions.getSearchSuccess(data));
+
+    history.push(`/dashboard`);
   } catch (err) {
     yield put(SearchActions.getSearchFailure());
   }

@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const CTitle = styled.div`
+h1,h2,h3,h4,h5,h6{
   ${props =>
     props.level === 'headline' &&
     css`
@@ -23,4 +24,6 @@ export const CTitle = styled.div`
       font-size: 14px;
       font-weight: bold;
     `}
+  }
+
 `;

@@ -31,6 +31,13 @@ const GlobalStyle = createGlobalStyle`
     font-weight:normal;
   }
 
+  input::placeholder {
+    color: ${theme.grey.main};
+    font-size: 15px;
+    font-weight:400;
+    font-family: 'Montserrat', sans-serif;
+  }
+
 `;
 
 export default GlobalStyle;

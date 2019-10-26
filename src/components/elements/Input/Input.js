@@ -5,6 +5,7 @@ import { Box, Icon } from './styles';
 
 export default function Input({
   onChange,
+  onSubmit,
   icon,
   type,
   label,
@@ -14,6 +15,7 @@ export default function Input({
   placeholder,
   onBlur,
   disabled,
+  className,
 }) {
   function iconCondition() {
     switch (icon) {
@@ -25,7 +27,7 @@ export default function Input({
   }
 
   return (
-    <Box disabled={disabled}>
+    <Box className={className} disabled={disabled}>
       <label htmlFor={htmlFor}>{label}</label>
 
       <input
@@ -38,7 +40,7 @@ export default function Input({
         placeholder={placeholder}
         disabled={disabled}
       />
-      {icon && <Icon>{iconCondition()}</Icon>}
+      {icon && <Icon onClick={onSubmit}>{iconCondition()}</Icon>}
     </Box>
   );
 }
@@ -48,15 +50,19 @@ Input.defaultProps = {
   placeholder: '',
   icon: '',
   htmlFor: '',
+  className: '',
   label: '',
   onBlur: () => {},
+  onSubmit: () => {},
   disabled: false,
 };
 
 Input.propTypes = {
   htmlFor: PropTypes.string,
+  className: PropTypes.string,
   icon: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func,
   onBlur: PropTypes.func,
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
