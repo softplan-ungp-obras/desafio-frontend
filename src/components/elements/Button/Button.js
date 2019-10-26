@@ -5,7 +5,7 @@ import { ButtonStyle } from './styles';
 export default function Button({
   onChange,
   type,
-
+  onClick,
   placeholder,
   onBlur,
   disabled,
@@ -15,6 +15,7 @@ export default function Button({
 }) {
   return (
     <ButtonStyle
+      onClick={onClick}
       onChange={onChange}
       onBlur={onBlur}
       type={type}
@@ -34,16 +35,18 @@ Button.defaultProps = {
   placeholder: '',
   className: '',
   onBlur: () => {},
+  onClick: () => {},
   disabled: false,
 };
 
 Button.propTypes = {
   className: PropTypes.string,
-  level: PropTypes.oneOf(['primary', 'black', 'grey']),
+  level: PropTypes.oneOf(['primary', 'black', 'grey', 'error', 'success']),
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func,
   type: PropTypes.string,
   placeholder: PropTypes.string,
   disabled: PropTypes.bool,
   children: PropTypes.node.isRequired,
+  onClick: PropTypes.func,
 };

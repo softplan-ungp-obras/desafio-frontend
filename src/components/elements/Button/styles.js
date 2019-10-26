@@ -20,4 +20,26 @@ export const ButtonStyle = styled.button`
         transition: all 0.2s ease-in-out;
       }
     `}
+  ${props =>
+    props.level === 'error' &&
+    css`
+      border: 1px solid ${theme.error.main};
+      color: ${theme.error.main};
+      background: transparent;
+      &:hover {
+        border: 1px solid ${theme.error.main};
+        color: ${theme.error.main};
+      }
+    `}
+  ${props =>
+    props.level === 'grey' &&
+    css`
+      border: 1px solid ${theme.lighGrey.main};
+      color: ${theme.grey.main};
+      background: transparent;
+      &:hover {
+        border: 1px solid ${theme.grey.main};
+        color: ${theme.grey.main};
+      }
+    `}
 `;

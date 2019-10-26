@@ -1,23 +1,29 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
-import { Text } from '~/components/elements';
-import api from '~/services/api';
-import { Box, LineOne, LineTwo, LineThree, SubLineOne, Full } from './styles';
+import { useSelector, useDispatch } from 'react-redux';
+import { Text, Button } from '~/components/elements';
+import {
+  Box,
+  LineOne,
+  LineTwo,
+  LineThree,
+  LineFour,
+  SubLineOne,
+  Full,
+} from './styles';
+import { Creators as ProcessActions } from '~/store/ducks/process';
 
-export default function CardDashboard({ id }) {
-  const items = useSelector(state => state.search.data);
-
-  const findInfo = items.find(item => item.id === id);
+export default function CardDashboard({ id, handleEdit }) {
+  const dispatch = useDispatch();
+  const findInfo = useSelector(state => state.process.data);
 
   useEffect(() => {
-    async function test() {
-      const { data } = await api.get(`/processo/${id}`);
-      console.log(data);
-    }
+    dispatch(ProcessActions.getProcessRequest(id));
+  }, [dispatch, id]);
 
-    test();
-  });
+  function handleRemove() {
+    dispatch(ProcessActions.removeRequest(id));
+  }
 
   return (
     <Box>
@@ -64,6 +70,12 @@ export default function CardDashboard({ id }) {
 
         <p> {findInfo.descricao}</p>
       </LineThree>
+      <LineFour>
+        <Button level="grey" onClick={handleRemove}>
+          Remover
+        </Button>
+        <Button onClick={() => handleEdit('')}>Editar</Button>
+      </LineFour>
     </Box>
   );
 }
@@ -74,4 +86,5 @@ CardDashboard.defaultProps = {
 
 CardDashboard.propTypes = {
   id: PropTypes.string,
+  handleEdit: PropTypes.func.isRequired,
 };

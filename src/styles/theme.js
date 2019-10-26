@@ -11,12 +11,14 @@ export default {
   },
   lighGrey: {
     main: 'rgba(158, 158, 158, 0.38)',
+    hover: 'rgba(0, 0, 0, 0.54)',
   },
   white: {
     main: '#fff',
   },
   error: {
     main: '#c62828',
+    hover: '#c62828',
   },
   sucess: {
     main: '#00c853',

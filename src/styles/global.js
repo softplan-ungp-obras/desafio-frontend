@@ -32,6 +32,10 @@ const GlobalStyle = createGlobalStyle`
     font-weight:normal;
   }
 
+  p,span{
+    line-height: 26px
+  }
+
   input::placeholder {
     color: ${theme.grey.main};
     font-size: 15px;
