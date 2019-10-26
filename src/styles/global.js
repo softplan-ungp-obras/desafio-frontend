@@ -1,7 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
-// import 'rc-slider/assets/index.css';
+import theme from '~/styles/theme';
 
 const GlobalStyle = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap');
   *{
     margin:0;
     padding:0;
@@ -16,9 +17,11 @@ const GlobalStyle = createGlobalStyle`
   body{
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
-    background: #181818;
+    background: ${theme.white.main};
     font-family: 'Montserrat', sans-serif;
-    color:#fff;
+    color: ${theme.black.main};
+    font-size: 16px;
+    font-weight:normal;
   }
 
   button{
