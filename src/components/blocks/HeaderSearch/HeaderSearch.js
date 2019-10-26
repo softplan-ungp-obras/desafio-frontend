@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useDebouncedCallback } from 'use-debounce';
 import { Box } from './styles';
@@ -7,12 +7,15 @@ import { Creators as SearchActions } from '~/store/ducks/search';
 
 export default function HeaderSearch() {
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
   const termSearch = useSelector(state => state.search.term);
+
+  function handleLoading(val) {
+    dispatch(SearchActions.setLoading(val));
+  }
 
   const [handleChange] = useDebouncedCallback(value => {
     dispatch(SearchActions.getSearchRequest(value, true));
-    setLoading(false);
+    handleLoading(false);
   }, 300);
 
   return (
@@ -23,11 +26,10 @@ export default function HeaderSearch() {
         </Text>
       </div>
       <div>
-        {loading && 'BUSCANDO:'}
         <Input
           placeholder="Pesquise por uma informação no processo"
           onChange={e => {
-            setLoading(true);
+            handleLoading(true);
             handleChange(e.target.value);
           }}
           name="search"

@@ -4,6 +4,7 @@ export const Types = {
   GET_REQUEST: 'search/GET_REQUEST',
   GET_SUCCESS: 'search/GET_SUCCESS',
   GET_FAILURE: 'search/GET_FAILURE',
+  SET_LOADING: 'search/SET_LOADING',
 };
 
 export const INITIAL_STATE = {
@@ -28,6 +29,10 @@ export default function documents(state = INITIAL_STATE, action) {
       return produce(state, draft => {
         draft.loading = false;
       });
+    case Types.SET_LOADING:
+      return produce(state, draft => {
+        draft.loading = action.payload;
+      });
 
     default:
       return state;
@@ -45,5 +50,9 @@ export const Creators = {
   }),
   getSearchFailure: () => ({
     type: Types.GET_FAILURE,
+  }),
+  setLoading: value => ({
+    type: Types.SET_LOADING,
+    payload: value,
   }),
 };
