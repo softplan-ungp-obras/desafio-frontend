@@ -7,22 +7,22 @@ import { Creators as SearchActions } from '~/store/ducks/search';
 const apiMock = new MockAdapter(api);
 
 describe('Search saga', () => {
-  it('Should be able to fetch search', async () => {
+  it('Should be able to fetch steps and call success', async () => {
     const dispatch = jest.fn();
 
-    apiMock.onGet('processo?q=licenca').reply(200, ['search']);
+    apiMock.onGet(`processo`).reply(200, ['Node.js']);
 
     await runSaga({ dispatch }, getSearch).toPromise();
 
     expect(dispatch).toHaveBeenCalledWith(
-      SearchActions.getSearchSuccess(['search'])
+      SearchActions.getSearchSuccess(['Node.js'])
     );
   });
 
   it('Should be able to failure search', async () => {
     const dispatch = jest.fn();
 
-    apiMock.onGet('processo?q=licenca').reply(404, ['Node.js']);
+    apiMock.onGet(`processo`).reply(404, ['Node.js']);
 
     await runSaga({ dispatch }, getSearch).toPromise();
 

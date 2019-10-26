@@ -33,8 +33,10 @@ export default function documents(state = INITIAL_STATE, action) {
 }
 
 export const Creators = {
-  getSearchRequest: () => ({ type: Types.GET_REQUEST }),
-
+  getSearchRequest: (data, redirect) => ({
+    type: Types.GET_REQUEST,
+    payload: { data, redirect },
+  }),
   getSearchSuccess: data => ({
     type: Types.GET_SUCCESS,
     payload: data,

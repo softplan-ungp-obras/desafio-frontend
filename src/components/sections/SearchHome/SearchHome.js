@@ -20,7 +20,7 @@ export default function SearchHome() {
   }
 
   function handleSubmit() {
-    dispatch(SearchActions.getSearchRequest(formData.search));
+    dispatch(SearchActions.getSearchRequest(formData.search, true));
   }
 
   return (
