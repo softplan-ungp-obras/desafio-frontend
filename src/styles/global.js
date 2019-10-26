@@ -26,6 +26,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   button{
+    border: none;
+  background: none;
     cursor: pointer;
   }
   h1,h2,h3,h4,h5,h6{
@@ -48,6 +50,10 @@ const GlobalStyle = createGlobalStyle`
     padding:0;
     list-style:none;
   }
+  .ReactModal__Overlay.ReactModal__Overlay--after-open {
+    background-color: ${theme.black.main} !important;
+  }
+
 
 `;
 

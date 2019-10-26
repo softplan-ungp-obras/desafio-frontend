@@ -4,6 +4,7 @@ import { useDebouncedCallback } from 'use-debounce';
 import { Box } from './styles';
 import { Text, Input, Button } from '~/components/elements';
 import { Creators as SearchActions } from '~/store/ducks/search';
+import { Creators as PortalsActions } from '~/store/ducks/portals';
 
 export default function HeaderSearch() {
   const dispatch = useDispatch();
@@ -17,6 +18,10 @@ export default function HeaderSearch() {
     dispatch(SearchActions.getSearchRequest(value, true));
     handleLoading(false);
   }, 300);
+
+  function handleAddProcess() {
+    dispatch(PortalsActions.setModal(true));
+  }
 
   return (
     <Box>
@@ -38,7 +43,7 @@ export default function HeaderSearch() {
         />
       </div>
       <div>
-        <Button>NOVO</Button>
+        <Button onClick={handleAddProcess}>NOVO</Button>
       </div>
     </Box>
   );

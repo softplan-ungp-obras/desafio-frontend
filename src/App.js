@@ -8,6 +8,7 @@ import history from '~/routes/history';
 import './config/reactotron';
 import GlobalStyle from './styles/global';
 import { Wrapper } from './styles/components';
+import { Portals } from '~/components/sections';
 import Routes from './routes';
 import { store, persistor } from './store';
 
@@ -21,6 +22,7 @@ function App() {
               <Routes />
             </Wrapper>
             <GlobalStyle />
+            <Portals />
             <ToastContainer />
           </>
         </Router>
