@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import history from '~/routes/history';
 import { Title, Text } from '~/components/elements';
 import { Box, InputStyle, CustomLink } from './styles';
 import { Creators as SearchActions } from '~/store/ducks/search';
@@ -22,7 +23,8 @@ export default function SearchHome() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    dispatch(SearchActions.getSearchRequest(formData.search, true));
+    dispatch(SearchActions.setTerm(formData.search));
+    history.push('/dashboard');
   }
 
   return (

@@ -5,6 +5,7 @@ export const Types = {
   GET_SUCCESS: 'search/GET_SUCCESS',
   GET_FAILURE: 'search/GET_FAILURE',
   SET_LOADING: 'search/SET_LOADING',
+  SET_TERM: 'search/SET_TERM',
 };
 
 export const INITIAL_STATE = {
@@ -33,6 +34,10 @@ export default function search(state = INITIAL_STATE, action) {
       return produce(state, draft => {
         draft.loading = action.payload;
       });
+    case Types.SET_TERM:
+      return produce(state, draft => {
+        draft.term = action.payload;
+      });
 
     default:
       return state;
@@ -40,9 +45,9 @@ export default function search(state = INITIAL_STATE, action) {
 }
 
 export const Creators = {
-  getSearchRequest: (term, redirect) => ({
+  getSearchRequest: term => ({
     type: Types.GET_REQUEST,
-    payload: { term, redirect },
+    payload: { term },
   }),
   getSearchSuccess: data => ({
     type: Types.GET_SUCCESS,
@@ -54,5 +59,9 @@ export const Creators = {
   setLoading: value => ({
     type: Types.SET_LOADING,
     payload: value,
+  }),
+  setTerm: term => ({
+    type: Types.SET_TERM,
+    payload: term,
   }),
 };
