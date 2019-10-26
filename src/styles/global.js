@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import theme from '~/styles/theme';
+import 'react-toastify/dist/ReactToastify.css';
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap');
@@ -36,6 +37,12 @@ const GlobalStyle = createGlobalStyle`
     font-size: 15px;
     font-weight:400;
     font-family: 'Montserrat', sans-serif;
+  }
+
+  ul,li{
+    margin:0;
+    padding:0;
+    list-style:none;
   }
 
 `;

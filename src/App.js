@@ -1,5 +1,6 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import { hot } from 'react-hot-loader/root';
 import { Provider } from 'react-redux';
 import history from '~/routes/history';
@@ -19,6 +20,7 @@ function App() {
             <Routes />
           </Wrapper>
           <GlobalStyle />
+          <ToastContainer />
         </>
       </Router>
     </Provider>
