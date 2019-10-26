@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+
+import NewProcessModal from '../NewProcessModal/NewProcessModal';
 
 import {
   ProcessWrapper,
@@ -12,16 +14,23 @@ import {
   InterestedList,
   DescriptionWrapper,
   EditButton,
-  ProcessActions
+  ProcessActions,
+  DescriptionText
 } from './Process.styles';
 
 const Process = props => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const handleModal = () => {
+    setModalIsOpen(!modalIsOpen);
+  };
+
   const { processDetail } = props;
 
   const breakParagraph = text => {
     const regex = /\r?\n/g;
     return text.split(regex).map((line, index) => {
-      return <p key={`key_${index}`}>{line}</p>;
+      return <DescriptionText key={`key_${index}`}>{line}</DescriptionText>;
     });
   };
 
@@ -59,8 +68,13 @@ const Process = props => {
         {breakParagraph(processDetail.descricao)}
       </DescriptionWrapper>
       <ProcessActions>
-        <EditButton>Editar</EditButton>
+        <EditButton onClick={handleModal}>Editar</EditButton>
       </ProcessActions>
+      <NewProcessModal
+        fromProcess
+        modalIsOpen={modalIsOpen}
+        handleModal={handleModal}
+      />
     </ProcessWrapper>
   );
 };

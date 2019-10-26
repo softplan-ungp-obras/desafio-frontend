@@ -55,6 +55,11 @@ export const InterestedList = styled.ul`
   width: 100%;
 `;
 
+export const DescriptionText = styled.p`
+  color: ${colors.black300};
+  font: 400 16px 'Montserrat';
+`;
+
 export const DescriptionWrapper = styled.div`
   width: 100%;
 `;
