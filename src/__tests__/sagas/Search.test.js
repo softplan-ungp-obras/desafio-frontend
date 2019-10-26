@@ -7,7 +7,7 @@ import { Creators as SearchActions } from '~/store/ducks/search';
 const apiMock = new MockAdapter(api);
 
 describe('Search saga', () => {
-  it('Should be able to fetch steps and call success', async () => {
+  it('Should be able to fetch search and call success', async () => {
     const dispatch = jest.fn();
 
     apiMock.onGet(`processo`).reply(200, ['Node.js']);

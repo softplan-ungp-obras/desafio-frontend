@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Text } from '~/components/elements';
+import api from '~/services/api';
 import { Box, LineOne, LineTwo, LineThree, SubLineOne, Full } from './styles';
 
 export default function CardDashboard({ id }) {
   const items = useSelector(state => state.search.data);
 
   const findInfo = items.find(item => item.id === id);
+
+  useEffect(() => {
+    async function test() {
+      const { data } = await api.get(`/processo/${id}`);
+      console.log(data);
+    }
+
+    test();
+  });
 
   return (
     <Box>

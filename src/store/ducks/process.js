@@ -1,24 +1,21 @@
 import produce from 'immer';
 
 export const Types = {
-  GET_REQUEST: 'search/GET_REQUEST',
-  GET_SUCCESS: 'search/GET_SUCCESS',
-  GET_FAILURE: 'search/GET_FAILURE',
-  SET_LOADING: 'search/SET_LOADING',
+  GET_REQUEST: 'process/GET_REQUEST',
+  GET_SUCCESS: 'process/GET_SUCCESS',
+  GET_FAILURE: 'process/GET_FAILURE',
 };
 
 export const INITIAL_STATE = {
-  data: [],
-  term: '',
+  data: {},
   loading: false,
 };
 
-export default function search(state = INITIAL_STATE, action) {
+export default function process(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.GET_REQUEST:
       return produce(state, draft => {
         draft.loading = true;
-        draft.term = action.payload.term;
       });
     case Types.GET_SUCCESS:
       return produce(state, draft => {
@@ -28,10 +25,7 @@ export default function search(state = INITIAL_STATE, action) {
     case Types.GET_FAILURE:
       return produce(state, draft => {
         draft.loading = false;
-      });
-    case Types.SET_LOADING:
-      return produce(state, draft => {
-        draft.loading = action.payload;
+        draft.data = {};
       });
 
     default:
@@ -40,19 +34,15 @@ export default function search(state = INITIAL_STATE, action) {
 }
 
 export const Creators = {
-  getSearchRequest: (term, redirect) => ({
+  getProcessRequest: id => ({
     type: Types.GET_REQUEST,
-    payload: { term, redirect },
+    payload: id,
   }),
-  getSearchSuccess: data => ({
+  getProcessSuccess: data => ({
     type: Types.GET_SUCCESS,
     payload: data,
   }),
-  getSearchFailure: () => ({
+  getProcessFailure: () => ({
     type: Types.GET_FAILURE,
-  }),
-  setLoading: value => ({
-    type: Types.SET_LOADING,
-    payload: value,
   }),
 };
