@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Title, Input } from '~/components/elements';
 import { Box } from './styles';
+import { Creators as SearchActions } from '~/store/ducks/search';
 
 export default function SearchHome() {
   const [formData, setFormData] = useState({
     search: '',
   });
+  const dispatch = useDispatch();
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -14,6 +17,10 @@ export default function SearchHome() {
       ...formData,
       [name]: value,
     });
+  }
+
+  function handleSubmit() {
+    dispatch(SearchActions.getSearchRequest(formData.search));
   }
 
   return (
@@ -29,6 +36,9 @@ export default function SearchHome() {
         icon="SEARCH"
       />
       Você pode criar um novo processo clicando aqui
+      <button type="button" onClick={handleSubmit}>
+        Enviar
+      </button>
     </Box>
   );
 }

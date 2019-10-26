@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
-import playlists from './playlists';
-import error from './error';
+import search from './search';
 
 export default combineReducers({
-  playlists,
-  error,
+  search,
 });
