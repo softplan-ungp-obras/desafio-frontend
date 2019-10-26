@@ -8,6 +8,7 @@ export const ProcessWrapper = styled.div`
   flex: 1;
   flex-wrap: wrap;
   padding: 10px;
+  position: relative;
 `;
 
 export const ProcessHeader = styled.div`
@@ -106,5 +107,17 @@ export const DeleteButton = styled.button`
     background: ${colors.black200};
     color: ${colors.white};
     transition: all 0.2s ease-in-out;
+  }
+`;
+
+export const CloseProcessButton = styled.button`
+  background: none;
+  border: none;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+
+  &:hover {
+    cursor: pointer;
   }
 `;
