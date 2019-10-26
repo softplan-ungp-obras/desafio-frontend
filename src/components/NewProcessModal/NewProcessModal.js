@@ -14,7 +14,7 @@ import {
 } from './NewProcessModal.styles';
 
 const NewProcessModal = props => {
-  const { handleModal, modalIsOpen } = props;
+  const { handleModal, modalIsOpen, fromProcess } = props;
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -23,7 +23,7 @@ const NewProcessModal = props => {
       ariaHideApp={false}
     >
       <ContentContainer>
-        <NewProcessForm />
+        <NewProcessForm fromProcess={fromProcess} />
         <CloseModalButton onClick={handleModal}>
           <CloseIcon size="20px" color={colors.black200} />
         </CloseModalButton>
@@ -34,7 +34,8 @@ const NewProcessModal = props => {
 
 NewProcessModal.propTypes = {
   modalIsOpen: PropTypes.bool,
-  handleModal: PropTypes.func
+  handleModal: PropTypes.func,
+  fromProcess: PropTypes.bool
 };
 
 export default NewProcessModal;

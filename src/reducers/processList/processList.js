@@ -4,7 +4,8 @@ import { isEqual } from 'lodash';
 import {
   GET_PROCESS_LIST,
   ADD_PROCESS,
-  LOADING_PROCESS
+  LOADING_PROCESS,
+  DELETE_PROCESS
 } from '../../actions/getProcessList/getProcessList';
 
 const initialState = {
@@ -36,6 +37,15 @@ export default function processList(state = initialState, action) {
       return {
         ...state,
         isProcessQueryLoading: action.isLoading
+      };
+    case DELETE_PROCESS:
+      const deletedId = action.process.id;
+      const updatedList = state.data.filter(
+        process => process.id !== deletedId
+      );
+      return {
+        ...state,
+        data: updatedList
       };
     default:
       return state;

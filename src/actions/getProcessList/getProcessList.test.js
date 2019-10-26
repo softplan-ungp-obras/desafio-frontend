@@ -2,11 +2,13 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 import {
+  handleDeleteProcess,
   handleGetProcessList,
   handleAddProcessList,
   ADD_PROCESS,
   GET_PROCESS_LIST,
-  LOADING_PROCESS
+  LOADING_PROCESS,
+  DELETE_PROCESS
 } from './getProcessList';
 
 const middlewares = [thunk];
@@ -44,7 +46,7 @@ describe('Test if the actions are called', () => {
     expect(store.getActions()).toEqual(expectedValue);
   });
 
-  it('should dispatch handleAddProcessList', async () => {
+  it('should dispatch addProcessOnList', async () => {
     // given
     const addProcessOnList = process => {
       return {
@@ -63,6 +65,26 @@ describe('Test if the actions are called', () => {
     // when
     const store = mockStore({});
     await store.dispatch(handleAddProcessList(process));
+
+    // then
+    expect(store.getActions()).toEqual(expectedValue);
+  });
+
+  it('should dispatch deleteProcessAction', async () => {
+    // given
+    const deleteProcessAction = process => {
+      return {
+        type: DELETE_PROCESS,
+        process
+      };
+    };
+    const processId = '7899c511-4aea-4ab0-b2f2-6a2934e6d5bc';
+    const process = {};
+
+    const expectedValue = [deleteProcessAction(process)];
+    // when
+    const store = mockStore({});
+    await store.dispatch(handleDeleteProcess(processId));
 
     // then
     expect(store.getActions()).toEqual(expectedValue);

@@ -31,13 +31,21 @@ import {
 const NewProcessForm = props => {
   let interestedInput = null;
 
+  const {
+    createProcess,
+    location,
+    getProcessList,
+    processDetail,
+    fromProcess
+  } = props;
+
   const initialState = {
-    descricao: '',
-    assunto: '',
-    interessados: []
+    descricao: fromProcess ? processDetail.descricao : '',
+    assunto: fromProcess ? processDetail.assunto : '',
+    interessados: fromProcess ? processDetail.interessados : []
   };
 
-  const { createProcess, location, getProcessList } = props;
+  console.log(initialState);
 
   const [formData, SetFormData] = useState(initialState);
 
@@ -92,6 +100,7 @@ const NewProcessForm = props => {
             id="subject"
             type="text"
             name="subject"
+            defaultValue={formData.assunto}
             onChange={e => debouncedCallback(e.target.value, 'assunto')}
           />
         </FieldWrapper>
@@ -135,6 +144,7 @@ const NewProcessForm = props => {
           <FormTextArea
             id="description"
             name="description"
+            defaultValue={formData.descricao}
             onChange={e => debouncedCallback(e.target.value, 'descricao')}
           />
         </FieldWrapper>
@@ -146,6 +156,12 @@ const NewProcessForm = props => {
   );
 };
 
+const mapStateToProps = ({ processDetail }) => {
+  return {
+    processDetail: processDetail.data
+  };
+};
+
 const mapDispatchToProps = {
   createProcess: handleAddProcessList,
   getProcessList: handleGetProcessList
@@ -153,12 +169,15 @@ const mapDispatchToProps = {
 
 NewProcessForm.propTypes = {
   createProcess: PropTypes.func,
-  location: PropTypes.object
+  getProcessList: PropTypes.func,
+  location: PropTypes.object,
+  processDetail: PropTypes.object,
+  fromProcess: PropTypes.bool
 };
 
 export default withRouter(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(NewProcessForm)
 );

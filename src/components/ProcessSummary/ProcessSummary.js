@@ -13,8 +13,7 @@ import {
 const ProcessSummary = props => {
   const { process, location, isListReduced } = props;
 
-  const isProcessActive =
-    location.pathname === `/process-detail/process=${process.id}`;
+  const isProcessActive = location.state.processId === process.id;
 
   return (
     <ProcessRow isProcessActive={isProcessActive}>
@@ -28,7 +27,7 @@ const ProcessSummary = props => {
         <ProcessColumn isListReduced={isListReduced}>
           <img src="https://via.placeholder.com/80" alt="" />
         </ProcessColumn>
-        <ProcessColumn margin="0 20% 0 0">
+        <ProcessColumn margin="0 10% 0 0">
           <ColumnHeader
             isProcessActive={isProcessActive}
             isListReduced={isListReduced}

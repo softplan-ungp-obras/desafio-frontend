@@ -9,9 +9,10 @@ import SearchIcon from './SearchIcon';
 import { SearchWrapper, Input, InputIcon } from './SearchInput.styles';
 
 import { handleGetProcessList } from '../../actions/getProcessList/getProcessList';
+import { handleGetProcessDetail } from '../../actions/getProcessDetail/getProcessDetail';
 
 const SearchInput = props => {
-  const { history, location, getProcessList } = props;
+  const { history, location, getProcessList, processList } = props;
   const initialState = location.state ? location.state.searchTerm : '';
   const [searchTerm, setSearchTerm] = useState(initialState);
 
@@ -22,7 +23,20 @@ const SearchInput = props => {
   const handleSubmit = e => {
     e.preventDefault();
     if (!searchTerm || searchTerm.length === 0) return;
-    if (location.pathname !== '/') {
+    if (location.pathname.indexOf('/process-detail/') >= 0) {
+      getProcessList(searchTerm);
+      const processId = processList[0].id;
+
+      history.push({
+        pathname: `/process-detail/process=${processId}`,
+        state: { searchTerm, processId }
+      });
+      return;
+    }
+    if (
+      location.pathname !== '/' &&
+      !location.pathname.indexOf('/process-detail/') >= 0
+    ) {
       history.replace({ state: { searchTerm } });
       getProcessList(searchTerm);
       return;
@@ -56,16 +70,26 @@ SearchInput.propTypes = {
   history: PropTypes.object,
   location: PropTypes.object,
   searchValue: PropTypes.string,
-  getProcessList: PropTypes.func
+  getProcessList: PropTypes.func,
+  getProcessDetail: PropTypes.func,
+  processList: PropTypes.array,
+  processDetail: PropTypes.object
+};
+
+const mapStateToProps = ({ processList }) => {
+  return {
+    processList: processList.data
+  };
 };
 
 const mapDispatchToProps = {
-  getProcessList: handleGetProcessList
+  getProcessList: handleGetProcessList,
+  getProcessDetail: handleGetProcessDetail
 };
 
 export default withRouter(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(SearchInput)
 );
