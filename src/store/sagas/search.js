@@ -8,7 +8,7 @@ export function* getSearch(action) {
     const { data } = yield call(
       api.get,
       `processo${
-        !!action && action.payload.data ? `?q=${action.payload.data}` : ''
+        !!action && action.payload.term ? `?q=${action.payload.term}` : ''
       }`
     );
 

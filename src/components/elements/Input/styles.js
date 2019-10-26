@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import theme from '~/styles/theme';
 
 export const Box = styled.div`
@@ -21,5 +21,9 @@ export const Icon = styled.span`
   right: 10px;
   font-size: 22px;
   color: ${theme.grey.main};
-  cursor: pointer;
+  ${props =>
+    props.iconPointer &&
+    css`
+      cursor: pointer;
+    `}
 `;

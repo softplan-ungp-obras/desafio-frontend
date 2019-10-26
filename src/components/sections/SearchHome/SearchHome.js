@@ -37,6 +37,7 @@ export default function SearchHome() {
           name="search"
           value={formData.search}
           icon="SEARCH"
+          iconPointer
           onSubmit={handleSubmit}
         />
         <Text as="p" level="2">

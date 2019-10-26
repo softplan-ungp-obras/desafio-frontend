@@ -8,6 +8,7 @@ export const Types = {
 
 export const INITIAL_STATE = {
   data: [],
+  term: '',
   loading: false,
 };
 
@@ -16,6 +17,7 @@ export default function documents(state = INITIAL_STATE, action) {
     case Types.GET_REQUEST:
       return produce(state, draft => {
         draft.loading = true;
+        draft.term = action.payload.term;
       });
     case Types.GET_SUCCESS:
       return produce(state, draft => {
@@ -33,9 +35,9 @@ export default function documents(state = INITIAL_STATE, action) {
 }
 
 export const Creators = {
-  getSearchRequest: (data, redirect) => ({
+  getSearchRequest: (term, redirect) => ({
     type: Types.GET_REQUEST,
-    payload: { data, redirect },
+    payload: { term, redirect },
   }),
   getSearchSuccess: data => ({
     type: Types.GET_SUCCESS,

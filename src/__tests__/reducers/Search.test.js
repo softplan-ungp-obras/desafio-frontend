@@ -12,6 +12,7 @@ describe('Reducers search', () => {
 
     expect(state).toStrictEqual({
       data: [1, 2, 3],
+      term: '',
       loading: false,
     });
   });
@@ -20,12 +21,13 @@ describe('Reducers search', () => {
     expect(reducer(undefined, {})).toStrictEqual(INITIAL_STATE);
   });
 
-  // it('get itens', () => {
-  //   const state = reducer(INITIAL_STATE, SearchActions.getSteps());
+  it('should be able to remove itens', () => {
+    const state = reducer(INITIAL_STATE, SearchActions.getSearchFailure());
 
-  //   expect(state).toStrictEqual({
-  //     data: [],
-  //     loading: true,
-  //   });
-  // });
+    expect(state).toStrictEqual({
+      data: [],
+      term: '',
+      loading: false,
+    });
+  });
 });
