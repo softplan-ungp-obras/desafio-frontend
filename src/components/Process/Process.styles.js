@@ -58,3 +58,29 @@ export const InterestedList = styled.ul`
 export const DescriptionWrapper = styled.div`
   width: 100%;
 `;
+
+export const ProcessActions = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+  width: 100%;
+`;
+
+export const EditButton = styled.button`
+  background: ${colors.white};
+  border: solid 1px ${colors.primary};
+  box-shadow: 0 4px 3px ${colors.black100};
+  color: ${colors.primary};
+  font: 700 14px 'Montserrat';
+  margin: 0 0 0 15px;
+  padding: 10px 30px;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    background: ${colors.primary};
+    color: ${colors.white};
+    transition: all 0.2s ease-in-out;
+  }
+`;
