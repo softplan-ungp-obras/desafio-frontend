@@ -5,7 +5,7 @@ import {
   GET_PROCESS_LIST,
   ADD_PROCESS,
   LOADING_PROCESS
-} from '../../actions/getProcessList';
+} from '../../actions/getProcessList/getProcessList';
 
 const initialState = {
   data: [

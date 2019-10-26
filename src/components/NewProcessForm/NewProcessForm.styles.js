@@ -31,9 +31,9 @@ export const FormTextArea = styled.textarea`
   border-bottom: solid 1px ${colors.black300};
   color: ${colors.black300};
   font: normal 14px 'Montserrat';
+  min-height: 60px;
   padding: 3px;
   width: 100%;
-  resize: none;
 `;
 
 export const FieldWrapper = styled.div`

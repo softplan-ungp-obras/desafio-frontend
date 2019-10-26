@@ -2,41 +2,65 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  ProcessRow,
-  ProcessColumn,
-  ColumnHeader,
-  ColumnText
+  ProcessWrapper,
+  ProcessHeader,
+  ImageWrapper,
+  ProcessHeaderInfo,
+  HeaderInfoLabel,
+  HeaderInfoText,
+  HeaderInfoWrapper,
+  InterestedList
 } from './Process.styles';
 
 const Process = props => {
-  const { process } = props;
+  const { processDetail } = props;
+
+  const breakParagraph = text => {
+    const regex = /\r?\n/g;
+    return text.split(regex).map((line, index) => {
+      return <p key={`key_${index}`}>{line}</p>;
+    });
+  };
+
   return (
-    <ProcessRow>
-      <ProcessColumn>
-        <img src="https://via.placeholder.com/80" alt="" />
-      </ProcessColumn>
-      <ProcessColumn margin="0 20% 0 0">
-        <ColumnHeader>Número</ColumnHeader>
-        <ColumnText>{process.numero}</ColumnText>
-      </ProcessColumn>
-      <ProcessColumn>
-        <ColumnHeader>Assunto</ColumnHeader>
-        <ColumnText>{process.assunto}</ColumnText>
-      </ProcessColumn>
-      <ProcessColumn margin="0 10% 0 0">
-        <ColumnHeader>Interessado</ColumnHeader>
-        <ColumnText>{process.interessados[0]}</ColumnText>
-      </ProcessColumn>
-      <ProcessColumn>
-        <ColumnHeader>Descrição</ColumnHeader>
-        <ColumnText>{process.descricao}</ColumnText>
-      </ProcessColumn>
-    </ProcessRow>
+    <ProcessWrapper>
+      <ProcessHeader>
+        <ImageWrapper>
+          <img src="https://via.placeholder.com/110" alt="" />
+        </ImageWrapper>
+        <ProcessHeaderInfo>
+          <HeaderInfoWrapper>
+            <HeaderInfoLabel>Processo</HeaderInfoLabel>
+            <HeaderInfoText>{processDetail.numero}</HeaderInfoText>
+          </HeaderInfoWrapper>
+          <HeaderInfoWrapper>
+            <HeaderInfoLabel>Data</HeaderInfoLabel>
+            <HeaderInfoText>{processDetail.entrada}</HeaderInfoText>
+          </HeaderInfoWrapper>
+          <HeaderInfoWrapper width="100%">
+            <HeaderInfoLabel>Assunto</HeaderInfoLabel>
+            <HeaderInfoText>{processDetail.assunto}</HeaderInfoText>
+          </HeaderInfoWrapper>
+        </ProcessHeaderInfo>
+      </ProcessHeader>
+      <div>
+        <HeaderInfoLabel>Interessados</HeaderInfoLabel>
+        <InterestedList>
+          {processDetail.interessados.map(interested => {
+            return <li key={interested}>{interested}</li>;
+          })}
+        </InterestedList>
+      </div>
+      <div>
+        <HeaderInfoLabel>Descrição</HeaderInfoLabel>
+        {breakParagraph(processDetail.descricao)}
+      </div>
+    </ProcessWrapper>
   );
 };
 
 Process.propTypes = {
-  process: PropTypes.object
+  processDetail: PropTypes.object
 };
 
 export default Process;

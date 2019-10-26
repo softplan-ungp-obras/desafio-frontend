@@ -1,28 +1,30 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
+import ProcessRoster from '../../components/ProcessRoster/ProcessRoster';
+import SearchInput from '../../components/SearchInput/SearchInput';
+import NewProcessModal from '../../components/NewProcessModal/NewProcessModal';
+import Process from '../../components/Process/Process';
+import LoadingIcon from '../ProcessList/LoadingIcon';
 
 import colors from '../../helpers/colors';
 
 import { handleGetProcessList } from '../../actions/getProcessList/getProcessList';
+import { handleGetProcessDetail } from '../../actions/getProcessDetail/getProcessDetail';
 
-import NewProcessModal from '../../components/NewProcessModal/NewProcessModal';
-import SearchInput from '../../components/SearchInput/SearchInput';
-import ProcessRoster from '../../components/ProcessRoster/ProcessRoster';
-
-import LoadingIcon from './LoadingIcon';
 import {
   ProcessListHeaderWrapper,
-  NewProcessButton,
   HeaderTitle,
+  NewProcessButton,
   ProcessListWrapper,
   LoaderWrapper
-} from './ProcessList.styles';
+} from '../ProcessList/ProcessList.styles';
 
-const ProcessList = props => {
+const ProcessDetail = props => {
   const { state } = props.location;
-  const { getProcessList, isLoading } = props;
+  const { getProcessDetail, getProcessList, processDetail, isLoading } = props;
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -32,7 +34,8 @@ const ProcessList = props => {
 
   useEffect(() => {
     getProcessList(state.searchTerm);
-  }, [state.searchTerm, getProcessList]);
+    getProcessDetail(state.processId);
+  }, [state.processId, state.searchTerm, getProcessDetail, getProcessList]);
 
   return (
     <Fragment>
@@ -50,24 +53,29 @@ const ProcessList = props => {
             <LoadingIcon size="80px" color={colors.black200} />
           </LoaderWrapper>
         )}
-        {isLoading === false && <ProcessRoster />}
+        {isLoading === false && <ProcessRoster reduced />}
+        {isLoading === false && <Process processDetail={processDetail} />}
       </ProcessListWrapper>
     </Fragment>
   );
 };
 
-const mapStateToProps = ({ processList }) => {
+const mapStateToProps = ({ processList, processDetail }) => {
   return {
+    processDetail: processDetail.data,
     isLoading: processList.isProcessQueryLoading
   };
 };
 
 const mapDispatchToProps = {
+  getProcessDetail: handleGetProcessDetail,
   getProcessList: handleGetProcessList
 };
 
-ProcessList.propTypes = {
+ProcessDetail.propTypes = {
   location: PropTypes.object,
+  processDetail: PropTypes.object,
+  getProcessDetail: PropTypes.func,
   getProcessList: PropTypes.func,
   isLoading: PropTypes.bool
 };
@@ -76,5 +84,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(ProcessList)
+  )(ProcessDetail)
 );
