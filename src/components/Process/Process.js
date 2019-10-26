@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import NewProcessModal from '../NewProcessModal/NewProcessModal';
+
+import { handleDeleteProcess } from '../../actions/getProcessList/getProcessList';
 
 import {
   ProcessWrapper,
@@ -15,17 +18,18 @@ import {
   DescriptionWrapper,
   EditButton,
   ProcessActions,
-  DescriptionText
+  DescriptionText,
+  DeleteButton
 } from './Process.styles';
 
 const Process = props => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
+  const { processDetail, deleteProcess } = props;
+
   const handleModal = () => {
     setModalIsOpen(!modalIsOpen);
   };
-
-  const { processDetail } = props;
 
   const breakParagraph = text => {
     const regex = /\r?\n/g;
@@ -68,6 +72,9 @@ const Process = props => {
         {breakParagraph(processDetail.descricao)}
       </DescriptionWrapper>
       <ProcessActions>
+        <DeleteButton onClick={() => deleteProcess(processDetail.id)}>
+          Remover
+        </DeleteButton>
         <EditButton onClick={handleModal}>Editar</EditButton>
       </ProcessActions>
       <NewProcessModal
@@ -80,7 +87,15 @@ const Process = props => {
 };
 
 Process.propTypes = {
-  processDetail: PropTypes.object
+  processDetail: PropTypes.object,
+  deleteProcess: PropTypes.func
 };
 
-export default Process;
+const mapDispatchToProps = {
+  deleteProcess: handleDeleteProcess
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Process);
