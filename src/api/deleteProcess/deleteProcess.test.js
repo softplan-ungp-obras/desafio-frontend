@@ -17,7 +17,7 @@ describe('Delete process from api', () => {
   it('should return the deleted process', async () => {
     // given
     const processId = 'c6b01d83-5eb3-4472-9f42-a9ee7245e490';
-    mockAxios.get.mockImplementationOnce(() =>
+    mockAxios.delete.mockImplementationOnce(() =>
       Promise.resolve({
         data: mockResult
       })
@@ -28,7 +28,7 @@ describe('Delete process from api', () => {
 
     // then
     expect(response).toEqual(mockResult);
-    expect(mockAxios.get).toHaveBeenCalledTimes(1);
-    expect(mockAxios.get).toHaveBeenCalledWith(`${BASE_URL}/${processId}`);
+    expect(mockAxios.delete).toHaveBeenCalledTimes(1);
+    expect(mockAxios.delete).toHaveBeenCalledWith(`${BASE_URL}/${processId}`);
   });
 });

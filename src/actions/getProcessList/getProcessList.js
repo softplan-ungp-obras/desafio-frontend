@@ -1,9 +1,11 @@
 import processSearchList from '../../api/processSearchList/processSearchList';
 import createProcess from '../../api/createProcess/createProcess';
+import deleteProcess from '../../api/deleteProcess/deleteProcess';
 
 export const GET_PROCESS_LIST = 'GET_PROCESS_LIST';
 export const ADD_PROCESS = 'ADD_PROCESS';
 export const LOADING_PROCESS = 'LOADING_PROCESS';
+export const DELETE_PROCESS = 'DELETE_PROCESS';
 
 const getProcessList = data => {
   return {
@@ -26,8 +28,25 @@ const isProcessQueryLoading = (isLoading = false) => {
   };
 };
 
+const deleteProcessAction = process => {
+  return {
+    type: DELETE_PROCESS,
+    process
+  };
+};
+
+export const handleDeleteProcess = processId => {
+  return dispatch => {
+    return deleteProcess(processId)
+      .then(result => {
+        dispatch(deleteProcessAction(result));
+      })
+      .catch(err => console.log(`there is an error on api: ${err}`));
+  };
+};
+
 export const handleAddProcessList = process => {
-  return async dispatch => {
+  return dispatch => {
     return createProcess(process)
       .then(() => {
         dispatch(addProcessOnList(process));
@@ -37,7 +56,7 @@ export const handleAddProcessList = process => {
 };
 
 export const handleGetProcessList = searchTerm => {
-  return async dispatch => {
+  return dispatch => {
     dispatch(isProcessQueryLoading(true));
     return processSearchList(searchTerm).then(result => {
       dispatch(getProcessList(result));
