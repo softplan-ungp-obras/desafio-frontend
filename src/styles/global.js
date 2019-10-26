@@ -25,6 +25,12 @@ const GlobalStyle = createGlobalStyle`
     font-weight:normal;
   }
 
+  textarea{
+    font-family: 'Montserrat', sans-serif;
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+  }
+
   button{
     border: none;
   background: none;

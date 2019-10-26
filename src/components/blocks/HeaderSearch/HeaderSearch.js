@@ -15,7 +15,7 @@ export default function HeaderSearch() {
   }
 
   const [handleChange] = useDebouncedCallback(value => {
-    dispatch(SearchActions.getSearchRequest(value, true));
+    dispatch(SearchActions.getSearchRequest(value));
     handleLoading(false);
   }, 300);
 

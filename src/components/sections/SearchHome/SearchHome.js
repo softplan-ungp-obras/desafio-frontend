@@ -4,6 +4,7 @@ import history from '~/routes/history';
 import { Title, Text } from '~/components/elements';
 import { Box, InputStyle, CustomLink } from './styles';
 import { Creators as SearchActions } from '~/store/ducks/search';
+import { Creators as PortalsActions } from '~/store/ducks/portals';
 
 export default function SearchHome() {
   const [formData, setFormData] = useState({
@@ -27,6 +28,10 @@ export default function SearchHome() {
     history.push('/dashboard');
   }
 
+  function handleAddProcess() {
+    dispatch(PortalsActions.setModal(true));
+  }
+
   return (
     <Box>
       <form onSubmit={handleSubmit}>
@@ -42,11 +47,13 @@ export default function SearchHome() {
           iconPointer
           onSubmit={handleSubmit}
         />
-        <Text as="p" level="2">
-          Você pode criar um novo processo{' '}
-          <CustomLink>clicando aqui</CustomLink>
-        </Text>
       </form>
+      <div>
+        <Text as="span" level="2">
+          Você pode criar um novo processo
+        </Text>{' '}
+        <CustomLink onClick={handleAddProcess}>clicando aqui</CustomLink>
+      </div>
     </Box>
   );
 }

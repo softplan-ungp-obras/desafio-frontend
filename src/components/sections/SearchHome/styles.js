@@ -11,6 +11,10 @@ export const Box = styled.div`
   max-width: 450px;
   margin-left: auto;
   margin-right: auto;
+  flex-direction: column;
+  > div {
+    width: 100%;
+  }
   form {
     display: block;
     width: 100%;

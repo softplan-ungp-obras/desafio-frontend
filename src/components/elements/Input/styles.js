@@ -13,13 +13,21 @@ export const Box = styled.div`
     font-size: 15px;
     font-weight: 600;
   }
+
+  ${props =>
+    props.level === 'normal' &&
+    css`
+      input {
+        height: 35px;
+      }
+    `}
 `;
 export const Icon = styled.span`
   position: absolute;
-  top: 50%;
+  top: 55%;
   transform: translate(0, -50%);
   right: 10px;
-  font-size: 22px;
+  font-size: 24px;
   color: ${theme.grey.main};
   ${props =>
     props.iconPointer &&
