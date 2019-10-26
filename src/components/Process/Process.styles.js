@@ -54,3 +54,7 @@ export const InterestedList = styled.ul`
   margin-top: 0;
   width: 100%;
 `;
+
+export const DescriptionWrapper = styled.div`
+  width: 100%;
+`;

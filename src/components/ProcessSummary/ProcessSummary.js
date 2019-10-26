@@ -28,7 +28,7 @@ const ProcessSummary = props => {
         <ProcessColumn isListReduced={isListReduced}>
           <img src="https://via.placeholder.com/80" alt="" />
         </ProcessColumn>
-        <ProcessColumn margin="0 20% 0 0">
+        <ProcessColumn margin="0 10% 0 0">
           <ColumnHeader
             isProcessActive={isProcessActive}
             isListReduced={isListReduced}

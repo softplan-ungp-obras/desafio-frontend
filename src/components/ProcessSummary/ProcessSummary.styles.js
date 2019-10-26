@@ -41,6 +41,7 @@ export const ColumnText = styled.p`
 `;
 
 export const LinkStyles = {
+  alignItems: 'center',
   color: 'inherit',
   display: 'flex',
   flexWrap: 'wrap',

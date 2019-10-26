@@ -9,7 +9,8 @@ import {
   HeaderInfoLabel,
   HeaderInfoText,
   HeaderInfoWrapper,
-  InterestedList
+  InterestedList,
+  DescriptionWrapper
 } from './Process.styles';
 
 const Process = props => {
@@ -51,10 +52,10 @@ const Process = props => {
           })}
         </InterestedList>
       </div>
-      <div>
+      <DescriptionWrapper>
         <HeaderInfoLabel>Descrição</HeaderInfoLabel>
         {breakParagraph(processDetail.descricao)}
-      </div>
+      </DescriptionWrapper>
     </ProcessWrapper>
   );
 };
