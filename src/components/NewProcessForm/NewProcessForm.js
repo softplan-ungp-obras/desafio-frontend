@@ -96,7 +96,7 @@ const NewProcessForm = props => {
           />
         </FieldWrapper>
         <FieldWrapper>
-          <Label>Interessados</Label>
+          {formData.interessados.length >= 1 && <Label>Interessados</Label>}
           <InterestedList>
             {formData.interessados.map(interested => {
               return (

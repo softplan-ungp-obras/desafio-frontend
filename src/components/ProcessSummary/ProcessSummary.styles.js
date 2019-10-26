@@ -26,12 +26,15 @@ export const ProcessColumn = styled.div`
 
 export const ColumnHeader = styled.p`
   font: 700 14px 'Montserrat';
+  color: ${props =>
+    props.isProcessActive ? `${colors.primary}` : `${colors.black200}`};
   margin-top: ${props => (props.isListReduced ? '0' : 'inherit')};
   margin-bottom: 5px;
 `;
 
 export const ColumnText = styled.p`
-  color: ${colors.black300};
+  color: ${props =>
+    props.isProcessActive ? `${colors.primary}` : `${colors.black300}`};
   font: 400 14px 'Montserrat';
   margin-top: 0;
   margin-bottom: ${props => (props.isListReduced ? '5px' : 'inherit')};

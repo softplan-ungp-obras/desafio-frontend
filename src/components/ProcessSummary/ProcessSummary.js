@@ -16,8 +16,6 @@ const ProcessSummary = props => {
   const isProcessActive =
     location.pathname === `/process-detail/process=${process.id}`;
 
-  console.log(process.interessados[0]);
-
   return (
     <ProcessRow isProcessActive={isProcessActive}>
       <Link
@@ -31,28 +29,50 @@ const ProcessSummary = props => {
           <img src="https://via.placeholder.com/80" alt="" />
         </ProcessColumn>
         <ProcessColumn margin="0 20% 0 0">
-          <ColumnHeader isListReduced={isListReduced}>Número</ColumnHeader>
-          <ColumnText isListReduced={isListReduced}>
+          <ColumnHeader
+            isProcessActive={isProcessActive}
+            isListReduced={isListReduced}
+          >
+            Número
+          </ColumnHeader>
+          <ColumnText
+            isProcessActive={isProcessActive}
+            isListReduced={isListReduced}
+          >
             {process.numero}
           </ColumnText>
         </ProcessColumn>
         <ProcessColumn>
-          <ColumnHeader isListReduced={isListReduced}>Assunto</ColumnHeader>
-          <ColumnText isListReduced={isListReduced}>
+          <ColumnHeader
+            isProcessActive={isProcessActive}
+            isListReduced={isListReduced}
+          >
+            Assunto
+          </ColumnHeader>
+          <ColumnText
+            isProcessActive={isProcessActive}
+            isListReduced={isListReduced}
+          >
             {process.assunto}
           </ColumnText>
         </ProcessColumn>
         <ProcessColumn margin="0 10% 0 0">
-          <ColumnHeader>Interessado</ColumnHeader>
-          <ColumnText>
+          <ColumnHeader isProcessActive={isProcessActive}>
+            Interessado
+          </ColumnHeader>
+          <ColumnText isProcessActive={isProcessActive}>
             {process.interessados[0] === undefined
               ? 'n/a'
               : process.interessados[0]}
           </ColumnText>
         </ProcessColumn>
         <ProcessColumn isListReduced={isListReduced}>
-          <ColumnHeader>Descrição</ColumnHeader>
-          <ColumnText>{process.descricao}</ColumnText>
+          <ColumnHeader isProcessActive={isProcessActive}>
+            Descrição
+          </ColumnHeader>
+          <ColumnText isProcessActive={isProcessActive}>
+            {process.descricao}
+          </ColumnText>
         </ProcessColumn>
       </Link>
     </ProcessRow>

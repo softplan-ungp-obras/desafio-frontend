@@ -54,7 +54,7 @@ const ProcessDetail = props => {
           </LoaderWrapper>
         )}
         {isLoading === false && <ProcessRoster reduced />}
-        <Process processDetail={processDetail} />
+        {isLoading === false && <Process processDetail={processDetail} />}
       </ProcessListWrapper>
     </Fragment>
   );
