@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-
+import { hot } from 'react-hot-loader/root';
 import './config/reactotron';
 import { Provider } from 'react-redux';
 import GlobalStyle from './styles/global';
@@ -24,4 +24,4 @@ function App() {
   );
 }
 
-export default App;
+export default process.env.NODE_ENV === 'development' ? hot(App) : App;
