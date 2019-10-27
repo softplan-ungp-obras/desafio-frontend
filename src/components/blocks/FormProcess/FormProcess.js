@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import { Form, Bottom, LimitSize } from './styles';
 import { Schema } from './validation';
@@ -8,7 +8,18 @@ import { Creators as ProcessActions } from '~/store/ducks/process';
 
 export default function FormProcess() {
   const dispatch = useDispatch();
-  const [add, setAdd] = useState([]);
+  const process = useSelector(state => state.search.data);
+  const idEdit = useSelector(state => state.portals.id);
+  const findItem = process.find(item => item.id === idEdit);
+
+  // INITIAL STATES
+  const initialInterests = findItem ? findItem.interessados : [];
+  const initialState = {
+    subject: findItem ? findItem.assunto : '',
+    description: findItem ? findItem.descricao : '',
+  };
+
+  const [add, setAdd] = useState(initialInterests);
 
   function addItems(val) {
     setAdd([...add, val]);
@@ -16,7 +27,7 @@ export default function FormProcess() {
 
   return (
     <Formik
-      initialValues={{ subject: '' }}
+      initialValues={initialState}
       validationSchema={Schema}
       onSubmit={values => {
         const items = {
@@ -79,7 +90,9 @@ export default function FormProcess() {
             }
           />
           <Bottom>
-            <Button type="submit">CADASTRAR</Button>
+            <Button type={idEdit ? 'button' : 'submit'}>
+              {idEdit ? 'EDITAR' : 'CADASTRAR'}
+            </Button>
           </Bottom>
         </Form>
       )}

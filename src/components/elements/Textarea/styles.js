@@ -11,7 +11,7 @@ export const Box = styled.div`
     font-size: 15px;
     font-weight: 600;
     resize: none;
-    height: 80px;
+    height: 100px;
     display: block;
     width: 100%;
   }

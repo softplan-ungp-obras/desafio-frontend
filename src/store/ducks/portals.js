@@ -6,13 +6,15 @@ export const Types = {
 
 export const INITIAL_STATE = {
   modal: false,
+  id: '',
 };
 
 export default function portals(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.SET_MODAL:
       return produce(state, draft => {
-        draft.modal = action.payload;
+        draft.modal = action.payload.modal;
+        draft.id = action.payload.id;
       });
 
     default:
@@ -21,8 +23,8 @@ export default function portals(state = INITIAL_STATE, action) {
 }
 
 export const Creators = {
-  setModal: value => ({
+  setModal: (modal, id) => ({
     type: Types.SET_MODAL,
-    payload: value,
+    payload: { modal, id },
   }),
 };

@@ -78,11 +78,7 @@ export default function DashboardList() {
           </Overlay>
         )}
       </Relative>
-      {idCard && (
-        <CardDashboard handleEdit={handleEdit} id={idCard}>
-          CARD
-        </CardDashboard>
-      )}
+      {idCard && <CardDashboard id={idCard}>CARD</CardDashboard>}
     </Box>
   );
 }

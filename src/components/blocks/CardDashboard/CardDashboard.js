@@ -12,8 +12,9 @@ import {
   Full,
 } from './styles';
 import { Creators as ProcessActions } from '~/store/ducks/process';
+import { Creators as PortalsActions } from '~/store/ducks/portals';
 
-export default function CardDashboard({ id, handleEdit }) {
+export default function CardDashboard({ id }) {
   const dispatch = useDispatch();
   const findInfo = useSelector(state => state.process.data);
 
@@ -23,6 +24,10 @@ export default function CardDashboard({ id, handleEdit }) {
 
   function handleRemove() {
     dispatch(ProcessActions.removeRequest(id));
+  }
+
+  function handleAddProcess() {
+    dispatch(PortalsActions.setModal(true, id));
   }
 
   return (
@@ -81,7 +86,7 @@ export default function CardDashboard({ id, handleEdit }) {
         >
           Remover
         </Button>
-        <Button onClick={() => handleEdit('')}>Editar</Button>
+        <Button onClick={() => handleAddProcess()}>Editar</Button>
       </LineFour>
     </Box>
   );
