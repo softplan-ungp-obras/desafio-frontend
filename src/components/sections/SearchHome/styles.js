@@ -14,6 +14,7 @@ export const Box = styled.div`
   flex-direction: column;
   > div {
     width: 100%;
+    text-align: center;
   }
   form {
     display: block;

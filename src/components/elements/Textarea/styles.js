@@ -9,7 +9,7 @@ export const Box = styled.div`
     padding: 15px;
     color: ${theme.grey.main};
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 400;
     resize: none;
     height: 100px;
     display: block;
