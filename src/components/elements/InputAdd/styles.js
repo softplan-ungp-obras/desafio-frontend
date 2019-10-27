@@ -1,18 +1,16 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import theme from '~/styles/theme';
 
 export const Box = styled.div`
-  position: relative;
-  textarea {
+  input {
     border: 1px solid ${theme.lighGrey.main};
     padding: 15px;
+    height: 45px;
+    width: 100%;
     box-shadow: 0px 3px 2px ${theme.lighGrey.main};
     color: ${theme.grey.main};
     font-size: 15px;
     font-weight: 600;
-    resize: none;
-    height: 150px;
-    display: block;
-    width: 100%;
   }
 `;
+export const Header = styled.div``;

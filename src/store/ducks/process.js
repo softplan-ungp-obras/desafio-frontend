@@ -8,6 +8,10 @@ export const Types = {
   REMOVE_REQUEST: 'process/REMOVE_REQUEST',
   REMOVE_SUCCESS: 'process/REMOVE_SUCCESS',
   REMOVE_FAILURE: 'process/REMOVE_FAILURE',
+
+  REGISTER_REQUEST: 'process/REGISTER_REQUEST',
+  REGISTER_SUCCESS: 'process/REGISTER_SUCCESS',
+  REGISTER_FAILURE: 'process/REGISTER_FAILURE',
 };
 
 export const INITIAL_STATE = {
@@ -49,6 +53,20 @@ export default function process(state = INITIAL_STATE, action) {
         draft.data = {};
       });
 
+    // REGISTER PROCESS
+    case Types.REGISTER_REQUEST:
+      return produce(state, draft => {
+        draft.loading = true;
+      });
+    case Types.REGISTER_SUCCESS:
+      return produce(state, draft => {
+        draft.loading = false;
+      });
+    case Types.REGISTER_FAILURE:
+      return produce(state, draft => {
+        draft.loading = false;
+      });
+
     default:
       return state;
   }
@@ -66,6 +84,7 @@ export const Creators = {
   getProcessFailure: () => ({
     type: Types.GET_FAILURE,
   }),
+
   removeRequest: id => ({
     type: Types.REMOVE_REQUEST,
     payload: id,
@@ -76,5 +95,17 @@ export const Creators = {
   }),
   removeFailure: () => ({
     type: Types.REMOVE_FAILURE,
+  }),
+
+  registerRequest: (items, redirect) => ({
+    type: Types.REGISTER_REQUEST,
+    payload: { items, redirect },
+  }),
+  registerSuccess: data => ({
+    type: Types.REGISTER_SUCCESS,
+    payload: data,
+  }),
+  registerFailure: () => ({
+    type: Types.REGISTER_FAILURE,
   }),
 };

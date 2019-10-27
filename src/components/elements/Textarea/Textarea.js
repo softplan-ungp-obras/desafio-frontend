@@ -47,7 +47,7 @@ Textarea.defaultProps = {
 };
 
 Textarea.propTypes = {
-  level: PropTypes.oneOf('large', 'normal'),
+  level: PropTypes.oneOf(['large', 'normal']),
   htmlFor: PropTypes.string,
   className: PropTypes.string,
   onChange: PropTypes.func.isRequired,

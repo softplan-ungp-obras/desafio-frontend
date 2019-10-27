@@ -42,4 +42,19 @@ export const ButtonStyle = styled.button`
         color: ${theme.grey.main};
       }
     `}
+
+    ${props =>
+      props.disabled &&
+      css`
+        background: ${theme.lighGrey.main};
+        color: ${theme.black.main};
+        border: 1px solid ${theme.lighGrey.main};
+        cursor: none;
+        &:hover {
+          background: ${theme.lighGrey.main};
+          color: ${theme.lighGrey.main};
+          cursor: initial;
+        }
+      `}
+
 `;

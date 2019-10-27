@@ -31,4 +31,6 @@ export const ModalStyle = styled(Modal)`
   max-height: 600px;
   width: 100%;
   margin: auto;
+  flex-direction: column;
+  text-align: left;
 `;
