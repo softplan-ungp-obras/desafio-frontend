@@ -6,7 +6,12 @@ import PropTypes from 'prop-types';
 import colors from '../../helpers/colors';
 import SearchIcon from './SearchIcon';
 
-import { SearchWrapper, Input, InputIcon } from './SearchInput.styles';
+import {
+  SearchWrapper,
+  Input,
+  InputIcon,
+  SearchForm
+} from './SearchInput.styles';
 
 import { handleGetProcessList } from '../../actions/getProcessList/getProcessList';
 import { handleGetProcessDetail } from '../../actions/getProcessDetail/getProcessDetail';
@@ -48,21 +53,19 @@ const SearchInput = props => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <SearchWrapper>
-          <Input
-            placeholder="Pesquise por uma informação do processo"
-            type="text"
-            defaultValue={searchTerm}
-            onChange={e => setSearchTerm(e.target.value)}
-          />
-          <InputIcon type="sumit">
-            <SearchIcon size="20px" color={colors.black200} />
-          </InputIcon>
-        </SearchWrapper>
-      </form>
-    </div>
+    <SearchForm onSubmit={handleSubmit}>
+      <SearchWrapper>
+        <Input
+          placeholder="Pesquise por uma informação do processo"
+          type="text"
+          defaultValue={searchTerm}
+          onChange={e => setSearchTerm(e.target.value)}
+        />
+        <InputIcon type="sumit">
+          <SearchIcon size="20px" color={colors.black200} />
+        </InputIcon>
+      </SearchWrapper>
+    </SearchForm>
   );
 };
 

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import colors from '../../helpers/colors';
+import device from '../../helpers/breakpoints';
 
 export const ProcessWrapper = styled.div`
   border: solid 1px ${colors.black100};
@@ -9,6 +10,11 @@ export const ProcessWrapper = styled.div`
   flex-wrap: wrap;
   padding: 10px;
   position: relative;
+
+  @media ${device.mobile} {
+    margin: 0 30px 0 15px;
+    max-width: 100%;
+  }
 `;
 
 export const ProcessHeader = styled.div`

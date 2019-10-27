@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import colors from '../../helpers/colors';
+import device from '../../helpers/breakpoints';
 
 export const Label = styled.label`
   color: ${colors.black200};
@@ -23,6 +24,10 @@ export const FormInput = styled.input`
   margin-right: 10px;
   padding: 3px;
   width: 69%;
+
+  @media ${device.mobile} {
+    width: 100%;
+  }
 `;
 
 export const FormTextArea = styled.textarea`
@@ -43,6 +48,10 @@ export const FieldWrapper = styled.div`
   justify-content: ${props => (props.alignToRight ? 'flex-end' : 'flex-start')};
   margin: ${props => (props.margin ? props.margin : '0 0 20px 0')};
   width: ${props => (props.width ? props.width : '50%')};
+
+  @media ${device.mobile} {
+    width: 100%;
+  }
 `;
 
 export const FormWrapper = styled.div`
@@ -63,6 +72,11 @@ export const AddInterestedButton = styled.button`
     cursor: pointer;
     background: ${colors.black200};
     transition: all 0.2s ease-in-out;
+  }
+
+  @media ${device.mobile} {
+    align-self: flex-end;
+    margin: 20px 0;
   }
 `;
 
