@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 import colors from '../../helpers/colors';
+import device from '../../helpers/breakpoints';
 
 export const SearchWrapper = styled.div`
   align-items: center;
   display: flex;
   position: relative;
+
+  @media ${device.mobile} {
+    padding: 0 20px;
+  }
 `;
 
 export const Input = styled.input`
@@ -21,6 +26,10 @@ export const Input = styled.input`
     font-size: 14px;
     color: ${colors.black200};
   }
+
+  @media ${device.mobile} {
+    width: 100%;
+  }
 `;
 
 export const InputIcon = styled.button`
@@ -31,5 +40,15 @@ export const InputIcon = styled.button`
 
   &:hover {
     cursor: pointer;
+  }
+
+  @media ${device.mobile} {
+    right: 7%;
+  }
+`;
+
+export const SearchForm = styled.form`
+  @media ${device.mobile} {
+    width: 100%;
   }
 `;
