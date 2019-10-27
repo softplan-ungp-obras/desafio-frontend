@@ -9,12 +9,17 @@ export const List = styled.ul`
 
   @media ${device.mobile} {
     margin: 0 20px;
-    width: 100%;
+    width: auto;
   }
 `;
 
 export const ListItem = styled.li`
   margin: 0 0 20px 0;
+
+  @media ${device.mobile} {
+    margin-right: 15px;
+    max-width: 100%;
+  }
 `;
 
 export const NoResults = styled.div`

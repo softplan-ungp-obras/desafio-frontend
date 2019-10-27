@@ -63,7 +63,9 @@ export const ProcessListWrapper = styled.div`
   padding: 0 2%;
 
   @media ${device.mobile} {
+    flex-direction: column;
     margin: 0;
+    width: 100%;
   }
 `;
 
