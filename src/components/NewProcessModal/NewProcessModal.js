@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 
+import device from '../../helpers/breakpoints';
 import colors from '../../helpers/colors';
 
 import CloseIcon from './CloseIcon';
@@ -15,11 +16,24 @@ import {
 
 const NewProcessModal = props => {
   const { handleModal, modalIsOpen, fromProcess } = props;
+
+  const useMediaQuery = () => {
+    const mediaMatch = window.matchMedia(device.mobile);
+    const [matches, setMatches] = useState(mediaMatch.matches);
+
+    useEffect(() => {
+      const handler = e => setMatches(e.matches);
+      mediaMatch.addListener(handler);
+      return () => mediaMatch.removeListener(handler);
+    });
+    return matches;
+  };
+
   return (
     <Modal
       isOpen={modalIsOpen}
       onRequestClose={handleModal}
-      style={{ ...ModalStyles }}
+      style={ModalStyles(useMediaQuery())}
       ariaHideApp={false}
     >
       <ContentContainer>

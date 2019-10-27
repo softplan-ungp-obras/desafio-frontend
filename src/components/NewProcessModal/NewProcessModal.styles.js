@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ModalStyles = {
+export const ModalStyles = isMobile => ({
   content: {
     padding: '10px',
     top: '50%',
@@ -12,12 +12,12 @@ export const ModalStyles = {
     borderRadius: '0',
     border: 'none',
     boxShadow: '0px 5px 3px rgba(0, 0, 0, 0.3)',
-    width: '60%'
+    width: isMobile ? '80%' : '60%'
   },
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.6)'
   }
-};
+});
 
 export const ContentContainer = styled.div`
   display: flex;
