@@ -10,3 +10,8 @@ export const List = styled.ul`
 export const ListItem = styled.li`
   margin: 0 0 20px 0;
 `;
+
+export const NoResults = styled.div`
+  text-align: center;
+  width: 50%;
+`;

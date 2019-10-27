@@ -10,6 +10,7 @@ import middlewares from './middlewares';
 import Main from './pages/Main/Main';
 import ProcessList from './pages/ProcessList/ProcessList';
 import ProcessDetail from './pages/ProcessDetail/ProcessDetail';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 const store = createStore(reducer, middlewares);
 
@@ -21,6 +22,7 @@ const App = () => {
           <Route exact path="/" component={Main} />
           <Route path="/process-list" component={ProcessList} />
           <Route path="/process-detail/process=:id" component={ProcessDetail} />
+          <Route component={NotFoundPage} />
         </Switch>
       </Router>
     </Provider>

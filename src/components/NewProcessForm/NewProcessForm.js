@@ -45,8 +45,6 @@ const NewProcessForm = props => {
     interessados: fromProcess ? processDetail.interessados : []
   };
 
-  console.log(initialState);
-
   const [formData, SetFormData] = useState(initialState);
 
   const [debouncedCallback] = useDebouncedCallback((value, fieldName) => {
