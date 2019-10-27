@@ -26,7 +26,7 @@ Este projeto visa a criação de um template que possa ser utilizado no momento 
 
 ### Feito Com
 
-Abaixo segue o que foi utilizado na criação deste template:
+Abaixo segue o que foi utilizado na criação deste projeto:
 
 - [React](http://facebook.github.io/react/) - O React é uma biblioteca que permite o desenvolvimento de aplicações usando Javascript e React;
 - [Redux](https://redux.js.org/) - O Redux é um contêiner de estado previsível para aplicativos JavaScript. Ele ajuda você a escrever aplicativos que se comportam consistentemente, executados em diferentes ambientes (cliente, servidor e nativo) e são fáceis de testar;
@@ -35,7 +35,7 @@ Abaixo segue o que foi utilizado na criação deste template:
 - [Styled Components](https://www.styled-components.com/) - O Styled Components é uma biblioteca que permite criar escopos de estilização para os componentes;
 - [Axios](https://github.com/axios/axios) - O Axios é um cliente HTTP baseado em Promises para Browser e NodeJS;
 - [Prop Types](https://github.com/facebook/prop-types) - Verificação de tipo em tempo de execução para propriedades (props) React e objetos semelhantes;
-- [Seamless Immutable](https://github.com/rtfeldman/seamless-immutable) - Integrado com Redux, seta o estado como imutável, ganhando performance e organizacao.
+- [immer](https://immerjs.github.io/immer/docs/introduction) - Integrado com Redux, gera a criação de um estado temporário (draft) onde podemos manipular os dados da forma mais conveniente sem perder o conceito de imutabilidade.
 - [Reactotron](https://github.com/infinitered/reactotron) - O Reactotron é um app Desktop para inspecionar projetos em React ou React Native. Está disponível para macOS, Linux e Windows;
   - [reactotron-redux](https://github.com/infinitered/reactotron/blob/master/docs/plugin-redux.md) - Plugin que permite acompanhar todas as Actions que são disparadas na aplicação, mostrando toda a estrutura da Action;
   - [reactotron-redux-saga](https://github.com/infinitered/reactotron/blob/master/docs/plugin-redux-saga.md) - Plugin que permite você percorrer uma saga na sua aplicação, poderá ver a saga e os efeitos que ela desencadeia ao longo do caminho;
@@ -53,7 +53,6 @@ Abaixo segue o que foi utilizado na criação deste template:
 - [EditorConfig](https://editorconfig.org/) - O EditorConfig é um formatador de arquivos e coleções em forma de Plugin para Editores de código/texto com o objetivo de manter um padrão de código consistente entre diferentes editores, IDE's ou ambientes;
 - [Jest](https://jestjs.io/) - Biblioteca principal para testes da aplicação. Normalmente utilizando o conceito de Test Driven Development (TDD), são testados
   os reducers, sagas, integrações, etc.
-  - [react-testing-library](https://github.com/testing-library/react-testing-library) - Biblioteca para facilitar o processo de test utilizando DOM, no qual conseguimos importar os componentes JSX. Normalmente utilizado em testes end-to-end
 - [react-hot-loader](https://github.com/gaearon/react-hot-loader) - Biblioteca para carregamento da página de modo instantâneo sem carregamento, prevenindo perda de informações em tela (estado da aplicação), assim melhorando a produtividade
 - [react-app-rewired](https://github.com/timarney/react-app-rewired) - Biblioteca para sobrescrever configurações do webpack sem ejetar o create-react-app
 - [storybook](https://storybook.js.org) - Ferramenta para pré-visualização isolada dos componentes, muito útil no processo de desenvolvimento pois não precisamos acessar o local que o componente é renderizado ou até mesmo startar a aplicação.
@@ -154,6 +153,20 @@ Nesta seção haverão instruções caso você queira editar o template, explica
 
 * **package.json** - Diferente dos projetos comuns, esse arquivo tem as configurações necessárias para a publicação do Template no NPM, para saber mais sobre isso veja a seção abaixo.
 
-## Licença
+### Instalação
 
-Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
+```
+$ yarn install
+```
+
+### Executar
+
+```
+$ yarn start
+```
+
+### Gerar Build
+
+```
+$ yarn build
+```

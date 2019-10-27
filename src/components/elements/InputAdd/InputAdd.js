@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { MdClose } from 'react-icons/md';
 import { Button } from '~/components/elements';
 import { Box, Header, Line } from './styles';
 
@@ -11,6 +12,7 @@ export default function InputAdd({
   disabled,
   className,
   addItems,
+  removeItem,
   items,
   title,
   label,
@@ -20,7 +22,9 @@ export default function InputAdd({
       <Header>
         {items.length > 0 && <span>{title}</span>}
         {items.map(item => (
-          <p key={item}>{item}</p>
+          <p key={item}>
+            {item} <MdClose onClick={() => removeItem(item)} />{' '}
+          </p>
         ))}
       </Header>
 
@@ -53,6 +57,7 @@ InputAdd.defaultProps = {
   className: '',
   disabled: false,
   value: '',
+  removeItem: () => {},
 };
 
 InputAdd.propTypes = {
@@ -66,4 +71,5 @@ InputAdd.propTypes = {
   items: PropTypes.arrayOf(PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  removeItem: PropTypes.func,
 };

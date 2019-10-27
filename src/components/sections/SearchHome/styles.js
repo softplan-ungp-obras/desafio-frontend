@@ -23,10 +23,17 @@ export const Box = styled.div`
   h1 {
     text-align: center;
   }
+  @media (max-width: ${theme.medias.lg}) {
+    text-align: center;
+    font-size: 14px;
+  }
 `;
 
 export const InputStyle = styled(Input)`
   margin: 35px 0 65px 0;
+  @media (max-width: ${theme.medias.lg}) {
+    margin: 35px 0 45px 0;
+  }
 `;
 
 export const CustomLink = styled.button`
@@ -38,5 +45,8 @@ export const CustomLink = styled.button`
   font-size: 16px;
   &:hover {
     color: ${theme.primary.hover};
+  }
+  @media (max-width: ${theme.medias.lg}) {
+    font-size: 14px;
   }
 `;

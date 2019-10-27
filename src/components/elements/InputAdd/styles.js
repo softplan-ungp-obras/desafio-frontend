@@ -20,6 +20,11 @@ export const Header = styled.div`
   span {
     font-size: 12px;
   }
+  svg {
+    color: ${theme.error.main};
+    cursor: pointer;
+    width: 14px;
+  }
 `;
 
 export const Line = styled.div`

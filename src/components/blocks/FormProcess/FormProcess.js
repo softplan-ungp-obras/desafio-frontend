@@ -24,6 +24,9 @@ export default function FormProcess() {
   function addItems(val) {
     setAdd([...add, val]);
   }
+  function removeItem(val) {
+    setAdd(add.filter(item => item !== val));
+  }
 
   return (
     <Formik
@@ -73,6 +76,7 @@ export default function FormProcess() {
               onBlur={handleBlur}
               value={values.interested}
               addItems={addItems}
+              removeItem={removeItem}
               name="interested"
             />
           </LimitSize>

@@ -47,7 +47,7 @@ export const List = styled.div`
 
   p {
     color: ${theme.grey.main};
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
   ${props =>

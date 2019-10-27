@@ -62,7 +62,7 @@ export const SubLineOne = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   p {
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 5px;
   }
 `;
