@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Message } from '~/components/elements';
-import { Box, Header } from './styles';
+import { Button } from '~/components/elements';
+import { Box, Header, Line } from './styles';
 
 export default function InputAdd({
   onChange,
@@ -18,30 +18,32 @@ export default function InputAdd({
   return (
     <Box className={className} disabled={disabled}>
       <Header>
-        {title}
+        {items.length > 0 && <span>{title}</span>}
         {items.map(item => (
           <p key={item}>{item}</p>
         ))}
       </Header>
 
       <label htmlFor={name}>{label}</label>
-      <input
-        id={name}
-        value={value}
-        onChange={e => onChange(name, e.target.value)}
-        name={name}
-        placeholder={placeholder}
-        disabled={disabled}
-      />
-      <Button
-        disabled={!value}
-        onClick={() => {
-          addItems(value);
-          onChange(name, '');
-        }}
-      >
-        Adicionar
-      </Button>
+      <Line>
+        <input
+          id={name}
+          value={value}
+          onChange={e => onChange(name, e.target.value)}
+          name={name}
+          placeholder={placeholder}
+          disabled={disabled}
+        />
+        <Button
+          disabled={!value}
+          onClick={() => {
+            addItems(value);
+            onChange(name, '');
+          }}
+        >
+          Adicionar
+        </Button>
+      </Line>
     </Box>
   );
 }

@@ -13,11 +13,7 @@ export const Close = styled.button`
 `;
 
 export const ModalStyle = styled(Modal)`
-  position: fixed;
-  top: -100px;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  margin-top: -100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,9 +24,9 @@ export const ModalStyle = styled(Modal)`
   padding: 1.2rem;
   z-index: 1031;
   max-width: 800px;
-  max-height: 600px;
   width: 100%;
   margin: auto;
   flex-direction: column;
   text-align: left;
+  position: relative;
 `;

@@ -71,7 +71,14 @@ export default function CardDashboard({ id, handleEdit }) {
         <p> {findInfo.descricao}</p>
       </LineThree>
       <LineFour>
-        <Button level="grey" onClick={handleRemove}>
+        <Button
+          level="grey"
+          onClick={() =>
+            // eslint-disable-next-line no-alert
+            window.confirm('Você realmente deseja excluir o processo ?') &&
+            handleRemove()
+          }
+        >
           Remover
         </Button>
         <Button onClick={() => handleEdit('')}>Editar</Button>

@@ -19,6 +19,9 @@ export const Box = styled.div`
     css`
       input {
         height: 35px;
+        box-shadow: none;
+        border-color: transparent;
+        border-bottom: 2px solid ${theme.grey.main};
       }
     `}
 `;

@@ -4,14 +4,14 @@ import theme from '~/styles/theme';
 export const Box = styled.div`
   position: relative;
   textarea {
-    border: 1px solid ${theme.lighGrey.main};
+    border-color: transparent;
+    border-bottom: 2px solid ${theme.grey.main};
     padding: 15px;
-    box-shadow: 0px 3px 2px ${theme.lighGrey.main};
     color: ${theme.grey.main};
     font-size: 15px;
     font-weight: 600;
     resize: none;
-    height: 150px;
+    height: 80px;
     display: block;
     width: 100%;
   }

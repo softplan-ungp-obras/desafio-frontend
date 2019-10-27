@@ -58,6 +58,13 @@ const GlobalStyle = createGlobalStyle`
   }
   .ReactModal__Overlay.ReactModal__Overlay--after-open {
     background-color: ${theme.black.main} !important;
+    display:flex;
+    align-items:center;
+    justify-items:center;
+
+  }
+  label{
+    font-size: 12px;
   }
 
 
