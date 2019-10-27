@@ -9,10 +9,12 @@ caso não possua o yarn: `npm run start`
 
 - Para executar, na raiz do projeto insira em seu terminal:
   `yarn test`
+  
   caso não possua o yarn: `npm run test`
 
 - Para o coverage report:
   `yarn coverage`
+  
   caso não possua o yarn: `npm run coverage`
 
 ### Instruções de teste
