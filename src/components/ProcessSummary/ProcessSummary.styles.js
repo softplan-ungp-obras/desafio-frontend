@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import colors from '../../helpers/colors';
+import device from '../../helpers/breakpoints';
 
 export const ProcessRow = styled.div`
   align-items: center;
@@ -21,6 +22,10 @@ export const ProcessColumn = styled.div`
     max-width: 200px;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  @media ${device.mobile} {
+    margin-bottom: 10px;
   }
 `;
 

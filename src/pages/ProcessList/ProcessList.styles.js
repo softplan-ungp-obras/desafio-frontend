@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import colors from '../../helpers/colors';
+import device from '../../helpers/breakpoints';
 
 export const ProcessListHeaderWrapper = styled.div`
   align-items: center;
@@ -8,6 +9,11 @@ export const ProcessListHeaderWrapper = styled.div`
   height: 100%;
   margin: 30px 0 0 0;
   padding: 0 2%;
+
+  @media ${device.mobile} {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `;
 
 export const NewProcessButton = styled.button`
@@ -27,12 +33,27 @@ export const NewProcessButton = styled.button`
     color: ${colors.white};
     transition: all 0.2s ease-in-out;
   }
+
+  @media ${device.mobile} {
+    margin: 20px;
+    width: 100%;
+  }
 `;
 
 export const HeaderTitle = styled.h2`
   color: ${colors.black300};
   font: 400 20px 'Montserrat';
   margin: 0 30px 0 0;
+
+  @media ${device.mobile} {
+    margin: 0 20px 20px;
+    text-align: center;
+    width: 100%;
+
+    br {
+      display: none;
+    }
+  }
 `;
 
 export const ProcessListWrapper = styled.div`
@@ -40,6 +61,10 @@ export const ProcessListWrapper = styled.div`
   margin: 30px 0 0 0;
   min-height: 250px;
   padding: 0 2%;
+
+  @media ${device.mobile} {
+    margin: 0;
+  }
 `;
 
 export const LoaderWrapper = styled.div`
