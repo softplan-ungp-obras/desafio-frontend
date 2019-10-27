@@ -37,6 +37,7 @@ export const FormTextArea = styled.textarea`
 `;
 
 export const FieldWrapper = styled.div`
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: ${props => (props.alignToRight ? 'flex-end' : 'flex-start')};
@@ -113,4 +114,10 @@ export const InterestedItem = styled.li`
       transition: all 0.2s ease-in-out;
     }
   }
+`;
+
+export const FormSent = styled.p`
+  color: ${colors.primary};
+  font: normal 14px 'Montserrat';
+  margin: 0 10px 0 0;
 `;

@@ -18,7 +18,8 @@ import {
   SaveButton,
   DecrementInterestedButton,
   InterestedList,
-  InterestedItem
+  InterestedItem,
+  FormSent
 } from './NewProcessForm.styles';
 
 import colors from '../../helpers/colors';
@@ -46,6 +47,7 @@ const NewProcessForm = props => {
   };
 
   const [formData, SetFormData] = useState(initialState);
+  const [formSent, SetFormSent] = useState(false);
 
   const [debouncedCallback] = useDebouncedCallback((value, fieldName) => {
     SetFormData({
@@ -86,6 +88,7 @@ const NewProcessForm = props => {
         refreshProcessList();
       }
     });
+    SetFormSent(true);
   };
 
   return (
@@ -147,6 +150,7 @@ const NewProcessForm = props => {
           />
         </FieldWrapper>
         <FieldWrapper alignToRight width="100%" margin="0">
+          {formSent && <FormSent>Processo Salvo!</FormSent>}
           <SaveButton type="submit">salvar</SaveButton>
         </FieldWrapper>
       </form>
