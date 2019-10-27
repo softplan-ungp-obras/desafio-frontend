@@ -7,15 +7,24 @@ export const Box = styled.div`
   padding: 15px;
   display: grid;
   grid-template-rows: 0.5fr 0.4fr 1fr 1fr;
-
+  max-height: 600px;
   span {
     color: ${theme.grey.main};
+  }
+
+  @media (max-width: ${theme.medias.lg}) {
+    max-height: initial;
+    margin-bottom: 25px;
+    display: block;
   }
 `;
 export const LineOne = styled.div`
   display: grid;
-  grid-template-columns: 1fr 4.5fr;
+  grid-template-columns: 1.2fr 4.5fr;
   grid-template-rows: 1fr;
+  @media (max-width: ${theme.medias.lg}) {
+    grid-template-columns: 2fr 4.5fr;
+  }
 `;
 export const LineTwo = styled.div`
   margin-top: 15px;
@@ -43,6 +52,9 @@ export const LineFour = styled.div`
     &:last-child {
       margin-right: 0;
     }
+  }
+  @media (max-width: ${theme.medias.lg}) {
+    margin-top: 25px;
   }
 `;
 export const SubLineOne = styled.div`

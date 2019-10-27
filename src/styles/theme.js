@@ -26,4 +26,7 @@ export default {
   alert: {
     main: '#ffab00',
   },
+  medias: {
+    lg: '1000px',
+  },
 };

@@ -4,13 +4,19 @@ import { Loading, Text } from '~/components/elements';
 import { CardDashboard } from '~/components/blocks';
 import { Box, Overlay, List, Relative, NotResult } from './styles';
 import TOOLS from '~/utils/tools';
+import mobile from '~/hooks/isMobile';
 
 export default function DashboardList() {
   const [idCard, setIdCard] = useState(false);
   const items = useSelector(state => state.search.data);
   const loading = useSelector(state => state.search.loading);
+  const isMobile = mobile();
 
   function handleEdit(val) {
+    if (!isMobile) {
+      TOOLS.scrollTop();
+    }
+
     setIdCard(val);
   }
 
@@ -20,52 +26,57 @@ export default function DashboardList() {
 
   return (
     <Box edit={idCard}>
-      <div />
+      {!isMobile && <div />}
+
       <Relative>
         {items.length > 0 ? (
           items.map(item => (
-            <List
-              key={item.id}
-              edit={idCard}
-              active={idCard === item.id}
-              onClick={() => handleEdit(item.id)}
-            >
-              {!idCard && (
-                <div>
-                  <img
-                    src="https://via.placeholder.com/80"
-                    alt={item.assunto}
-                  />
-                </div>
-              )}
-              <div>
-                <Text as="p" level="3">
-                  <strong>Número</strong>
-                </Text>
-                {item.numero}
-              </div>
-              <div>
-                <Text as="p" level="3">
-                  <strong>Assunto</strong>
-                </Text>
-                {item.assunto}
-              </div>
-              <div>
-                <Text as="p" level="3">
-                  <strong>Interessado</strong>
-                </Text>
-                {!!item.interessados && item.interessados[0]}
-              </div>
-              {!idCard && (
+            <div key={item.id}>
+              <List
+                edit={idCard}
+                active={idCard === item.id}
+                onClick={() => handleEdit(item.id)}
+              >
+                {!idCard && (
+                  <div>
+                    <img
+                      src="https://via.placeholder.com/80"
+                      alt={item.assunto}
+                    />
+                  </div>
+                )}
                 <div>
                   <Text as="p" level="3">
-                    <strong>Descrição</strong>
+                    <strong>Número</strong>
                   </Text>
-
-                  {TOOLS.limitText(item.descricao, 24)}
+                  {item.numero}
                 </div>
+                <div>
+                  <Text as="p" level="3">
+                    <strong>Assunto</strong>
+                  </Text>
+                  {item.assunto}
+                </div>
+                <div>
+                  <Text as="p" level="3">
+                    <strong>Interessado</strong>
+                  </Text>
+                  {!!item.interessados && item.interessados[0]}
+                </div>
+                {!idCard && (
+                  <div>
+                    <Text as="p" level="3">
+                      <strong>Descrição</strong>
+                    </Text>
+
+                    {TOOLS.limitText(item.descricao, 24)}
+                  </div>
+                )}
+              </List>
+              {isMobile && idCard === item.id && (
+                <CardDashboard id={idCard}>CARD</CardDashboard>
               )}
-            </List>
+            </div>
           ))
         ) : (
           <NotResult className="title" as="h3" level="title">
@@ -78,7 +89,7 @@ export default function DashboardList() {
           </Overlay>
         )}
       </Relative>
-      {idCard && <CardDashboard id={idCard}>CARD</CardDashboard>}
+      {!isMobile && idCard && <CardDashboard id={idCard}>CARD</CardDashboard>}
     </Box>
   );
 }

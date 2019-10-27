@@ -71,7 +71,7 @@ Input.defaultProps = {
 };
 
 Input.propTypes = {
-  level: PropTypes.oneOf('large', 'normal'),
+  level: PropTypes.oneOf(['large', 'normal']),
   htmlFor: PropTypes.string,
   iconPointer: PropTypes.bool,
   className: PropTypes.string,

@@ -14,6 +14,13 @@ export const Box = styled.div`
     css`
       grid-template-columns: 0.8fr 2.8fr 4fr;
     `}
+
+
+  @media (max-width: ${theme.medias.lg}) {
+      grid-template-columns: 1fr;
+  }
+
+
 `;
 export const List = styled.div`
   padding: 10px;
@@ -59,6 +66,18 @@ export const List = styled.div`
     css`
       border: 2px solid ${theme.primary.main};
     `}
+
+  @media (max-width: ${theme.medias.lg}) {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 10px;
+    p{
+      margin:0;
+    }
+    & > div:last-child{
+      grid-column: span 2;
+    }
+  }
+
 `;
 
 export const Overlay = styled.div`

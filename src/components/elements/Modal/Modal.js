@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { MdClose } from 'react-icons/md';
 import { Close, ModalStyle } from './styles';
 
-export default function Modal({ children, open, onClose }) {
+function Modal({ children, open, onClose }) {
   return (
     <ModalStyle isOpen={open} onRequestClose={onClose}>
       <Close type="button" onClick={onClose}>
@@ -19,3 +19,5 @@ Modal.propTypes = {
   open: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
 };
+
+export default Modal;

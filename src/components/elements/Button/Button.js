@@ -36,13 +36,14 @@ Button.defaultProps = {
   className: '',
   onBlur: () => {},
   onClick: () => {},
+  onChange: () => {},
   disabled: false,
 };
 
 Button.propTypes = {
   className: PropTypes.string,
   level: PropTypes.oneOf(['primary', 'black', 'grey', 'error', 'success']),
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
   onBlur: PropTypes.func,
   type: PropTypes.string,
   placeholder: PropTypes.string,

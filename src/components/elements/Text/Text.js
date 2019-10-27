@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { CText } from './styles';
 
 export default function Text({ className, as, level, children }) {
-  const Tag = `${as}`;
+  // const Tag = `${as}`;
 
   return (
     <CText as={as} className={className} level={level}>
-      <Tag>{children}</Tag>
+      {children}
     </CText>
   );
 }

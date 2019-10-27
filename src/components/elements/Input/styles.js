@@ -37,4 +37,5 @@ export const Icon = styled.span`
     css`
       cursor: pointer;
     `}
+    background:  ${theme.white.main};
 `;

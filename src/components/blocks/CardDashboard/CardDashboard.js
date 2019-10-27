@@ -64,7 +64,7 @@ export default function CardDashboard({ id }) {
         </Text>
         <ul>
           {!!findInfo.interessados &&
-            findInfo.interessados.map(item => <li>{item}</li>)}
+            findInfo.interessados.map(item => <li key={item}>{item}</li>)}
         </ul>
       </LineTwo>
 
@@ -98,5 +98,4 @@ CardDashboard.defaultProps = {
 
 CardDashboard.propTypes = {
   id: PropTypes.string,
-  handleEdit: PropTypes.func.isRequired,
 };

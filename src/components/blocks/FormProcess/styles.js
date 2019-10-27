@@ -4,7 +4,7 @@ export const Form = styled.form`
   width: 100%;
 `;
 
-export const Bottom = styled.form`
+export const Bottom = styled.div`
   margin-top: 15px;
   text-align: right;
 `;
