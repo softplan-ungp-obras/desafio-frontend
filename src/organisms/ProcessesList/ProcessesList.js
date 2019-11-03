@@ -1,30 +1,35 @@
 import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
-import Process from "molecules/Process";
 
-const useStyles = makeStyles(theme => ({
+import Process from "molecules/Process";
+import processService from "services/process";
+
+const useStyles = makeStyles({
   container: {
-    marginLeft: 160,
-    width:'70%'
+    marginLeft: 155,
+    width: "80%"
   }
-}));
+});
 
 export function ProcessesList() {
   const classes = useStyles();
 
   const [processes, setProcesses] = React.useState([]);
 
-  React.useEffect(() => {
-    setProcesses([
-      { id: 1, number: 3, subject: "teste", description: "rodiuhfds" }
-    ]);
+  const getProcesses = React.useCallback(async () => {
+    const response = await processService.getProcesses();
+    setProcesses(response.data);
   }, []);
+
+  React.useEffect(() => {
+    getProcesses();
+  }, [getProcesses]);
 
   return (
     <div className={classes.container}>
-      {processes.map(processIt => (
-        <Process process={processIt} />
+      {processes.map(processObj => (
+        <Process key={processObj.id} processObj={processObj} />
       ))}
     </div>
   );
