@@ -17,6 +17,12 @@ Agora com as dependências instaladas, para subir a aplicação, executamos:
 npm start
 ```
 
+Para o backend, subimos uma imagem Docker:
+
+```
+docker run -p 3002:3002 gcpasquadproduto/softplan-desafio-frontend
+```
+
 ### Arquitetura
 
 - Atomic Design;
