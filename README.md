@@ -37,5 +37,6 @@ Tive bem pouco tempo para executar essa prova, todo este código foi produzido e
 Por conta disso, não tive tempo hábil de executar testes unitários. Tentei focar o máximo em
 componentização, clean code, reutilização e otimização dos componentes.
 Por isso também, optei por criar o projeto com create-react-app, para mais agilidade no desenvolvimento.
+Peço desculpas pela pressa no desafio, e que levem o tempo que tive em consideração para avaliação.
 
 Obrigado.
