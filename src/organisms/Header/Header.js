@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export function Header({ handleSearch }) {
+export function Header({ handleSearch, handleNewProcess }) {
   const classes = useStyles();
 
   return (
@@ -31,7 +31,7 @@ export function Header({ handleSearch }) {
         Busca de processos
       </Typography>
       <SearchField handleSearch={handleSearch} />
-      <Button size="medium" variant="outlined" className={classes.button}>
+      <Button size="medium" variant="outlined" className={classes.button} onClick={handleNewProcess}>
         NOVO
       </Button>
     </div>

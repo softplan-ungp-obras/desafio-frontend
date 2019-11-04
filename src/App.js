@@ -11,6 +11,7 @@ function App() {
     <Router>
       <Home path="/" />
       <Processes path="/processes" />
+      <Processes path="/processes/:searchTextFromUrl" />
     </Router>
   );
 }

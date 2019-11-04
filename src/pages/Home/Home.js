@@ -9,7 +9,7 @@ import Link from "@material-ui/core/Link";
 import SearchField from "atoms/SearchField";
 import Title from "atoms/Title";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   container: {
     textAlign: "center",
     marginTop: "20rem"
@@ -17,15 +17,13 @@ const useStyles = makeStyles(theme => ({
   subtitle: {
     marginTop: "3rem"
   }
-}));
+});
 
 export function Home() {
   const classes = useStyles();
 
   const handleSearch = React.useCallback(value => {
-    if (value && value.trim("") !== "") {
-      navigate(`/processes?process=${value}`);
-    }
+    navigate(`/processes/${value}`);
   }, []);
 
   return (
