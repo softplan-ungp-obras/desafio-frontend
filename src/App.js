@@ -1,17 +1,20 @@
-import React from "react";
-import { Router } from "@reach/router";
+import React from 'react';
+import { Router } from '@reach/router';
 
-import Home from "pages/Home";
-import Processes from "pages/Processes";
+import Home from 'pages/Home';
+import Processes from 'pages/Processes';
 
-import "./App.css";
+import { ROUTES } from 'constants/routes';
+
+import './App.css';
 
 function App() {
   return (
     <Router>
-      <Home path="/" />
-      <Processes path="/processes" />
-      <Processes path="/processes/:searchTextFromUrl" />
+      <Home path={ROUTES.DEFAULT} />
+      <Processes path={ROUTES.PROCESSES} />
+      <Processes path={ROUTES.PROCESSES_WITH_PARAM} />
+      <Processes path={ROUTES.NEW_PROCESS} />
     </Router>
   );
 }

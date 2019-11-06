@@ -1,24 +1,28 @@
-import React from "react";
+import React from 'react';
 
-import Drawer from "@material-ui/core/Drawer";
+import Drawer from '@material-ui/core/Drawer';
 
-import Header from "organisms/Header";
-import ProcessesList from "organisms/ProcessesList";
-import ProcessDetails from "organisms/ProcessDetails";
-import NewProcess from "organisms/NewProcess";
+import Header from 'organisms/Header';
+import ProcessesList from 'organisms/ProcessesList';
+import ProcessDetails from 'organisms/ProcessDetails';
+import NewProcess from 'organisms/NewProcess';
 
-import processService from "services/process";
+import processService from 'services/process';
 
-export function Processes({ searchTextFromUrl }) {
+import { ROUTES } from 'constants/routes';
+
+export function Processes({ searchTextFromUrl, location }) {
   const [searchText, setSearchText] = React.useState(searchTextFromUrl);
   const [openDetails, setOpenDetails] = React.useState(false);
-  const [openNewProcess, setOpenNewProcess] = React.useState(false);
+  const [openNewProcess, setOpenNewProcess] = React.useState(
+    location.pathname === ROUTES.NEW_PROCESS
+  );
   const [processDetails, setProcessDetails] = React.useState(false);
   const [processes, setProcesses] = React.useState([]);
 
   const getProcesses = React.useCallback(async () => {
     const response = await processService.getProcesses(
-      searchText && searchText.trim("") !== "" ? searchText : undefined
+      searchText && searchText.trim('') !== '' ? searchText : undefined
     );
     setProcesses(response.data);
   }, [searchText]);
@@ -35,7 +39,7 @@ export function Processes({ searchTextFromUrl }) {
   }, []);
 
   const handleCloseDetails = React.useCallback(() => setOpenDetails(false), [
-    setOpenDetails
+    setOpenDetails,
   ]);
 
   const handleCloseNewProcess = React.useCallback(

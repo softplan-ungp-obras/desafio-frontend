@@ -36,7 +36,7 @@ export function Home() {
           gutterBottom
           className={classes.subtitle}
         >
-          Você pode criar um novo processo <Link href="#">clicando aqui</Link>
+          Você pode criar um novo processo <Link href="/processes/new">clicando aqui</Link>
         </Typography>
       </Container>
     </div>
