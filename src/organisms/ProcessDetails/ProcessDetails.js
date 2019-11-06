@@ -41,7 +41,7 @@ export function ProcessDetails({
 
   return (
     <div className={classes.root}>
-      <DrawerHeader title="Detalhes do processo" />
+      <DrawerHeader title="Detalhes do processo" handleClose={handleCloseDetails} />
       <Grid container spacing={3}>
         <Grid item xs={6}>
           <ProcessItem title="Processo" subtitle={processDetails.numero} />
