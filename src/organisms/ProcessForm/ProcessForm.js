@@ -38,13 +38,21 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export function NewProcess({ handleCloseNewProcess, updateProcesses }) {
+export function ProcessForm({
+  handleCloseNewProcess,
+  updateProcesses,
+  editingProcess,
+}) {
   const classes = useStyles();
 
   const initialProcessState = { assunto: '', descricao: '' };
 
-  const [processObj, setProcessObj] = React.useState(initialProcessState);
-  const [interesteds, setInteresteds] = React.useState([]);
+  const [processObj, setProcessObj] = React.useState(
+    editingProcess ? editingProcess : initialProcessState
+  );
+  const [interesteds, setInteresteds] = React.useState(
+    editingProcess ? editingProcess.interessados : []
+  );
   const [interestedName, setInterestedName] = React.useState('');
 
   const onClose = React.useCallback(() => {
@@ -146,4 +154,4 @@ export function NewProcess({ handleCloseNewProcess, updateProcesses }) {
   );
 }
 
-export default React.memo(NewProcess);
+export default React.memo(ProcessForm);

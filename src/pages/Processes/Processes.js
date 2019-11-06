@@ -5,7 +5,7 @@ import Drawer from '@material-ui/core/Drawer';
 import Header from 'organisms/Header';
 import ProcessesList from 'organisms/ProcessesList';
 import ProcessDetails from 'organisms/ProcessDetails';
-import NewProcess from 'organisms/NewProcess';
+import ProcessForm from 'organisms/ProcessForm';
 
 import processService from 'services/process';
 
@@ -14,7 +14,8 @@ import { ROUTES } from 'constants/routes';
 export function Processes({ searchTextFromUrl, location }) {
   const [searchText, setSearchText] = React.useState(searchTextFromUrl);
   const [openDetails, setOpenDetails] = React.useState(false);
-  const [openNewProcess, setOpenNewProcess] = React.useState(
+  const [editingProcess, setEditingProcess] = React.useState(false);
+  const [openProcessForm, setOpenProcessForm] = React.useState(
     location.pathname === ROUTES.NEW_PROCESS
   );
   const [processDetails, setProcessDetails] = React.useState(false);
@@ -24,7 +25,7 @@ export function Processes({ searchTextFromUrl, location }) {
     const response = await processService.getProcesses(
       searchText && searchText.trim('') !== '' ? searchText : undefined
     );
-    setProcesses(response.data);
+    setProcesses(response ? response.data : []);
   }, [searchText]);
 
   React.useEffect(() => {
@@ -42,14 +43,24 @@ export function Processes({ searchTextFromUrl, location }) {
     setOpenDetails,
   ]);
 
-  const handleCloseNewProcess = React.useCallback(
-    () => setOpenNewProcess(false),
-    [setOpenNewProcess]
+  const handleCloseProcessForm = React.useCallback(
+    () => setOpenProcessForm(false),
+    [setOpenProcessForm]
   );
 
-  const handleNewProcess = React.useCallback(() => {
-    setOpenNewProcess(true);
-  }, [setOpenNewProcess]);
+  const handleOpenProcessForm = React.useCallback(() => {
+    setOpenProcessForm(true);
+  }, [setOpenProcessForm]);
+
+  const handleEditProcess = () => {
+    setOpenProcessForm(true);
+    setEditingProcess(processDetails);
+  };
+
+  const handleNewProcess = () => {
+    setEditingProcess();
+    handleOpenProcessForm();
+  };
 
   return (
     <>
@@ -65,16 +76,18 @@ export function Processes({ searchTextFromUrl, location }) {
             processDetails={processDetails}
             updateProcesses={getProcesses}
             handleCloseDetails={handleCloseDetails}
+            handleEditProcess={handleEditProcess}
           />
         </Drawer>
       )}
       <Drawer
         anchor="right"
-        open={openNewProcess}
-        onClose={handleCloseNewProcess}
+        open={openProcessForm}
+        onClose={handleCloseProcessForm}
       >
-        <NewProcess
-          handleCloseNewProcess={handleCloseNewProcess}
+        <ProcessForm
+          editingProcess={editingProcess}
+          handleCloseNewProcess={handleCloseProcessForm}
           updateProcesses={getProcesses}
         />
       </Drawer>
