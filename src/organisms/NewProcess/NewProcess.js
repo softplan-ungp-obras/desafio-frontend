@@ -1,50 +1,51 @@
-import React from "react";
+import React from 'react';
 
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
-import Button from "@material-ui/core/Button";
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import Button from '@material-ui/core/Button';
 
-import Interesteds from "molecules/Interesteds";
-import DrawerHeader from "molecules/DrawerHeader";
+import Interesteds from 'molecules/Interesteds';
+import DrawerHeader from 'molecules/DrawerHeader';
 
-import processService from "services/process";
+import processService from 'services/process';
 
 const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 200
+    width: 200,
   },
   container: {
-    width: 400
+    width: 400,
+    overflowX: 'hidden',
   },
   margin: {
-    marginLeft: theme.spacing(1)
+    marginLeft: theme.spacing(1),
   },
   addButton: {
     marginTop: theme.spacing(3),
-    marginLeft: theme.spacing(3)
+    marginLeft: theme.spacing(3),
   },
   saveButton: {
     marginLeft: theme.spacing(1),
-    position: "absolute",
-    bottom: "1rem",
-    right: "1rem"
-  }
+    position: 'absolute',
+    bottom: '1rem',
+    right: '1rem',
+  },
 }));
 
 export function NewProcess({ handleCloseNewProcess, updateProcesses }) {
   const classes = useStyles();
 
-  const initialProcessState = { assunto: "", descricao: "" };
+  const initialProcessState = { assunto: '', descricao: '' };
 
   const [processObj, setProcessObj] = React.useState(initialProcessState);
   const [interesteds, setInteresteds] = React.useState([]);
-  const [interestedName, setInterestedName] = React.useState("");
+  const [interestedName, setInterestedName] = React.useState('');
 
   const onClose = React.useCallback(() => {
     setProcessObj(initialProcessState);
@@ -52,7 +53,7 @@ export function NewProcess({ handleCloseNewProcess, updateProcesses }) {
   }, [handleCloseNewProcess, setProcessObj, initialProcessState]);
 
   const handleAddInterested = React.useCallback(() => {
-    if (interestedName.trim("") === "") {
+    if (interestedName.trim('') === '') {
       return;
     }
 
@@ -61,7 +62,7 @@ export function NewProcess({ handleCloseNewProcess, updateProcesses }) {
     newInteresteds.push(interestedName);
 
     setInteresteds(newInteresteds);
-    setInterestedName("");
+    setInterestedName('');
   }, [interestedName, interesteds]);
 
   const handleSaveProcess = React.useCallback(async () => {

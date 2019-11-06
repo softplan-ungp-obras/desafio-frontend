@@ -1,35 +1,40 @@
-import React from "react";
+import React from 'react';
 
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 
-import ProcessItem from "molecules/ProcessItem";
-import Interesteds from "molecules/Interesteds";
-import DrawerHeader from "molecules/DrawerHeader";
-import { processService } from "services";
+import ProcessItem from 'molecules/ProcessItem';
+import Interesteds from 'molecules/Interesteds';
+import DrawerHeader from 'molecules/DrawerHeader';
+import { processService } from 'services';
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    width: 800
+    width: 800,
+    overflowX: 'hidden'
   },
   paper: {
     padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
   },
   removeButton: {
-    position: "absolute",
-    bottom: "1rem",
-    right: "1rem"
-  }
+    position: 'absolute',
+    bottom: '1rem',
+    right: '1rem',
+  },
+  margin: {
+    marginLeft: 10,
+  },
 }));
 
 export function ProcessDetails({
   processDetails,
   updateProcesses,
-  handleCloseDetails
+  handleCloseDetails,
+  handleEditProcess,
 }) {
   const classes = useStyles();
 
@@ -41,7 +46,10 @@ export function ProcessDetails({
 
   return (
     <div className={classes.root}>
-      <DrawerHeader title="Detalhes do processo" handleClose={handleCloseDetails} />
+      <DrawerHeader
+        title="Detalhes do processo"
+        handleClose={handleCloseDetails}
+      />
       <Grid container spacing={3}>
         <Grid item xs={6}>
           <ProcessItem title="Processo" subtitle={processDetails.numero} />
@@ -62,6 +70,14 @@ export function ProcessDetails({
           <ProcessItem title="Descrição" subtitle={processDetails.descricao} />
         </Grid>
         <Grid item xs={12} className={classes.removeButton}>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.margin}
+            onClick={handleEditProcess}
+          >
+            Editar
+          </Button>
           <Button
             variant="contained"
             color="secondary"
