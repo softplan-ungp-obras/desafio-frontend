@@ -73,8 +73,5 @@ ProcessList.propTypes = {
 };
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ProcessList)
+  connect(mapStateToProps, mapDispatchToProps)(ProcessList)
 );

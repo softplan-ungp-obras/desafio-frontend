@@ -8,6 +8,8 @@ import {
   DELETE_PROCESS
 } from '../../actions/getProcessList/getProcessList';
 
+import createReducer from '../createReducer';
+
 const initialState = {
   data: [
     {
@@ -19,35 +21,28 @@ const initialState = {
   isProcessQueryLoading: null
 };
 
-export default function processList(state = initialState, action) {
-  switch (action.type) {
-    case GET_PROCESS_LIST:
-      return {
-        ...state,
-        data: action.data
-      };
-    case ADD_PROCESS:
-      const currentState = isEqual(state, initialState)
-        ? [].concat(action.process)
-        : [...state.data, action.process];
-      return {
-        data: currentState
-      };
-    case LOADING_PROCESS:
-      return {
-        ...state,
-        isProcessQueryLoading: action.isLoading
-      };
-    case DELETE_PROCESS:
-      const deletedId = action.process.id;
-      const updatedList = state.data.filter(
-        process => process.id !== deletedId
-      );
-      return {
-        ...state,
-        data: updatedList
-      };
-    default:
-      return state;
+const processList = createReducer(initialState, {
+  [GET_PROCESS_LIST]: (state, action) => ({ ...state, data: action.data }),
+  [ADD_PROCESS]: (state, action) => {
+    const currentState = isEqual(state, initialState)
+      ? [].concat(action.process)
+      : [...state.data, action.process];
+    return {
+      data: currentState
+    };
+  },
+  [LOADING_PROCESS]: (state, action) => ({
+    ...state,
+    isProcessQueryLoading: action.isLoading
+  }),
+  [DELETE_PROCESS]: (state, action) => {
+    const deletedId = action.process.id;
+    const updatedList = state.data.filter(process => process.id !== deletedId);
+    return {
+      ...state,
+      data: updatedList
+    };
   }
-}
+});
+
+export default processList;
