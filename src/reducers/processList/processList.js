@@ -1,4 +1,3 @@
-/* eslint-disable no-case-declarations */
 import { isEqual } from 'lodash';
 
 import {

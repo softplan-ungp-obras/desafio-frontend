@@ -1,5 +1,7 @@
 import { GET_PROCESS_DETAIL } from '../../actions/getProcessDetail/getProcessDetail';
 
+import createReducer from '../createReducer';
+
 const initialState = {
   data: {
     id: '',
@@ -11,14 +13,8 @@ const initialState = {
   }
 };
 
-export default function processDetail(state = initialState, action) {
-  switch (action.type) {
-    case GET_PROCESS_DETAIL:
-      return {
-        ...state,
-        data: action.data
-      };
-    default:
-      return state;
-  }
-}
+const processDetail = createReducer(initialState, {
+  [GET_PROCESS_DETAIL]: (state, action) => ({ ...state, data: action.data })
+});
+
+export default processDetail;
