@@ -4,10 +4,10 @@ describe('createReducer test', () => {
   it('should return the initial state', () => {
     // given
     const defaultState = {};
-    const mockaction = () => {};
+
     // when
     const reducer = createReducer(defaultState, {
-      MOCK_ACTION: mockaction
+      MOCK_ACTION: (defaultState.test = 'test')
     });
     // then
     expect(reducer(defaultState, '')).toEqual(defaultState);
