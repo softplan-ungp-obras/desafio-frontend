@@ -10,7 +10,7 @@ describe('createReducer test', () => {
       MOCK_ACTION: mockaction
     });
     // then
-    expect(reducer(defaultState, 'MOCK_ACTION')).toEqual(defaultState);
+    expect(reducer(defaultState, '')).toEqual(defaultState);
   });
 
   it('should return the result current handler', () => {
