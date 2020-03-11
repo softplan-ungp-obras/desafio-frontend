@@ -29,6 +29,15 @@ describe('ProcessRoster', () => {
           descricao:
             'Solicitação de licença-prêmio referente ao período 02/06/2015 - 01/06/2018',
           assunto: 'Licença'
+        },
+        {
+          id: 'c05a14b8-9f98-4e4d-908c-050e0c46a7f3',
+          numero: 'SOFT 2020/00001',
+          entrada: '10/02/2019',
+          interessados: ['João da Silva'],
+          descricao:
+            'Solicitação de licença-prêmio referente ao período 02/06/2015 - 01/06/2020',
+          assunto: 'Licença'
         }
       ]
     };
@@ -43,8 +52,11 @@ describe('ProcessRoster', () => {
       </Provider>
     );
 
+    const { getAllByText } = component;
+
     // then
     expect(component).toMatchSnapshot('regular_list');
+    expect(getAllByText('SOFT 2020/00001')).toHaveLength(2);
   });
 
   it('should render no results component', () => {
@@ -67,7 +79,10 @@ describe('ProcessRoster', () => {
       </Provider>
     );
 
+    const { getAllByText } = component;
+
     // then
     expect(component).toMatchSnapshot('no_results');
+    expect(getAllByText('Nenhum resultado para sua busca')).toHaveLength(1);
   });
 });

@@ -91,5 +91,8 @@ const mapDispatchToProps = {
 };
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(SearchInput)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SearchInput)
 );
